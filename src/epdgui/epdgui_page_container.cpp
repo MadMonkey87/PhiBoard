@@ -94,7 +94,7 @@ void EPDGUI_Page_Container::UpdateState(int16_t x, int16_t y)
     _page_indicator->UpdateState(x, y);
 }
 
-void EPDGUI_Page_Container::EPDGUI_AddComponent(EPDGUI_Base *component, int16_t pageIndex)
+void EPDGUI_Page_Container::AddComponent(EPDGUI_Base *component, int16_t pageIndex)
 {
     // add missing pages
     for (int i = _pages.size(); i < pageIndex + 1; i++)
@@ -103,7 +103,7 @@ void EPDGUI_Page_Container::EPDGUI_AddComponent(EPDGUI_Base *component, int16_t 
         _size = _pages.size();
     }
 
-    GetPageByIndex(pageIndex)->EPDGUI_AddComponent(component);
+    GetPageByIndex(pageIndex)->AddComponent(component);
 }
 
 void EPDGUI_Page_Container::PropagateWidgets(JsonArray widgets, int16_t width, int16_t offsetY)
@@ -164,49 +164,49 @@ void EPDGUI_Page_Container::PropagateWidgets(JsonArray widgets, int16_t width, i
         {
             PHI_Widget_Icon *_widget_icon = new PHI_Widget_Icon(pos_x, pos_y, width, height);
             _widget_icon->Init(jsonWidgetItem);
-            EPDGUI_AddComponent(_widget_icon, p);
+            AddComponent(_widget_icon, p);
         }
         else if (jsonWidgetItem["widgettype"] == "text")
         {
             PHI_Widget_Text *_widget_text = new PHI_Widget_Text(pos_x, pos_y, width, height);
             _widget_text->Init(jsonWidgetItem);
-            EPDGUI_AddComponent(_widget_text, p);
+            AddComponent(_widget_text, p);
         }
         else if (jsonWidgetItem["widgettype"] == "doubleswitch")
         {
             PHI_Widget_Double_Switch *_widget_double_switch = new PHI_Widget_Double_Switch(pos_x, pos_y, width, height);
             _widget_double_switch->Init(jsonWidgetItem);
-            EPDGUI_AddComponent(_widget_double_switch, p);
+            AddComponent(_widget_double_switch, p);
         }
         else if (jsonWidgetItem["widgettype"] == "toggle")
         {
             PHI_Widget_Toggle *_widget_toggle = new PHI_Widget_Toggle(pos_x, pos_y, width, height);
             _widget_toggle->Init(jsonWidgetItem);
-            EPDGUI_AddComponent(_widget_toggle, p);
+            AddComponent(_widget_toggle, p);
         }
         else if (jsonWidgetItem["widgettype"] == "icontoggle")
         {
             PHI_Widget_Icon_Toggle *_widget_icon_toggle = new PHI_Widget_Icon_Toggle(pos_x, pos_y, width, height);
             _widget_icon_toggle->Init(jsonWidgetItem);
-            EPDGUI_AddComponent(_widget_icon_toggle, p);
+            AddComponent(_widget_icon_toggle, p);
         }
         else if (jsonWidgetItem["widgettype"] == "progress")
         {
             PHI_Widget_Progress *_widget_progress = new PHI_Widget_Progress(pos_x, pos_y, width, height);
             _widget_progress->Init(jsonWidgetItem);
-            EPDGUI_AddComponent(_widget_progress, p);
+            AddComponent(_widget_progress, p);
         }
         else if (jsonWidgetItem["widgettype"] == "multibutton")
         {
             PHI_Widget_Multi_Button *_widget_multi_button = new PHI_Widget_Multi_Button(pos_x, pos_y, width, height, grid_height * 3);
             _widget_multi_button->Init(jsonWidgetItem);
-            EPDGUI_AddComponent(_widget_multi_button, p);
+            AddComponent(_widget_multi_button, p);
         }
         else if (jsonWidgetItem["widgettype"] == "spinner")
         {
             PHI_Widget_Spinner *_widget_spinner = new PHI_Widget_Spinner(pos_x, pos_y, width, height);
             _widget_spinner->Init(jsonWidgetItem);
-            EPDGUI_AddComponent(_widget_spinner, p);
+            AddComponent(_widget_spinner, p);
         }
     }
 }

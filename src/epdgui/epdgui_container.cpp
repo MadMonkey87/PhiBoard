@@ -18,7 +18,7 @@ EPDGUI_Container::~EPDGUI_Container()
     }
 }
 
-void EPDGUI_Container::EPDGUI_AddComponent(EPDGUI_Base* component)
+void EPDGUI_Container::AddComponent(EPDGUI_Base* component)
 {
     _child_components.push_back(component);
 }
