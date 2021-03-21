@@ -7,6 +7,9 @@
 class Frame_Compare : public Frame_Base
 {
 public:
+    static constexpr const char *APPID = "9e1d635a-6836-4444-a22f-8336f631bf96";
+
+public:
     Frame_Compare();
     ~Frame_Compare();
     int init(epdgui_args_vector_t &args);

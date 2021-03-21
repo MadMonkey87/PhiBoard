@@ -36,7 +36,7 @@ void key_fileindex_exit_cb(epdgui_args_vector_t &args)
 
 Frame_FileIndex::Frame_FileIndex(String path)
 {
-    _frame_name = "Frame_FileIndex";
+    _frame_name = Frame_FileIndex::APPID;
     _path = path;
 
     _canvas_title->setTextDatum(CR_DATUM);

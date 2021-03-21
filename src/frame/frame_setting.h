@@ -7,10 +7,12 @@
 class Frame_Setting : public Frame_Base
 {
 public:
+    static constexpr const char *APPID = "ebb592ec-f2ed-456a-b6e4-12b201153e21";
+
+public:
     Frame_Setting();
     ~Frame_Setting();
     int init(epdgui_args_vector_t &args);
-
 
 private:
     EPDGUI_Button *_key_shutdown;

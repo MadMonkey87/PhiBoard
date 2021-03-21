@@ -4,7 +4,7 @@
 #include "FS.h"
 #include "frame_playground.h"
 
-void key_synctime_cb2(epdgui_args_vector_t &args)
+void test_cb(epdgui_args_vector_t &args)
 {
     Frame_Base *frame = EPDGUI_GetFrame("Frame_Playground");
     if (frame == NULL)
@@ -18,7 +18,7 @@ void key_synctime_cb2(epdgui_args_vector_t &args)
 
 Frame_Home::Frame_Home() : Frame_Base()
 {
-    _frame_name = "Frame_Home";
+    _frame_name = Frame_Home::APPID;
     _frame_id = 1;
 
     _canvas_title->drawString("PhiBoard", 270, 34);

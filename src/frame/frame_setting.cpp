@@ -118,7 +118,7 @@ void key_timezone_reset_cb(epdgui_args_vector_t &args)
 
 Frame_Setting::Frame_Setting(void)
 {
-    _frame_name = "Frame_Setting";
+    _frame_name = Frame_Setting::APPID;
 
     _timezone_canvas = new M5EPD_Canvas(&M5.EPD);
     _timezone_canvas->createCanvas(540, 60);

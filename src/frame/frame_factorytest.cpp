@@ -14,8 +14,7 @@ void frame_factorytest_exit_cb(epdgui_args_vector_t &args)
 
 Frame_FactoryTest::Frame_FactoryTest(void)
 {
-    //TODO: Voltage WiFi Psram touch pos
-    _frame_name = "Frame_FactoryTest";
+    _frame_name = Frame_FactoryTest::APPID;
 
     _canvas_base = new M5EPD_Canvas(&M5.EPD);
     _canvas_data = new M5EPD_Canvas(&M5.EPD);

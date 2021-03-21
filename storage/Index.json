@@ -27,6 +27,14 @@
     },
     {
       "widgettype": "icon",
+      "description": "Factory Test",
+      "icon": "/Icons/lab.jpg",
+      "grid_width": 1,
+      "grid_height": 1,
+      "appid": "dfe9b0fd-aa3d-4ae4-b130-0140b5771023"
+    },
+    {
+      "widgettype": "icon",
       "description": "Shutdown",
       "icon": "/Icons/turn-off.jpg",
       "grid_width": 1,

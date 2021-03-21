@@ -7,6 +7,9 @@
 class Frame_FactoryTest : public Frame_Base
 {
 public:
+    static constexpr const char *APPID = "dfe9b0fd-aa3d-4ae4-b130-0140b5771023";
+
+public:
     Frame_FactoryTest();
     ~Frame_FactoryTest();
     int run();
@@ -15,11 +18,10 @@ public:
 
 private:
     void drawItem(m5epd_update_mode_t mode);
-    void drawItem(uint16_t flag, const char* str, int y);
+    void drawItem(uint16_t flag, const char *str, int y);
     void drawGrove(m5epd_update_mode_t mode);
     bool checkGrove(int sda, int scl);
     void drawPassCount(m5epd_update_mode_t mode);
-
 
 private:
     M5EPD_Canvas *_canvas_base;

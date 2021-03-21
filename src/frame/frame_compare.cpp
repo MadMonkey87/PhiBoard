@@ -78,7 +78,7 @@ void key_update_reset_cb(epdgui_args_vector_t &args)
 
 Frame_Compare::Frame_Compare(void)
 {
-    _frame_name = "Frame_Compare";
+    _frame_name = Frame_Compare::APPID;
 
     _canvas_time = new M5EPD_Canvas(&M5.EPD);
     _canvas = new M5EPD_Canvas(&M5.EPD);

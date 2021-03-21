@@ -5,9 +5,7 @@
 
 Frame_Playground::Frame_Playground() : Frame_Base()
 {
-    Serial.print("Frame_Playground constructor");
-
-    _frame_name = "Frame_Playground";
+    _frame_name = Frame_Playground::APPID;
 
     exitbtn("Back");
     _canvas_title->drawString("Playground", 270, 34);
@@ -44,15 +42,11 @@ Frame_Playground::Frame_Playground() : Frame_Base()
 
 Frame_Playground::~Frame_Playground()
 {
-    Serial.print("Frame_Playground destructor");
-
     delete _page_container;
 }
 
 int Frame_Playground::init(epdgui_args_vector_t &args)
 {
-    Serial.print("Frame_Playground init");
-
     _is_run = 1;
     M5.EPD.Clear();
 

@@ -7,6 +7,9 @@
 class Frame_Keyboard : public Frame_Base
 {
 public:
+    static constexpr const char *APPID = "ac5b84cd-2d28-4669-9983-5a352c04cd2f";
+
+public:
     Frame_Keyboard(bool isHorizontal = false);
     ~Frame_Keyboard();
     int run();

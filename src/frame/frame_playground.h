@@ -7,6 +7,7 @@
 class Frame_Playground : public Frame_Base
 {
 public:
+    static constexpr const char* APPID = "";
     static const int16_t WIDTH = 540;
     static const int16_t HEIGHT = 960;
     static const int16_t HEADER_HEIGHT = 120;

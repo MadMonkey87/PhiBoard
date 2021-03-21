@@ -47,7 +47,7 @@ void key_textsize_reset_cb(epdgui_args_vector_t &args)
 
 Frame_Keyboard::Frame_Keyboard(bool isHorizontal) : Frame_Base()
 {
-    _frame_name = "Frame_Keyboard";
+    _frame_name = Frame_Keyboard::APPID;
     if (isHorizontal)
     {
         inputbox = new EPDGUI_Textbox(84, 25, 712, 250);
