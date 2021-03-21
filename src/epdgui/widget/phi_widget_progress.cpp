@@ -1,17 +1,17 @@
-#include "epdgui_widget_progress.h"
+#include "phi_widget_progress.h"
 
-EPDGUI_Widget_Progress::EPDGUI_Widget_Progress(int16_t x, int16_t y, int16_t w, int16_t h) : EPDGUI_Widget_Graphic_Base(x, y, w, h, true, true)
+PHI_Widget_Progress::PHI_Widget_Progress(int16_t x, int16_t y, int16_t w, int16_t h) : PHI_Widget_Graphic_Base(x, y, w, h, true, true)
 {
 }
 
-void EPDGUI_Widget_Progress::Render(JsonVariant data)
+void PHI_Widget_Progress::Render(JsonVariant data)
 {
-    EPDGUI_Widget_Graphic_Base::Render(data);
+    PHI_Widget_Graphic_Base::Render(data);
 
     this->Render();
 }
 
-void EPDGUI_Widget_Progress::Render()
+void PHI_Widget_Progress::Render()
 {
     bool portrait = _h > _w || _h > 240;
     int16_t OFFSET_Y = portrait ? 0 : -20;
@@ -60,7 +60,7 @@ void EPDGUI_Widget_Progress::Render()
     }
 }
 
-void EPDGUI_Widget_Progress::RenderGauge(M5EPD_Canvas *canvas, int16_t x, int16_t y, int16_t outerRadius, int16_t innerRadius, int16_t value, int16_t minValue, int16_t maxValue, float startRadian, float endRadian, int16_t color, bool roundBegin, bool roundEnd)
+void PHI_Widget_Progress::RenderGauge(M5EPD_Canvas *canvas, int16_t x, int16_t y, int16_t outerRadius, int16_t innerRadius, int16_t value, int16_t minValue, int16_t maxValue, float startRadian, float endRadian, int16_t color, bool roundBegin, bool roundEnd)
 {
     // scale main/max/value s.t there are enough lines drawn for a solid fill
     int16_t necessary_iterations = outerRadius * 3.5 + 325;

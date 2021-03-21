@@ -1,17 +1,17 @@
-#ifndef __EPDGUI_WIDGET_Spinner_H
-#define __EPDGUI_WIDGET_Spinner_H
+#ifndef __PHI_WIDGET_Spinner_H
+#define __PHI_WIDGET_Spinner_H
 
-#include "epdgui_widget_base.h"
+#include "phi_widget_base.h"
 #include "../epdgui_button.h"
 #include "ArduinoJson.h"
 
-class EPDGUI_Widget_Spinner : public EPDGUI_Widget_Base
+class PHI_Widget_Spinner : public PHI_Widget_Base
 {
 public:
     static const int16_t BUTTON_HEIGHT = 80;
 
 public:
-    EPDGUI_Widget_Spinner(int16_t x, int16_t y, int16_t w, int16_t h);
+    PHI_Widget_Spinner(int16_t x, int16_t y, int16_t w, int16_t h);
     void Bind(int16_t event, void (*func_cb)(epdgui_args_vector_t &));
     void Draw(m5epd_update_mode_t mode = UPDATE_MODE_GC16); //UPDATE_MODE_DU4
     void Draw(M5EPD_Canvas *canvas);
@@ -29,4 +29,4 @@ private:
     void RenderRightButton(M5EPD_Canvas *canvas, bool pressed, String icon);
 };
 
-#endif //__EPDGUI_WIDGET_Spinner_H
+#endif //__PHI_WIDGET_Spinner_H

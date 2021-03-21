@@ -1,13 +1,13 @@
-#include "epdgui_widget_spinner.h"
+#include "phi_widget_spinner.h"
 
-EPDGUI_Widget_Spinner::EPDGUI_Widget_Spinner(int16_t x, int16_t y, int16_t w, int16_t h) : EPDGUI_Widget_Base(x, y, w, h)
+PHI_Widget_Spinner::PHI_Widget_Spinner(int16_t x, int16_t y, int16_t w, int16_t h) : PHI_Widget_Base(x, y, w, h)
 {
     this->_centralButton = new EPDGUI_Button(_x, _y, _w, (_h - BUTTON_HEIGHT));
     this->_leftButton = new EPDGUI_Button(_x, _y + _h - BUTTON_HEIGHT, _w / 2 - BORDER_WIDTH / 2, BUTTON_HEIGHT);
     this->_rightButton = new EPDGUI_Button(_x + _w / 2 - BORDER_WIDTH / 2, _y + _h - BUTTON_HEIGHT, _w / 2 - BORDER_WIDTH / 2, BUTTON_HEIGHT);
 }
 
-void EPDGUI_Widget_Spinner::Render(JsonVariant data)
+void PHI_Widget_Spinner::Render(JsonVariant data)
 {
     String upIcon = data["upicon"];
     String downIcon = data["downicon"];
@@ -24,11 +24,11 @@ void EPDGUI_Widget_Spinner::Render(JsonVariant data)
     RenderRightButton(this->_rightButton->CanvasPressed(), true, upIcon);
 }
 
-void EPDGUI_Widget_Spinner::Bind(int16_t event, void (*func_cb)(epdgui_args_vector_t &))
+void PHI_Widget_Spinner::Bind(int16_t event, void (*func_cb)(epdgui_args_vector_t &))
 {
 }
 
-void EPDGUI_Widget_Spinner::UpdateState(int16_t x, int16_t y)
+void PHI_Widget_Spinner::UpdateState(int16_t x, int16_t y)
 {
     if (!_isenable || _ishide)
     {
@@ -40,7 +40,7 @@ void EPDGUI_Widget_Spinner::UpdateState(int16_t x, int16_t y)
     this->_rightButton->UpdateState(x, y);
 }
 
-void EPDGUI_Widget_Spinner::Draw(m5epd_update_mode_t mode)
+void PHI_Widget_Spinner::Draw(m5epd_update_mode_t mode)
 {
     if (_ishide)
     {
@@ -52,7 +52,7 @@ void EPDGUI_Widget_Spinner::Draw(m5epd_update_mode_t mode)
     this->_rightButton->Draw(mode);
 }
 
-void EPDGUI_Widget_Spinner::Draw(M5EPD_Canvas *canvas)
+void PHI_Widget_Spinner::Draw(M5EPD_Canvas *canvas)
 {
     if (_ishide)
     {
@@ -64,9 +64,9 @@ void EPDGUI_Widget_Spinner::Draw(M5EPD_Canvas *canvas)
     this->_rightButton->Draw(canvas);
 }
 
-void EPDGUI_Widget_Spinner::RenderCenterButton(M5EPD_Canvas *canvas, bool pressed, String description, String value)
+void PHI_Widget_Spinner::RenderCenterButton(M5EPD_Canvas *canvas, bool pressed, String description, String value)
 {
-    EPDGUI_Widget_Base::RenderBackground(RENDER_BACKGROUND_MODE_FULL_WITHOUT_BOTTOM, canvas, pressed);
+    PHI_Widget_Base::RenderBackground(RENDER_BACKGROUND_MODE_FULL_WITHOUT_BOTTOM, canvas, pressed);
 
     canvas->setTextSize(TEXT_SIZE);
     canvas->setTextColor(FONT_COLOR);
@@ -84,9 +84,9 @@ void EPDGUI_Widget_Spinner::RenderCenterButton(M5EPD_Canvas *canvas, bool presse
     }
 }
 
-void EPDGUI_Widget_Spinner::RenderLeftButton(M5EPD_Canvas *canvas, bool pressed, String icon)
+void PHI_Widget_Spinner::RenderLeftButton(M5EPD_Canvas *canvas, bool pressed, String icon)
 {
-    EPDGUI_Widget_Base::RenderBackground(RENDER_BACKGROUND_MODE_BOTTOM_LEFT, canvas, pressed);
+    PHI_Widget_Base::RenderBackground(RENDER_BACKGROUND_MODE_BOTTOM_LEFT, canvas, pressed);
 
     if (!pressed)
     {
@@ -108,9 +108,9 @@ void EPDGUI_Widget_Spinner::RenderLeftButton(M5EPD_Canvas *canvas, bool pressed,
     }
 }
 
-void EPDGUI_Widget_Spinner::RenderRightButton(M5EPD_Canvas *canvas, bool pressed, String icon)
+void PHI_Widget_Spinner::RenderRightButton(M5EPD_Canvas *canvas, bool pressed, String icon)
 {
-    EPDGUI_Widget_Base::RenderBackground(RENDER_BACKGROUND_MODE_BOTTOM_RIGHT, canvas, pressed);
+    PHI_Widget_Base::RenderBackground(RENDER_BACKGROUND_MODE_BOTTOM_RIGHT, canvas, pressed);
 
     if (!pressed)
     {

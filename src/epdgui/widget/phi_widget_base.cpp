@@ -1,23 +1,23 @@
-#include "epdgui_widget_base.h"
+#include "phi_widget_base.h"
 
-EPDGUI_Widget_Base::EPDGUI_Widget_Base(int16_t x, int16_t y, int16_t w, int16_t h) : EPDGUI_Base(x, y, w, h)
+PHI_Widget_Base::PHI_Widget_Base(int16_t x, int16_t y, int16_t w, int16_t h) : EPDGUI_Base(x, y, w, h)
 {
 }
 
-EPDGUI_Widget_Base::~EPDGUI_Widget_Base()
+PHI_Widget_Base::~PHI_Widget_Base()
 {
 }
 
-void EPDGUI_Widget_Base::Init(JsonVariant data)
+void PHI_Widget_Base::Init(JsonVariant data)
 {
     Render(data);
 }
 
-void EPDGUI_Widget_Base::Render(JsonVariant data)
+void PHI_Widget_Base::Render(JsonVariant data)
 {
 }
 
-void EPDGUI_Widget_Base::RenderDescriptionLabel(M5EPD_Canvas *canvas, const char *string)
+void PHI_Widget_Base::RenderDescriptionLabel(M5EPD_Canvas *canvas, const char *string)
 {
     canvas->setTextSize(TEXT_SIZE);
     canvas->setTextColor(FONT_COLOR);
@@ -25,7 +25,7 @@ void EPDGUI_Widget_Base::RenderDescriptionLabel(M5EPD_Canvas *canvas, const char
     canvas->drawString(string, _w / 2, _h - 35);
 }
 
-void EPDGUI_Widget_Base::RenderBackground(int16_t mode, M5EPD_Canvas *canvas, bool pressed)
+void PHI_Widget_Base::RenderBackground(int16_t mode, M5EPD_Canvas *canvas, bool pressed)
 {
     int16_t x = 0;
     int16_t y = 0;

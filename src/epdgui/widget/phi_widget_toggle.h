@@ -1,10 +1,10 @@
-#ifndef __EPDGUI_WIDGET_Toggle_H
-#define __EPDGUI_WIDGET_Toggle_H
+#ifndef __PHI_WIDGET_Toggle_H
+#define __PHI_WIDGET_Toggle_H
 
-#include "epdgui_widget_graphic_base.h"
+#include "phi_widget_graphic_base.h"
 #include "ArduinoJson.h"
 
-class EPDGUI_Widget_Toggle : public EPDGUI_Widget_Graphic_Base
+class PHI_Widget_Toggle : public PHI_Widget_Graphic_Base
 {
 public:
     static const int16_t TOGGLE_WIDTH = 120;
@@ -20,7 +20,7 @@ public:
     static const int16_t TOGGLE_KNOB_CORNER_RADIUS = 27;
 
 public:
-    EPDGUI_Widget_Toggle(int16_t x, int16_t y, int16_t w, int16_t h);
+    PHI_Widget_Toggle(int16_t x, int16_t y, int16_t w, int16_t h);
     void Bind(int16_t event, void (* func_cb)(epdgui_args_vector_t&));
     void UpdateState(int16_t x, int16_t y);
     void Init(JsonVariant data);
@@ -32,4 +32,4 @@ private:
     void Render();
 };
 
-#endif //__EPDGUI_WIDGET_Toggle_H
+#endif //__PHI_WIDGET_Toggle_H

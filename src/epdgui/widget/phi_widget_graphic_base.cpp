@@ -1,6 +1,6 @@
-#include "epdgui_widget_graphic_base.h"
+#include "phi_widget_graphic_base.h"
 
-EPDGUI_Widget_Graphic_Base::EPDGUI_Widget_Graphic_Base(int16_t x, int16_t y, int16_t w, int16_t h, boolean createNormalCanvas, boolean createPressedCanvas) : EPDGUI_Widget_Base(x, y, w, h)
+PHI_Widget_Graphic_Base::PHI_Widget_Graphic_Base(int16_t x, int16_t y, int16_t w, int16_t h, boolean createNormalCanvas, boolean createPressedCanvas) : PHI_Widget_Base(x, y, w, h)
 {
     if (createNormalCanvas)
     {
@@ -15,7 +15,7 @@ EPDGUI_Widget_Graphic_Base::EPDGUI_Widget_Graphic_Base(int16_t x, int16_t y, int
     }
 }
 
-EPDGUI_Widget_Graphic_Base::~EPDGUI_Widget_Graphic_Base()
+PHI_Widget_Graphic_Base::~PHI_Widget_Graphic_Base()
 {
     if (this->_Canvas != NULL)
     {
@@ -28,7 +28,7 @@ EPDGUI_Widget_Graphic_Base::~EPDGUI_Widget_Graphic_Base()
     }
 }
 
-void EPDGUI_Widget_Graphic_Base::Draw(m5epd_update_mode_t mode)
+void PHI_Widget_Graphic_Base::Draw(m5epd_update_mode_t mode)
 {
     if (_ishide)
     {
@@ -45,7 +45,7 @@ void EPDGUI_Widget_Graphic_Base::Draw(m5epd_update_mode_t mode)
     }
 }
 
-void EPDGUI_Widget_Graphic_Base::Draw(M5EPD_Canvas *canvas)
+void PHI_Widget_Graphic_Base::Draw(M5EPD_Canvas *canvas)
 {
     if (_ishide)
     {
@@ -62,7 +62,7 @@ void EPDGUI_Widget_Graphic_Base::Draw(M5EPD_Canvas *canvas)
     }
 }
 
-void EPDGUI_Widget_Graphic_Base::Bind(int16_t event, void (*func_cb)(epdgui_args_vector_t &))
+void PHI_Widget_Graphic_Base::Bind(int16_t event, void (*func_cb)(epdgui_args_vector_t &))
 {
     if (event == EVENT_PRESSED)
     {
@@ -74,7 +74,7 @@ void EPDGUI_Widget_Graphic_Base::Bind(int16_t event, void (*func_cb)(epdgui_args
     }
 }
 
-void EPDGUI_Widget_Graphic_Base::UpdateState(int16_t x, int16_t y)
+void PHI_Widget_Graphic_Base::UpdateState(int16_t x, int16_t y)
 {
     if (!_isenable || _ishide)
     {
@@ -109,7 +109,7 @@ void EPDGUI_Widget_Graphic_Base::UpdateState(int16_t x, int16_t y)
     }
 }
 
-void EPDGUI_Widget_Graphic_Base::Init(JsonVariant data)
+void PHI_Widget_Graphic_Base::Init(JsonVariant data)
 {
     Render(data);
 
@@ -119,7 +119,7 @@ void EPDGUI_Widget_Graphic_Base::Init(JsonVariant data)
     }
 }
 
-void EPDGUI_Widget_Graphic_Base::Render(JsonVariant data)
+void PHI_Widget_Graphic_Base::Render(JsonVariant data)
 {
     if (this->_Canvas != NULL)
     {
@@ -132,25 +132,25 @@ void EPDGUI_Widget_Graphic_Base::Render(JsonVariant data)
     }
 }
 
-M5EPD_Canvas *EPDGUI_Widget_Graphic_Base::Canvas()
+M5EPD_Canvas *PHI_Widget_Graphic_Base::Canvas()
 {
     return this->_Canvas;
 }
 
-M5EPD_Canvas *EPDGUI_Widget_Graphic_Base::CanvasPressed()
+M5EPD_Canvas *PHI_Widget_Graphic_Base::CanvasPressed()
 {
     return this->_CanvasPressed;
 }
 
-void EPDGUI_Widget_Graphic_Base::RenderDescriptionLabel(const char *string)
+void PHI_Widget_Graphic_Base::RenderDescriptionLabel(const char *string)
 {
     if (this->_Canvas != NULL)
     {
-        EPDGUI_Widget_Base::RenderDescriptionLabel(this->_Canvas, string);
+        PHI_Widget_Base::RenderDescriptionLabel(this->_Canvas, string);
     }
 
     if (this->_CanvasPressed != NULL)
     {
-        EPDGUI_Widget_Base::RenderDescriptionLabel(this->_CanvasPressed, string);
+        PHI_Widget_Base::RenderDescriptionLabel(this->_CanvasPressed, string);
     }
 }

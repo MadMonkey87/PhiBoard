@@ -1,4 +1,4 @@
-#include "epdgui_widget_icon_toggle.h"
+#include "phi_widget_icon_toggle.h"
 
 void released_cb(epdgui_args_vector_t &args)
 {
@@ -10,24 +10,24 @@ void released_cb(epdgui_args_vector_t &args)
     }*/
 }
 
-EPDGUI_Widget_Icon_Toggle::EPDGUI_Widget_Icon_Toggle(int16_t x, int16_t y, int16_t w, int16_t h) : EPDGUI_Widget_Graphic_Base(x, y, w, h, true, true)
+PHI_Widget_Icon_Toggle::PHI_Widget_Icon_Toggle(int16_t x, int16_t y, int16_t w, int16_t h) : PHI_Widget_Graphic_Base(x, y, w, h, true, true)
 {
-    Bind(EPDGUI_Widget_Base::EVENT_RELEASED, &released_cb);
+    Bind(PHI_Widget_Base::EVENT_RELEASED, &released_cb);
 }
 
-void EPDGUI_Widget_Icon_Toggle::Render(JsonVariant data)
+void PHI_Widget_Icon_Toggle::Render(JsonVariant data)
 {
-    EPDGUI_Widget_Graphic_Base::Render(data);
+    PHI_Widget_Graphic_Base::Render(data);
     Render();
 }
 
-void EPDGUI_Widget_Icon_Toggle::Init(JsonVariant data)
+void PHI_Widget_Icon_Toggle::Init(JsonVariant data)
 {
     _items = data["items"].as<JsonArray>();
-    EPDGUI_Widget_Graphic_Base::Init(data);
+    PHI_Widget_Graphic_Base::Init(data);
 }
 
-void EPDGUI_Widget_Icon_Toggle::Render()
+void PHI_Widget_Icon_Toggle::Render()
 {
     String icon = _items[_index]["icon"];
     String description = _items[_index]["description"];

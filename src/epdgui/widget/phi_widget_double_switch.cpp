@@ -1,6 +1,6 @@
-#include "epdgui_widget_double_switch.h"
+#include "phi_widget_double_switch.h"
 
-EPDGUI_Widget_Double_Switch::EPDGUI_Widget_Double_Switch(int16_t x, int16_t y, int16_t w, int16_t h) : EPDGUI_Widget_Graphic_Base(x, y, w, h, false, false)
+PHI_Widget_Double_Switch::PHI_Widget_Double_Switch(int16_t x, int16_t y, int16_t w, int16_t h) : PHI_Widget_Graphic_Base(x, y, w, h, false, false)
 {
     this->_Canvas = new M5EPD_Canvas(&M5.EPD);
     this->_Canvas->createCanvas(_w, MIDDLE_HEIGHT);
@@ -9,13 +9,13 @@ EPDGUI_Widget_Double_Switch::EPDGUI_Widget_Double_Switch(int16_t x, int16_t y, i
     this->_lowerButton = new EPDGUI_Button(x, y + _h / 2 + MIDDLE_HEIGHT / 2, _w, (_h - MIDDLE_HEIGHT) / 2);
 }
 
-EPDGUI_Widget_Double_Switch::~EPDGUI_Widget_Double_Switch()
+PHI_Widget_Double_Switch::~PHI_Widget_Double_Switch()
 {
     delete this->_upperButton;
     delete this->_lowerButton;
 }
 
-void EPDGUI_Widget_Double_Switch::Render(JsonVariant data)
+void PHI_Widget_Double_Switch::Render(JsonVariant data)
 {
     this->_Canvas->fillCanvas(BORDER_COLOR);
     this->_Canvas->fillRect(BORDER_WIDTH, 0, _w - BORDER_WIDTH * 2, MIDDLE_HEIGHT, BACKGROUND_COLOR);
@@ -31,12 +31,12 @@ void EPDGUI_Widget_Double_Switch::Render(JsonVariant data)
     RenderLowerButton(this->_lowerButton->CanvasPressed(), true, lowerIcon);
 }
 
-void EPDGUI_Widget_Double_Switch::RenderUpperButton(M5EPD_Canvas *canvas, bool pressed, String icon)
+void PHI_Widget_Double_Switch::RenderUpperButton(M5EPD_Canvas *canvas, bool pressed, String icon)
 {
     int16_t height = _upperButton->getH();
     int16_t width = _upperButton->getW();
 
-    EPDGUI_Widget_Base::RenderBackground(RENDER_BACKGROUND_MODE_FULL_WITHOUT_BOTTOM, canvas, pressed);
+    PHI_Widget_Base::RenderBackground(RENDER_BACKGROUND_MODE_FULL_WITHOUT_BOTTOM, canvas, pressed);
 
     canvas->drawJpgFile(SD, icon.c_str(), width / 2 - 40, height / 2 - 40, 80, 80);
 
@@ -46,12 +46,12 @@ void EPDGUI_Widget_Double_Switch::RenderUpperButton(M5EPD_Canvas *canvas, bool p
     }
 }
 
-void EPDGUI_Widget_Double_Switch::RenderLowerButton(M5EPD_Canvas *canvas, bool pressed, String icon)
+void PHI_Widget_Double_Switch::RenderLowerButton(M5EPD_Canvas *canvas, bool pressed, String icon)
 {
     int16_t height = _lowerButton->getH();
     int16_t width = _lowerButton->getW();
 
-    EPDGUI_Widget_Base::RenderBackground(RENDER_BACKGROUND_MODE_FULL_WITHOUT_TOP, canvas, pressed);
+    PHI_Widget_Base::RenderBackground(RENDER_BACKGROUND_MODE_FULL_WITHOUT_TOP, canvas, pressed);
 
     canvas->drawJpgFile(SD, icon.c_str(), width / 2 - 40, height / 2 - 40, 80, 80);
 
@@ -61,11 +61,11 @@ void EPDGUI_Widget_Double_Switch::RenderLowerButton(M5EPD_Canvas *canvas, bool p
     }
 }
 
-void EPDGUI_Widget_Double_Switch::Bind(int16_t event, void (*func_cb)(epdgui_args_vector_t &))
+void PHI_Widget_Double_Switch::Bind(int16_t event, void (*func_cb)(epdgui_args_vector_t &))
 {
 }
 
-void EPDGUI_Widget_Double_Switch::UpdateState(int16_t x, int16_t y)
+void PHI_Widget_Double_Switch::UpdateState(int16_t x, int16_t y)
 {
     if (!_isenable || _ishide)
     {
@@ -76,7 +76,7 @@ void EPDGUI_Widget_Double_Switch::UpdateState(int16_t x, int16_t y)
     this->_lowerButton->UpdateState(x, y);
 }
 
-void EPDGUI_Widget_Double_Switch::Draw(m5epd_update_mode_t mode)
+void PHI_Widget_Double_Switch::Draw(m5epd_update_mode_t mode)
 {
     if (_ishide)
     {
@@ -89,7 +89,7 @@ void EPDGUI_Widget_Double_Switch::Draw(m5epd_update_mode_t mode)
     this->_lowerButton->Draw(mode);
 }
 
-void EPDGUI_Widget_Double_Switch::Draw(M5EPD_Canvas *canvas)
+void PHI_Widget_Double_Switch::Draw(M5EPD_Canvas *canvas)
 {
     if (_ishide)
     {

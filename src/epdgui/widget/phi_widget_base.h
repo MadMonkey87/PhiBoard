@@ -1,10 +1,10 @@
-#ifndef __EPDGUI_WIDGET_BASE_H
-#define __EPDGUI_WIDGET_BASE_H
+#ifndef __PHI_WIDGET_BASE_H
+#define __PHI_WIDGET_BASE_H
 
 #include "../epdgui_base.h"
 #include "ArduinoJson.h"
 
-class EPDGUI_Widget_Base : public EPDGUI_Base
+class PHI_Widget_Base : public EPDGUI_Base
 {
 public:
     static const int16_t EVENT_NONE = 0;
@@ -40,8 +40,8 @@ public:
     static const int16_t RENDER_BACKGROUND_MODE_FULL_WITHOUT_RIGHT = 15;
 
 public:
-    EPDGUI_Widget_Base(int16_t x, int16_t y, int16_t w, int16_t h);
-    ~EPDGUI_Widget_Base();
+    PHI_Widget_Base(int16_t x, int16_t y, int16_t w, int16_t h);
+    ~PHI_Widget_Base();
     //void Draw(m5epd_update_mode_t mode = UPDATE_MODE_GLD16); //UPDATE_MODE_GL16 //UPDATE_MODE_DU4
     //void Draw(M5EPD_Canvas* canvas);
     virtual void Render(JsonVariant data);
@@ -52,4 +52,4 @@ protected:
     void RenderBackground(int16_t mode, M5EPD_Canvas *canvas, bool revertable);
 };
 
-#endif //__EPDGUI_WIDGET_BASE_H
+#endif //__PHI_WIDGET_BASE_H

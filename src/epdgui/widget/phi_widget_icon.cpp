@@ -1,14 +1,14 @@
-#include "epdgui_widget_icon.h"
+#include "phi_widget_icon.h"
 
-EPDGUI_Widget_Icon::EPDGUI_Widget_Icon(int16_t x, int16_t y, int16_t w, int16_t h): 
-EPDGUI_Widget_Graphic_Base(x, y, w, h, true, true)
+PHI_Widget_Icon::PHI_Widget_Icon(int16_t x, int16_t y, int16_t w, int16_t h): 
+PHI_Widget_Graphic_Base(x, y, w, h, true, true)
 {
 
 }
 
-void EPDGUI_Widget_Icon::Render(JsonVariant data)
+void PHI_Widget_Icon::Render(JsonVariant data)
 {
-    EPDGUI_Widget_Graphic_Base::Render(data);
+    PHI_Widget_Graphic_Base::Render(data);
 
     String description = data["description"];
     String icon = data["icon"];

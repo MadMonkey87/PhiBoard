@@ -1,10 +1,10 @@
-#ifndef __EPDGUI_WIDGET_Progress_H
-#define __EPDGUI_WIDGET_Progress_H
+#ifndef __PHI_WIDGET_Progress_H
+#define __PHI_WIDGET_Progress_H
 
-#include "epdgui_widget_graphic_base.h"
+#include "phi_widget_graphic_base.h"
 #include "ArduinoJson.h"
 
-class EPDGUI_Widget_Progress : public EPDGUI_Widget_Graphic_Base
+class PHI_Widget_Progress : public PHI_Widget_Graphic_Base
 {
 public:
     static const int16_t MARGIN = 20;
@@ -20,7 +20,7 @@ public:
     static const int16_t FILL_ROUND_END = true;
 
 public:
-    EPDGUI_Widget_Progress(int16_t x, int16_t y, int16_t w, int16_t h);
+    PHI_Widget_Progress(int16_t x, int16_t y, int16_t w, int16_t h);
     void Render(JsonVariant data);
 
 private:
@@ -28,4 +28,4 @@ private:
     void RenderGauge(M5EPD_Canvas *canvas, int16_t x, int16_t y, int16_t outerRadius, int16_t innerRadius, int16_t value, int16_t minValue, int16_t maxValue, float startRadian, float endRadian, int16_t color, bool roundBegin, bool roundEnd);
 };
 
-#endif //__EPDGUI_WIDGET_Progress_H
+#endif //__PHI_WIDGET_Progress_H

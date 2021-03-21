@@ -1,15 +1,15 @@
-#ifndef __EPDGUI_WIDGET_GRAPHIC_BASE_H
-#define __EPDGUI_WIDGET_GRAPHIC_BASE_H
+#ifndef __PHI_WIDGET_GRAPHIC_BASE_H
+#define __PHI_WIDGET_GRAPHIC_BASE_H
 
-#include "epdgui_widget_base.h"
+#include "phi_widget_base.h"
 #include "ArduinoJson.h"
 
-class EPDGUI_Widget_Graphic_Base : public EPDGUI_Widget_Base
+class PHI_Widget_Graphic_Base : public PHI_Widget_Base
 {
 
 public:
-    EPDGUI_Widget_Graphic_Base(int16_t x, int16_t y, int16_t w, int16_t h, boolean createNormalCanvas, boolean createPressedCanvas);
-    ~EPDGUI_Widget_Graphic_Base();
+    PHI_Widget_Graphic_Base(int16_t x, int16_t y, int16_t w, int16_t h, boolean createNormalCanvas, boolean createPressedCanvas);
+    ~PHI_Widget_Graphic_Base();
     void Draw(m5epd_update_mode_t mode = UPDATE_MODE_A2); //UPDATE_MODE_DU4
     void Draw(M5EPD_Canvas *canvas);
     void Bind(int16_t event, void (*func_cb)(epdgui_args_vector_t &));
@@ -35,4 +35,4 @@ public:
     M5EPD_Canvas *_CanvasPressed = NULL;
 };
 
-#endif //__EPDGUI_WIDGET_GRAPHIC_BASE_H
+#endif //__PHI_WIDGET_GRAPHIC_BASE_H

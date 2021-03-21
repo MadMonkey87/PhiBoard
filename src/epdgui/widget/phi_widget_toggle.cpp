@@ -1,12 +1,12 @@
-#include "epdgui_widget_toggle.h"
+#include "phi_widget_toggle.h"
 
-EPDGUI_Widget_Toggle::EPDGUI_Widget_Toggle(int16_t x, int16_t y, int16_t w, int16_t h) : EPDGUI_Widget_Graphic_Base(x, y, w, h, true, false)
+PHI_Widget_Toggle::PHI_Widget_Toggle(int16_t x, int16_t y, int16_t w, int16_t h) : PHI_Widget_Graphic_Base(x, y, w, h, true, false)
 {
 }
 
-void EPDGUI_Widget_Toggle::Render(JsonVariant data)
+void PHI_Widget_Toggle::Render(JsonVariant data)
 {
-    EPDGUI_Widget_Graphic_Base::Render(data);
+    PHI_Widget_Graphic_Base::Render(data);
 
     this->Render();
 
@@ -14,7 +14,7 @@ void EPDGUI_Widget_Toggle::Render(JsonVariant data)
     RenderDescriptionLabel(description.c_str());
 }
 
-void EPDGUI_Widget_Toggle::Init(JsonVariant data)
+void PHI_Widget_Toggle::Init(JsonVariant data)
 {
     String value = data["value"];
     _value = value;
@@ -22,11 +22,11 @@ void EPDGUI_Widget_Toggle::Init(JsonVariant data)
     Render(data);
 }
 
-void EPDGUI_Widget_Toggle::Bind(int16_t event, void (*func_cb)(epdgui_args_vector_t &))
+void PHI_Widget_Toggle::Bind(int16_t event, void (*func_cb)(epdgui_args_vector_t &))
 {
 }
 
-void EPDGUI_Widget_Toggle::UpdateState(int16_t x, int16_t y)
+void PHI_Widget_Toggle::UpdateState(int16_t x, int16_t y)
 {
     if (!_isenable || _ishide)
     {
@@ -57,7 +57,7 @@ void EPDGUI_Widget_Toggle::UpdateState(int16_t x, int16_t y)
     }
 }
 
-void EPDGUI_Widget_Toggle::Render()
+void PHI_Widget_Toggle::Render()
 {
     int16_t KNOB_MARGIN = (TOGGLE_HEIGHT - TOGGLE_KNOB_HEIGHT) / 2;
     int16_t offset = _value ? TOGGLE_WIDTH - TOGGLE_KNOB_WIDTH - KNOB_MARGIN : 0;
