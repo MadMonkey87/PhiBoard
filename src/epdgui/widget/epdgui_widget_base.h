@@ -4,7 +4,7 @@
 #include "../epdgui_base.h"
 #include "ArduinoJson.h"
 
-class EPDGUI_Widget_Base: public EPDGUI_Base
+class EPDGUI_Widget_Base : public EPDGUI_Base
 {
 public:
     static const int16_t EVENT_NONE = 0;
@@ -48,9 +48,8 @@ public:
     void Init(JsonVariant data);
 
 protected:
-    virtual void RenderDescriptionLabel(M5EPD_Canvas* canvas, const char *string);
-    void RenderBackground(int16_t mode, M5EPD_Canvas* canvas, bool revertable);
+    virtual void RenderDescriptionLabel(M5EPD_Canvas *canvas, const char *string);
+    void RenderBackground(int16_t mode, M5EPD_Canvas *canvas, bool revertable);
 };
-
 
 #endif //__EPDGUI_WIDGET_BASE_H

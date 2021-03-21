@@ -1,0 +1,262 @@
+{
+  "name": "Widget Types",
+  "icon": "/Icons/dashboard.jpg",
+  "widgets": [
+    {
+      "widgettype": "icon",
+      "description": "XBOX",
+      "icon": "/Icons/Xbox.jpg",
+      "grid_width": 1,
+      "grid_height": 1,
+      "apiid": "c8bab74a-d6b0-43f8-8789-92794750bbc7"
+    },
+    {
+      "widgettype": "doubleswitch",
+      "upicon": "/Icons/up-1.jpg",
+      "downicon": "/Icons/down-1.jpg",
+      "grid_width": 1,
+      "grid_height": 1,
+      "apiid": "6f6c70e9-4a58-4a1d-b0f5-763de6af4d2e",
+      "up_value": 1,
+      "down_value": 2
+    },
+    {
+      "widgettype": "doubleswitch",
+      "upicon": "/Icons/up-2.jpg",
+      "downicon": "/Icons/down-2.jpg",
+      "grid_width": 1,
+      "grid_height": 1,
+      "apiid": "3e7ae199-2e51-413d-a437-d5f1e2ed987e",
+      "up_value": 1,
+      "down_value": 2
+    },
+    {
+      "widgettype": "doubleswitch",
+      "upicon": "/Icons/up-2.jpg",
+      "downicon": "/Icons/down-2.jpg",
+      "grid_width": 1,
+      "grid_height": 2,
+      "apiid": "aff2b6a3-d119-4d50-ae77-ea1b7c70b62a",
+      "up_value": 1,
+      "down_value": 2
+    },
+    {
+      "widgettype": "icontoggle",
+      "description": "Heater",
+      "items": [
+        {
+          "description": "Heat",
+          "icon": "/Icons/heater.jpg",
+          "value": 1
+        },
+        {
+          "description": "Cool",
+          "icon": "/Icons/snowflake.jpg",
+          "value": 2
+        },
+        {
+          "description": "Fan",
+          "icon": "/Icons/fan.jpg",
+          "value": 3
+        },
+        {
+          "description": "Off",
+          "icon": "/Icons/turn-off.jpg",
+          "value": 4
+        }
+      ],
+      "grid_width": 1,
+      "grid_height": 1,
+      "apiid": "a3664bb6-3fb3-418e-82bb-16f8b4931ed1"
+    },
+    {
+      "widgettype": "toggle",
+      "grid_width": 1,
+      "grid_height": 1,
+      "description": "Automatic Lighting",
+      "apiid": "e5d9b4cf-42b4-470e-a294-c0bb7b830be3",
+      "value": true
+    },
+    {
+      "widgettype": "spinner",
+      "downicon": "/Icons/minus-1-small.jpg",
+      "upicon": "/Icons/plus-1-small.jpg",
+      "description": "Temperature",
+      "grid_width": 2,
+      "grid_height": 1,
+      "apiid": "b032d563-9bf0-4156-839d-e969604d64ca",
+      "value": 15.5,
+      "prefix": "",
+      "postfix": " C°"
+    },
+    {
+      "widgettype": "spinner",
+      "downicon": "/Icons/minus-1-small.jpg",
+      "upicon": "/Icons/plus-1-small.jpg",
+      "description": "Temperature",
+      "grid_width": 1,
+      "grid_height": 1,
+      "apiid": "a5030d5c-a916-4af5-8014-a96cd41ed62c",
+      "value": 15.5,
+      "prefix": "",
+      "postfix": " C°"
+    },
+    {
+      "widgettype": "progress",
+      "grid_width": 1,
+      "grid_height": 1,
+      "description": "Load",
+      "apiid": "93452ac2-be45-44e6-ae44-9199d37307aa",
+      "value": 35.15
+    },
+    {
+      "widgettype": "progress",
+      "grid_width": 2,
+      "grid_height": 1,
+      "description": "Load",
+      "apiid": "63e7e14f-a72a-485f-a15d-0c1483ccaccc",
+      "value": 65.75
+    },
+    {
+      "widgettype": "progress",
+      "grid_width": 2,
+      "grid_height": 2,
+      "description": "Load",
+      "apiid": "5339cea4-fbe6-47b7-b951-525f81169896",
+      "value": 15.25
+    },
+    {
+      "widgettype": "slider",
+      "grid_width": 2,
+      "grid_height": 1,
+      "description": "Volume",
+      "apiid": "f045b502-7099-4dc4-b3cd-7dd34fca00cb",
+      "value": 15.5
+    },
+    {
+      "widgettype": "slider",
+      "grid_width": 1,
+      "grid_height": 1,
+      "description": "Volume",
+      "apiid": "29c80301-25f9-4886-987c-44ebc40036db",
+      "value": 15.5
+    },
+    {
+      "widgettype": "multibutton",
+      "grid_width": 1,
+      "grid_height": 1,
+      "apiid": "",
+      "items": [
+        {
+          "description": "Playlist1",
+          "icon": "/Icons/play-2-small.jpg",
+          "value": 1
+        },
+        {
+          "description": "Playlist2",
+          "icon": "/Icons/play-2-small.jpg",
+          "value": 2
+        },
+        {
+          "description": "Playlist3",
+          "icon": "/Icons/play-2-small.jpg",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "widgettype": "multibutton",
+      "grid_width": 2,
+      "grid_height": 1,
+      "apiid": "3b5df7b6-2238-41a8-8bc2-4ab270c4ddfa",
+      "items": [
+        {
+          "description": "Playlist1",
+          "icon": "/Icons/play-2-small.jpg",
+          "value": 1
+        },
+        {
+          "description": "Playlist2",
+          "icon": "/Icons/play-2-small.jpg",
+          "value": 2
+        },
+        {
+          "description": "Playlist3",
+          "icon": "/Icons/play-2-small.jpg",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "widgettype": "multibutton",
+      "grid_width": 1,
+      "grid_height": 3,
+      "apiid": "9df6f8ab-95e4-4cbe-abe3-b2370e8342dd",
+      "items": [
+        {
+          "description": "Playlist1",
+          "icon": "/Icons/play-2-small.jpg",
+          "value": 1
+        },
+        {
+          "description": "Playlist2",
+          "icon": "/Icons/play-2-small.jpg",
+          "value": 2
+        },
+        {
+          "description": "Playlist3",
+          "icon": "/Icons/play-2-small.jpg",
+          "value": 3
+        },
+        {
+          "description": "Playlist4",
+          "icon": "/Icons/play-2-small.jpg",
+          "value": 4
+        },
+        {
+          "description": "Playlist5",
+          "icon": "/Icons/play-2-small.jpg",
+          "value": 5
+        },
+        {
+          "description": "Playlist6",
+          "icon": "/Icons/play-2-small.jpg",
+          "value": 6
+        },
+        {
+          "description": "Playlist7",
+          "icon": "/Icons/play-2-small.jpg",
+          "value": 7
+        },
+        {
+          "description": "Playlist8",
+          "icon": "/Icons/play-2-small.jpg",
+          "value": 8
+        },
+        {
+          "description": "Playlist9",
+          "icon": "/Icons/play-2-small.jpg",
+          "value": 9
+        }
+      ]
+    },
+    {
+      "widgettype": "text",
+      "description": "Humidity",
+      "value": "35.5 %",
+      "hint": "+5.5%/6h",
+      "apiid": "561f44f3-aff8-4c50-b2e5-0cf5cb64581e",
+      "grid_width": 1,
+      "grid_height": 1
+    },
+    {
+      "widgettype": "text",
+      "description": "Humidity",
+      "value": "35.5 %",
+      "hint": "+5.5%/6h",
+      "apiid": "3954e78f-5d93-4c66-97a5-a919985f63e7",
+      "grid_width": 2,
+      "grid_height": 1
+    }
+  ]
+}
