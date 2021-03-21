@@ -13,7 +13,7 @@ A PhiBoard dashboard is defined by a json file that describes the widgets. There
 The purpose of a widget is to display a value and or trigger an action. It is also possible that a widget displays multiple values or can trigger different action.
 
 # Available Widgets
-
+TBD
 
 # Prerequisites
 
@@ -22,4 +22,10 @@ The purpose of a widget is to display a value and or trigger an action. It is al
 	• A compatible smart home system
   
 # Getting started
-
+TBD
+# Build and Deploy
+TBD
+# Documentation
+TBD
+# License
+TBD
