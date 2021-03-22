@@ -13,7 +13,7 @@ Frame_Playground::Frame_Playground() : Frame_Base()
     _key_exit->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void *)(&_is_run));
     _key_exit->BindEvent(EPDGUI_Button::EVENT_RELEASED, &Frame_Base::exit_cb);
 
-    File file = SD.open("/Dashbaords/WidgetTypes.json");
+    File file = SD.open("/dashboards/WidgetTypes.json");
     if (!file)
     {
         Serial.println("Failed to open file for reading");

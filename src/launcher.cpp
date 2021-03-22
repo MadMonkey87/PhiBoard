@@ -3,6 +3,13 @@
 void LaunchByAppId(String appId)
 {
     Serial.println("launch an app by its id");
+    Serial.println(appId);
+
+    if (appId == NULL)
+    {
+        return;
+    }
+
     Frame_Base *frame = EPDGUI_GetFrame(appId);
     if (frame == NULL)
     {
@@ -39,7 +46,11 @@ void LaunchByAppId(String appId)
             Serial.println("appid not found");
             // todo: show an error
         }
-        EPDGUI_AddFrame(appId, frame);
+
+        if (frame != NULL)
+        {
+            EPDGUI_AddFrame(appId, frame);
+        }
     }
 
     if (frame != NULL)

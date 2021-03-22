@@ -1,4 +1,5 @@
 #include "phi_widget_graphic_base.h"
+#include "../../launcher.h"
 
 PHI_Widget_Graphic_Base::PHI_Widget_Graphic_Base(int16_t x, int16_t y, int16_t w, int16_t h, boolean createNormalCanvas, boolean createPressedCanvas) : PHI_Widget_Base(x, y, w, h)
 {
@@ -33,7 +34,7 @@ void PHI_Widget_Graphic_Base::Init(JsonVariant data)
     if (data != NULL)
     {
         String appId = data["appid"];
-        AppId = appId;
+        this->AppId = appId;
     }
 
     PHI_Widget_Base::Init(data);
@@ -122,7 +123,7 @@ void PHI_Widget_Graphic_Base::UpdateTouchState(int16_t x, int16_t y)
             }
             if (AppId != NULL)
             {
-                //LaunchByAppId(AppId);
+                LaunchByAppId(AppId);
             }
             Draw();
         }

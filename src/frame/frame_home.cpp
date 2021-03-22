@@ -2,7 +2,7 @@
 #include "SD.h"
 #include "ArduinoJson.h"
 #include "FS.h"
-#include "frame_playground.h"
+#include "frame.h"
 
 void test_cb(epdgui_args_vector_t &args)
 {
@@ -31,6 +31,7 @@ Frame_Home::Frame_Home() : Frame_Base()
     dashboardWidget["icon"] = "/Icons/Dashboard.jpg";
     dashboardWidget["grid_width"] = 1;
     dashboardWidget["grid_height"] = 1;
+    dashboardWidget["appid"] = Frame_Playground::APPID;
 
     JsonObject settingsWidget = widgets.createNestedObject();
     settingsWidget["widgettype"] = "icon";
@@ -38,6 +39,7 @@ Frame_Home::Frame_Home() : Frame_Base()
     settingsWidget["icon"] = "/Icons/Settings.jpg";
     settingsWidget["grid_width"] = 1;
     settingsWidget["grid_height"] = 1;
+    dashboardWidget["appid"] = Frame_Setting::APPID;
 
     JsonObject factoryTestWidget = widgets.createNestedObject();
     factoryTestWidget["widgettype"] = "icon";
@@ -45,6 +47,7 @@ Frame_Home::Frame_Home() : Frame_Base()
     factoryTestWidget["icon"] = "/Icons/Test.jpg";
     factoryTestWidget["grid_width"] = 1;
     factoryTestWidget["grid_height"] = 1;
+    dashboardWidget["appid"] = Frame_FactoryTest::APPID;
 
     JsonObject compareWidget = widgets.createNestedObject();
     compareWidget["widgettype"] = "icon";
@@ -52,6 +55,7 @@ Frame_Home::Frame_Home() : Frame_Base()
     compareWidget["icon"] = "/Icons/Lab.jpg";
     compareWidget["grid_width"] = 1;
     compareWidget["grid_height"] = 1;
+    dashboardWidget["appid"] = Frame_Compare::APPID;
 
     _page_container = new EPDGUI_Page_Container(0, HEADER_HEIGHT, WIDTH, HEIGHT - HEADER_HEIGHT);
     _page_container->PropagateWidgets(widgets, WIDTH, HEADER_HEIGHT);

@@ -13,7 +13,7 @@ void PHI_Widget_Base::Init(JsonVariant data)
     if (data != NULL)
     {
         String apiId = data["apiid"];
-        ApiId = apiId;
+        this->ApiId = apiId;
     }
 
     Render(data);
