@@ -12,9 +12,9 @@ public:
     Frame_Base(bool _has_title = true);
     void exitbtn(String title, uint16_t width = 150);
     virtual ~Frame_Base();
-    virtual int run();
+    virtual void run();
     virtual void exit();
-    virtual int init(epdgui_args_vector_t &args) = 0;
+    virtual void init(epdgui_args_vector_t &args) = 0;
     String GetFrameName() { return _frame_name; }
     int isRun() { return _is_run; }
     void SetIsRun(int value)

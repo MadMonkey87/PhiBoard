@@ -12,7 +12,7 @@ public:
 public:
     Frame_Setting();
     ~Frame_Setting();
-    int init(epdgui_args_vector_t &args);
+    void init(epdgui_args_vector_t &args);
 
 private:
     EPDGUI_Button *_key_shutdown;

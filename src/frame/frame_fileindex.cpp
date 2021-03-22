@@ -189,7 +189,7 @@ Frame_FileIndex::~Frame_FileIndex(void)
     }
 }
 
-int Frame_FileIndex::init(epdgui_args_vector_t &args)
+void Frame_FileIndex::init(epdgui_args_vector_t &args)
 {
     _is_run = 1;
     M5.EPD.Clear();
@@ -206,6 +206,4 @@ int Frame_FileIndex::init(epdgui_args_vector_t &args)
     {
         EPDGUI_AddObject(_key_files[i]);
     }
-
-    return 3;
 }

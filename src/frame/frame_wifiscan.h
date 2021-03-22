@@ -9,9 +9,9 @@ class Frame_WifiScan : public Frame_Base
 public:
     Frame_WifiScan();
     ~Frame_WifiScan();
-    int init(epdgui_args_vector_t &args);
+    void init(epdgui_args_vector_t &args);
     int scan();
-    int run();
+    void run();
     void Connect();
     void DrawItem(EPDGUI_Button *btn, String ssid, int rssi);
     void SetConnected(String ssid, int rssi);

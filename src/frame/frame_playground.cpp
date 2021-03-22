@@ -45,7 +45,7 @@ Frame_Playground::~Frame_Playground()
     delete _page_container;
 }
 
-int Frame_Playground::init(epdgui_args_vector_t &args)
+void Frame_Playground::init(epdgui_args_vector_t &args)
 {
     _is_run = 1;
     M5.EPD.Clear();
@@ -55,11 +55,9 @@ int Frame_Playground::init(epdgui_args_vector_t &args)
 
     _page_container->Init();
     EPDGUI_AddObject(_page_container);
-
-    return 0;
 }
 
-int Frame_Playground::run(void)
+void Frame_Playground::run(void)
 {
     M5.update();
     if (M5.BtnL.isPressed() && lastButtonIndex != -1)
@@ -80,6 +78,4 @@ int Frame_Playground::run(void)
     {
         lastButtonIndex = 0;
     }
-
-    return 1;
 }

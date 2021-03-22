@@ -12,9 +12,9 @@ public:
 public:
     Frame_FactoryTest();
     ~Frame_FactoryTest();
-    int run();
+    void run();
     void scan(String *ssid, int32_t *rssi);
-    int init(epdgui_args_vector_t &args);
+    void init(epdgui_args_vector_t &args);
 
 private:
     void drawItem(m5epd_update_mode_t mode);

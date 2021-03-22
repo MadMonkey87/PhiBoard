@@ -43,7 +43,7 @@ Frame_WifiPassword::~Frame_WifiPassword()
     delete key_textclear;
 }
 
-int Frame_WifiPassword::init(epdgui_args_vector_t &args)
+void Frame_WifiPassword::init(epdgui_args_vector_t &args)
 {
     _is_run = 1;
     M5.EPD.Clear();
@@ -52,10 +52,9 @@ int Frame_WifiPassword::init(epdgui_args_vector_t &args)
     EPDGUI_AddObject(keyboard);
     EPDGUI_AddObject(_key_exit);
     EPDGUI_AddObject(key_textclear);
-    return 6;
 }
 
-int Frame_WifiPassword::run(void)
+void Frame_WifiPassword::run(void)
 {
     String data = keyboard->getData();
     if (data.indexOf("\n") >= 0)
@@ -65,8 +64,6 @@ int Frame_WifiPassword::run(void)
         inputbox->SetText("");
         EPDGUI_PopFrame();
         _is_run = 0;
-        return 0;
     }
     inputbox->AddText(data);
-    return 1;
 }

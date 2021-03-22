@@ -62,7 +62,7 @@ Frame_Home::~Frame_Home()
     delete _page_container;
 }
 
-int Frame_Home::init(epdgui_args_vector_t &args)
+void Frame_Home::init(epdgui_args_vector_t &args)
 {
     _is_run = 1;
     M5.EPD.Clear();
@@ -71,11 +71,9 @@ int Frame_Home::init(epdgui_args_vector_t &args)
 
     _page_container->Init();
     EPDGUI_AddObject(_page_container);
-
-    return 0;
 }
 
-int Frame_Home::run(void)
+void Frame_Home::run(void)
 {
     M5.update();
     if (M5.BtnL.isPressed() && lastButtonIndex != -1)
@@ -96,6 +94,4 @@ int Frame_Home::run(void)
     {
         lastButtonIndex = 0;
     }
-
-    return 1;
 }

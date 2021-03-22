@@ -101,7 +101,7 @@ Frame_Keyboard::~Frame_Keyboard()
     delete key_textsize_minus;
 }
 
-int Frame_Keyboard::init(epdgui_args_vector_t &args)
+void Frame_Keyboard::init(epdgui_args_vector_t &args)
 {
     _is_run = 1;
     M5.EPD.Clear();
@@ -113,11 +113,9 @@ int Frame_Keyboard::init(epdgui_args_vector_t &args)
     EPDGUI_AddObject(key_textsize_plus);
     EPDGUI_AddObject(key_textsize_reset);
     EPDGUI_AddObject(key_textsize_minus);
-    return 6;
 }
 
-int Frame_Keyboard::run(void)
+void Frame_Keyboard::run(void)
 {
     inputbox->AddText(keyboard->getData());
-    return 1;
 }

@@ -12,8 +12,8 @@ public:
 public:
     Frame_Keyboard(bool isHorizontal = false);
     ~Frame_Keyboard();
-    int run();
-    int init(epdgui_args_vector_t &args);
+    void run();
+    void init(epdgui_args_vector_t &args);
 
 private:
     EPDGUI_Textbox *inputbox;

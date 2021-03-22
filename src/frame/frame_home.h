@@ -17,8 +17,8 @@ public:
 public:
     Frame_Home();
     ~Frame_Home();
-    int run();
-    int init(epdgui_args_vector_t &args);
+    void run();
+    void init(epdgui_args_vector_t &args);
 
 private:
     EPDGUI_Page_Container *_page_container;

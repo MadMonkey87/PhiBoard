@@ -127,7 +127,7 @@ Frame_Compare::~Frame_Compare(void)
     delete _canvas;
 }
 
-int Frame_Compare::run()
+void Frame_Compare::run()
 {
     switch (_update_flag)
     {
@@ -142,10 +142,9 @@ int Frame_Compare::run()
         break;
     }
     }
-    return 1;
 }
 
-int Frame_Compare::init(epdgui_args_vector_t &args)
+void Frame_Compare::init(epdgui_args_vector_t &args)
 {
     _is_run = 1;
     _update_flag = 1;
@@ -157,5 +156,4 @@ int Frame_Compare::init(epdgui_args_vector_t &args)
         EPDGUI_AddObject(_key_updatemode[i]);
     }
     EPDGUI_SetAutoUpdate(false);
-    return 3;
 }

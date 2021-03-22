@@ -40,7 +40,7 @@ void Frame_PictureViewer::err(String info)
     _canvas_picture->drawString(info, 150, 55);
 }
 
-int Frame_PictureViewer::run()
+void Frame_PictureViewer::run()
 {
     if (_is_first)
     {
@@ -74,14 +74,12 @@ int Frame_PictureViewer::run()
         LoadingAnime_32x32_Stop();
         _canvas_picture->pushCanvas(0, 72, UPDATE_MODE_GC16);
     }
-    return 1;
 }
 
-int Frame_PictureViewer::init(epdgui_args_vector_t &args)
+void Frame_PictureViewer::init(epdgui_args_vector_t &args)
 {
     _is_run = 1;
     M5.EPD.Clear();
     _canvas_title->pushCanvas(0, 8, UPDATE_MODE_NONE);
     EPDGUI_AddObject(_key_exit);
-    return 3;
 }

@@ -188,7 +188,7 @@ void Frame_FactoryTest::scan(String *ssid, int32_t *rssi)
     WiFi.scanDelete();
 }
 
-int Frame_FactoryTest::run()
+void Frame_FactoryTest::run()
 {
     uint16_t pass_flag = _pass_flag;
     char buf[100];
@@ -431,11 +431,9 @@ int Frame_FactoryTest::run()
     {
         _isfirst = false;
     }
-
-    return 1;
 }
 
-int Frame_FactoryTest::init(epdgui_args_vector_t &args)
+void Frame_FactoryTest::init(epdgui_args_vector_t &args)
 {
     _is_run = 1;
     M5.EPD.Clear();
@@ -456,6 +454,4 @@ int Frame_FactoryTest::init(epdgui_args_vector_t &args)
     _prev_temp = 255;
     _prev_hum = 255;
     _prev_vol = 0;
-
-    return 3;
 }

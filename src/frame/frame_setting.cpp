@@ -178,7 +178,7 @@ Frame_Setting::~Frame_Setting(void)
     delete _key_syncntp;
 }
 
-int Frame_Setting::init(epdgui_args_vector_t &args)
+void Frame_Setting::init(epdgui_args_vector_t &args)
 {
     _is_run = 1;
     M5.EPD.Clear();
@@ -191,5 +191,4 @@ int Frame_Setting::init(epdgui_args_vector_t &args)
     EPDGUI_AddObject(key_timezone_plus);
     EPDGUI_AddObject(key_timezone_reset);
     EPDGUI_AddObject(key_timezone_minus);
-    return 3;
 }

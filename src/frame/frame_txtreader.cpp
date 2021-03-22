@@ -74,7 +74,7 @@ uint32_t Frame_txtReader::renderText(uint32_t cursor, uint32_t length, M5EPD_Can
     return canvas->getExceedOffset();
 }
 
-int Frame_txtReader::run()
+void Frame_txtReader::run()
 {
     if (_is_first)
     {
@@ -168,10 +168,9 @@ int Frame_txtReader::run()
         _canvas_page->drawString(buf, 100, 42);
         _canvas_page->pushCanvas(440 - 15, 0, UPDATE_MODE_GL16);
     }
-    return 1;
 }
 
-int Frame_txtReader::init(epdgui_args_vector_t &args)
+void Frame_txtReader::init(epdgui_args_vector_t &args)
 {
     _is_run = 1;
     M5.EPD.Clear();
@@ -191,5 +190,4 @@ int Frame_txtReader::init(epdgui_args_vector_t &args)
 
     _txt_file = SD.open(_txt_path);
     _last_page = 0;
-    return 3;
 }

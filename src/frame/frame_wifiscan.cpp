@@ -96,7 +96,7 @@ void Frame_WifiScan::DrawItem(EPDGUI_Button *btn, String ssid, int rssi)
     btn->CanvasPressed()->ReverseColor();
 }
 
-int Frame_WifiScan::run()
+void Frame_WifiScan::run()
 {
     if (_connect)
     {
@@ -108,7 +108,6 @@ int Frame_WifiScan::run()
         _update_flag = false;
         scan();
     }
-    return 1;
 }
 
 int Frame_WifiScan::scan()
@@ -293,7 +292,7 @@ void Frame_WifiScan::SetConnected(String ssid, int rssi)
     _connected = 1;
 }
 
-int Frame_WifiScan::init(epdgui_args_vector_t &args)
+void Frame_WifiScan::init(epdgui_args_vector_t &args)
 {
     _is_run = 1;
     M5.EPD.Clear();
@@ -329,6 +328,4 @@ int Frame_WifiScan::init(epdgui_args_vector_t &args)
         _connect = false;
     }
     EPDGUI_AddObject(_key_exit);
-
-    return 3;
 }

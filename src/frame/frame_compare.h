@@ -12,8 +12,8 @@ public:
 public:
     Frame_Compare();
     ~Frame_Compare();
-    int init(epdgui_args_vector_t &args);
-    int run();
+    void init(epdgui_args_vector_t &args);
+    void run();
 
 private:
     EPDGUI_Button *_key_updatemode[8];

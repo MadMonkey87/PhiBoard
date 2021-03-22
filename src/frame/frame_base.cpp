@@ -38,9 +38,9 @@ void Frame_Base::exitbtn(String title, uint16_t width)
     _key_exit->CanvasPressed()->ReverseColor();
 }
 
-int Frame_Base::run(void)
+void Frame_Base::run(void)
 {
-    return _is_run;
+
 }
 
 void Frame_Base::exit(void)
