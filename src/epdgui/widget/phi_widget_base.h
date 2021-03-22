@@ -50,6 +50,7 @@ public:
 protected:
     virtual void RenderDescriptionLabel(M5EPD_Canvas *canvas, const char *string);
     void RenderBackground(int16_t mode, M5EPD_Canvas *canvas, bool revertable);
+    String ApiId;
 };
 
 #endif //__PHI_WIDGET_BASE_H

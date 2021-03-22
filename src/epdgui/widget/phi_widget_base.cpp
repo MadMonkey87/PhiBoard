@@ -10,6 +10,12 @@ PHI_Widget_Base::~PHI_Widget_Base()
 
 void PHI_Widget_Base::Init(JsonVariant data)
 {
+    if (data != NULL)
+    {
+        String apiId = data["apiid"];
+        ApiId = apiId;
+    }
+
     Render(data);
 }
 

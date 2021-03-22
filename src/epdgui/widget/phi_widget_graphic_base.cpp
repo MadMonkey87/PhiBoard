@@ -28,6 +28,22 @@ PHI_Widget_Graphic_Base::~PHI_Widget_Graphic_Base()
     }
 }
 
+void PHI_Widget_Graphic_Base::Init(JsonVariant data)
+{
+    if (data != NULL)
+    {
+        String appId = data["appid"];
+        AppId = appId;
+    }
+
+    PHI_Widget_Base::Init(data);
+
+    if (this->_CanvasPressed != NULL)
+    {
+        this->_CanvasPressed->ReverseColor();
+    }
+}
+
 void PHI_Widget_Graphic_Base::Draw(m5epd_update_mode_t mode)
 {
     if (_hidden)
@@ -104,18 +120,12 @@ void PHI_Widget_Graphic_Base::UpdateTouchState(int16_t x, int16_t y)
             {
                 _released_cb(_released_cb_args);
             }
+            if (AppId != NULL)
+            {
+                //LaunchByAppId(AppId);
+            }
             Draw();
         }
-    }
-}
-
-void PHI_Widget_Graphic_Base::Init(JsonVariant data)
-{
-    Render(data);
-
-    if (this->_CanvasPressed != NULL)
-    {
-        this->_CanvasPressed->ReverseColor();
     }
 }
 

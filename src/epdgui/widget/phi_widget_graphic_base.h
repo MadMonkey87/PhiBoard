@@ -22,6 +22,7 @@ public:
 
 protected:
     virtual void RenderDescriptionLabel(const char *string);
+    String AppId;
 
 private:
     void (*_pressed_cb)(epdgui_args_vector_t &args) = NULL;
