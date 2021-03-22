@@ -1,6 +1,9 @@
 # PhiBoard
 E-Ink based remote &amp; dashboard for your smart home
 
+# Project Status
+PRE-ALPHA, not really usable yet
+
 # Introduction
 
 PhiBoard is a smart home remote & dashboard for the M5Stack Paper. It allows you to create custom dashboards to display various data on the e-ink display or controll your smart home.
