@@ -86,7 +86,12 @@ void EPDGUI_Run(Frame_Base *frame)
 
     while (1)
     {
-        if ((frame->isRun() == 0) || (frame->run() == 0))
+        if (frame->isRun() != 0)
+        {
+            frame->run();
+        }
+
+        if (frame->isRun() == 0)
         {
             frame->exit();
             // M5.EPD.Clear();
@@ -159,6 +164,8 @@ void EPDGUI_AddFrame(String name, Frame_Base *frame)
     frame_struct_t f;
     f.frame = frame;
     frame_map.insert(std::pair<String, frame_struct_t>(name, f));
+    // todo: this is the wrong place!
+    frame->init(frame_map[frame->GetFrameName()].args);
 }
 
 void EPDGUI_AddFrameArg(String name, int n, void *arg)
@@ -195,13 +202,17 @@ Frame_Base *EPDGUI_GetCurrent()
 
 void EPDGUI_PushFrame(Frame_Base *frame)
 {
+    if (!frame_stack.empty())
+    {
+        Frame_Base *currentFrame = frame_stack.top();
+        if (currentFrame != NULL)
+        {
+            currentFrame->SetIsRun(0);
+        }
+    }
+
     frame_stack.push(frame);
     frame->SetIsRun(1);
-    Frame_Base *currentFrame = frame_stack.top();
-    if (currentFrame != NULL)
-    {
-        currentFrame->SetIsRun(0);
-    }
 }
 
 void EPDGUI_PopFrame(bool isDelete)
