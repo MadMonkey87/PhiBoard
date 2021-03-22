@@ -199,7 +199,7 @@ void EPDGUI_Keyboard::Draw(M5EPD_Canvas *canvas)
     }
 }
 
-void EPDGUI_Keyboard::Bind(int16_t state, void (*func_cb)(epdgui_args_vector_t &))
+void EPDGUI_Keyboard::BindEvent(int16_t state, void (*func_cb)(epdgui_args_vector_t &))
 {
 }
 

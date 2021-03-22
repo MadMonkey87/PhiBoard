@@ -41,7 +41,7 @@ void EPDGUI_Page_Indicator::Draw(M5EPD_Canvas *canvas)
     _Canvas->pushToCanvas(_x, _y, canvas);
 }
 
-void EPDGUI_Page_Indicator::Bind(int16_t state, void (*func_cb)(epdgui_args_vector_t &))
+void EPDGUI_Page_Indicator::BindEvent(int16_t state, void (*func_cb)(epdgui_args_vector_t &))
 {
 }
 

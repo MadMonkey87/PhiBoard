@@ -29,7 +29,7 @@ void EPDGUI_MutexSwitch::Draw(M5EPD_Canvas* canvas)
     }
 }
 
-void EPDGUI_MutexSwitch::Bind(int16_t event, void (* func_cb)(epdgui_args_vector_t&))
+void EPDGUI_MutexSwitch::BindEvent(int16_t event, void (* func_cb)(epdgui_args_vector_t&))
 {
 
 }

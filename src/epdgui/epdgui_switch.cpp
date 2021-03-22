@@ -89,7 +89,7 @@ void EPDGUI_Switch::Draw(M5EPD_Canvas* canvas)
     this->_canvas[_state]->pushToCanvas(_x, _y, canvas);
 }
 
-void EPDGUI_Switch::Bind(int16_t state, void (* func_cb)(epdgui_args_vector_t&))
+void EPDGUI_Switch::BindEvent(int16_t state, void (* func_cb)(epdgui_args_vector_t&))
 {
     if(state > EPDGUI_SWITCH_MAX_STATE || state < 0)
     {

@@ -11,7 +11,7 @@ void released_cb_234(epdgui_args_vector_t &args)
 
 PHI_Widget_Icon::PHI_Widget_Icon(int16_t x, int16_t y, int16_t w, int16_t h) : PHI_Widget_Graphic_Base(x, y, w, h, true, true)
 {
-    Bind(PHI_Widget_Base::EVENT_RELEASED, &released_cb_234);
+    BindEvent(PHI_Widget_Base::EVENT_RELEASED, &released_cb_234);
 }
 
 void PHI_Widget_Icon::Render(JsonVariant data)

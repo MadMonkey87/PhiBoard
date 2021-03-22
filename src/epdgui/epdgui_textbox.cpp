@@ -134,7 +134,7 @@ void EPDGUI_Textbox::Draw(M5EPD_Canvas* canvas)
     }
 }
 
-void EPDGUI_Textbox::Bind(int16_t event, void (*func_cb)(epdgui_args_vector_t &))
+void EPDGUI_Textbox::BindEvent(int16_t event, void (*func_cb)(epdgui_args_vector_t &))
 {
 }
 

@@ -59,7 +59,7 @@ Frame_FileIndex::Frame_FileIndex(String path)
     }
 
     _key_exit->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void *)(&_is_run));
-    _key_exit->Bind(EPDGUI_Button::EVENT_RELEASED, &key_fileindex_exit_cb);
+    _key_exit->BindEvent(EPDGUI_Button::EVENT_RELEASED, &key_fileindex_exit_cb);
 }
 
 void Frame_FileIndex::listDir(fs::FS &fs, const char *dirname)
@@ -124,7 +124,7 @@ void Frame_FileIndex::listDir(fs::FS &fs, const char *dirname)
 
         btn->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, btn);
         btn->AddArgs(EPDGUI_Button::EVENT_RELEASED, 1, (void *)(&_is_run));
-        btn->Bind(EPDGUI_Button::EVENT_RELEASED, key_fileindex_floder_cb);
+        btn->BindEvent(EPDGUI_Button::EVENT_RELEASED, key_fileindex_floder_cb);
     }
 
     for (int n = 0; n < files.size(); n++)
@@ -158,14 +158,14 @@ void Frame_FileIndex::listDir(fs::FS &fs, const char *dirname)
             btn->CanvasNormal()->pushImage(15, 14, 32, 32, ImageResource_item_icon_file_text_32x32);
             btn->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, btn);
             btn->AddArgs(EPDGUI_Button::EVENT_RELEASED, 1, (void *)(&_is_run));
-            btn->Bind(EPDGUI_Button::EVENT_RELEASED, key_fileindex_text_cb);
+            btn->BindEvent(EPDGUI_Button::EVENT_RELEASED, key_fileindex_text_cb);
         }
         else if ((suffix.indexOf("bmp") >= 0) || (suffix.indexOf("BMP") >= 0) || (suffix.indexOf("png") >= 0) || (suffix.indexOf("PNG") >= 0) || (suffix.indexOf("jpg") >= 0) || (suffix.indexOf("JPG") >= 0))
         {
             btn->CanvasNormal()->pushImage(15, 14, 32, 32, ImageResource_item_icon_file_image_32x32);
             btn->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, btn);
             btn->AddArgs(EPDGUI_Button::EVENT_RELEASED, 1, (void *)(&_is_run));
-            btn->Bind(EPDGUI_Button::EVENT_RELEASED, key_fileindex_image_cb);
+            btn->BindEvent(EPDGUI_Button::EVENT_RELEASED, key_fileindex_image_cb);
         }
         else
         {

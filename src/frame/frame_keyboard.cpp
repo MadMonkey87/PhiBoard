@@ -73,22 +73,22 @@ Frame_Keyboard::Frame_Keyboard(bool isHorizontal) : Frame_Base()
     keyboard = new EPDGUI_Keyboard(isHorizontal);
 
     key_textclear->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void *)inputbox);
-    key_textclear->Bind(EPDGUI_Button::EVENT_RELEASED, key_textclear_cb);
+    key_textclear->BindEvent(EPDGUI_Button::EVENT_RELEASED, key_textclear_cb);
     key_textsize_plus->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void *)inputbox);
     key_textsize_plus->AddArgs(EPDGUI_Button::EVENT_RELEASED, 1, (void *)key_textsize_reset);
-    key_textsize_plus->Bind(EPDGUI_Button::EVENT_RELEASED, key_textsize_plus_cb);
+    key_textsize_plus->BindEvent(EPDGUI_Button::EVENT_RELEASED, key_textsize_plus_cb);
     key_textsize_reset->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void *)inputbox);
     key_textsize_reset->AddArgs(EPDGUI_Button::EVENT_RELEASED, 1, (void *)key_textsize_reset);
-    key_textsize_reset->Bind(EPDGUI_Button::EVENT_RELEASED, key_textsize_reset_cb);
+    key_textsize_reset->BindEvent(EPDGUI_Button::EVENT_RELEASED, key_textsize_reset_cb);
     key_textsize_minus->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void *)inputbox);
     key_textsize_minus->AddArgs(EPDGUI_Button::EVENT_RELEASED, 1, (void *)key_textsize_reset);
-    key_textsize_minus->Bind(EPDGUI_Button::EVENT_RELEASED, key_textsize_minus_cb);
+    key_textsize_minus->BindEvent(EPDGUI_Button::EVENT_RELEASED, key_textsize_minus_cb);
 
     exitbtn("Home");
     _canvas_title->drawString("Keyboard", 270, 34);
 
     _key_exit->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void *)(&_is_run));
-    _key_exit->Bind(EPDGUI_Button::EVENT_RELEASED, &Frame_Base::exit_cb);
+    _key_exit->BindEvent(EPDGUI_Button::EVENT_RELEASED, &Frame_Base::exit_cb);
 }
 
 Frame_Keyboard::~Frame_Keyboard()

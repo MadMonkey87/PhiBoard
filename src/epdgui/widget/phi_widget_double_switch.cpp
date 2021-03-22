@@ -61,7 +61,7 @@ void PHI_Widget_Double_Switch::RenderLowerButton(M5EPD_Canvas *canvas, bool pres
     }
 }
 
-void PHI_Widget_Double_Switch::Bind(int16_t event, void (*func_cb)(epdgui_args_vector_t &))
+void PHI_Widget_Double_Switch::BindEvent(int16_t event, void (*func_cb)(epdgui_args_vector_t &))
 {
 }
 

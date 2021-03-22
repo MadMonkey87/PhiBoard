@@ -79,7 +79,7 @@ void PHI_Widget_Progress::RenderGauge(M5EPD_Canvas *canvas, int16_t x, int16_t y
         int16_t yp2 = y - (cos(i) * outerRadius);
         canvas->drawLine(xp1, yp1, xp2, yp2, color);
 
-        if (a == minValue && roundBegin || a == value && roundEnd)
+        if ((a == minValue && roundBegin) || (a == value && roundEnd))
         {
             int16_t xp3 = x + (sin(i) * (innerRadius + (outerRadius - innerRadius) / 2));
             int16_t yp3 = y - (cos(i) * (innerRadius + (outerRadius - innerRadius) / 2));

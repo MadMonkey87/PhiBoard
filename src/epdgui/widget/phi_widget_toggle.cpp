@@ -22,7 +22,7 @@ void PHI_Widget_Toggle::Init(JsonVariant data)
     Render(data);
 }
 
-void PHI_Widget_Toggle::Bind(int16_t event, void (*func_cb)(epdgui_args_vector_t &))
+void PHI_Widget_Toggle::BindEvent(int16_t event, void (*func_cb)(epdgui_args_vector_t &))
 {
 }
 

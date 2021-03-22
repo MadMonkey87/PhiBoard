@@ -44,7 +44,7 @@ Frame_FactoryTest::Frame_FactoryTest(void)
     _canvas_title->drawString("Factory Test", 270, 34);
 
     _key_exit->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void *)(&_is_run));
-    _key_exit->Bind(EPDGUI_Button::EVENT_RELEASED, &Frame_Base::exit_cb);
+    _key_exit->BindEvent(EPDGUI_Button::EVENT_RELEASED, &Frame_Base::exit_cb);
 
     for (int i = 0; i < 6; i++)
     {

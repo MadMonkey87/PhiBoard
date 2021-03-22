@@ -24,7 +24,7 @@ void PHI_Widget_Spinner::Render(JsonVariant data)
     RenderRightButton(this->_rightButton->CanvasPressed(), true, upIcon);
 }
 
-void PHI_Widget_Spinner::Bind(int16_t event, void (*func_cb)(epdgui_args_vector_t &))
+void PHI_Widget_Spinner::BindEvent(int16_t event, void (*func_cb)(epdgui_args_vector_t &))
 {
 }
 

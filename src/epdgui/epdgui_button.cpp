@@ -113,7 +113,7 @@ void EPDGUI_Button::Draw(M5EPD_Canvas* canvas)
     }
 }
 
-void EPDGUI_Button::Bind(int16_t event, void (* func_cb)(epdgui_args_vector_t&))
+void EPDGUI_Button::BindEvent(int16_t event, void (* func_cb)(epdgui_args_vector_t&))
 {
     if(event == EVENT_PRESSED)
     {

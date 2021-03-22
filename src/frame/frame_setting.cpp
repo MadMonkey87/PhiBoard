@@ -142,15 +142,15 @@ Frame_Setting::Frame_Setting(void)
 
     key_timezone_plus->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, &_timezone);
     key_timezone_plus->AddArgs(EPDGUI_Button::EVENT_RELEASED, 1, key_timezone_reset);
-    key_timezone_plus->Bind(EPDGUI_Button::EVENT_RELEASED, key_timezone_plus_cb);
+    key_timezone_plus->BindEvent(EPDGUI_Button::EVENT_RELEASED, key_timezone_plus_cb);
 
     key_timezone_reset->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, &_timezone);
     key_timezone_reset->AddArgs(EPDGUI_Button::EVENT_RELEASED, 1, key_timezone_reset);
-    key_timezone_reset->Bind(EPDGUI_Button::EVENT_RELEASED, key_timezone_reset_cb);
+    key_timezone_reset->BindEvent(EPDGUI_Button::EVENT_RELEASED, key_timezone_reset_cb);
 
     key_timezone_minus->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, &_timezone);
     key_timezone_minus->AddArgs(EPDGUI_Button::EVENT_RELEASED, 1, key_timezone_reset);
-    key_timezone_minus->Bind(EPDGUI_Button::EVENT_RELEASED, key_timezone_minus_cb);
+    key_timezone_minus->BindEvent(EPDGUI_Button::EVENT_RELEASED, key_timezone_minus_cb);
 
     _key_syncntp->setBMPButton("  Sync Time", "", ImageResource_item_icon_ntptime_32x32);
     _key_restart->setBMPButton("  Restart", "", ImageResource_item_icon_restart_32x32);
@@ -160,13 +160,13 @@ Frame_Setting::Frame_Setting(void)
     _canvas_title->drawString("Setting", 270, 34);
 
     _key_exit->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void *)(&_is_run));
-    _key_exit->Bind(EPDGUI_Button::EVENT_RELEASED, &Frame_Base::exit_cb);
+    _key_exit->BindEvent(EPDGUI_Button::EVENT_RELEASED, &Frame_Base::exit_cb);
 
-    _key_shutdown->Bind(EPDGUI_Button::EVENT_RELEASED, &key_shutdown_cb);
-    _key_restart->Bind(EPDGUI_Button::EVENT_RELEASED, &key_restart_cb);
+    _key_shutdown->BindEvent(EPDGUI_Button::EVENT_RELEASED, &key_shutdown_cb);
+    _key_restart->BindEvent(EPDGUI_Button::EVENT_RELEASED, &key_restart_cb);
     _key_syncntp->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, _canvas_title);
     _key_syncntp->AddArgs(EPDGUI_Button::EVENT_RELEASED, 1, _timezone_canvas);
-    _key_syncntp->Bind(EPDGUI_Button::EVENT_RELEASED, &key_synctime_cb);
+    _key_syncntp->BindEvent(EPDGUI_Button::EVENT_RELEASED, &key_synctime_cb);
 
     _timezone = GetTimeZone();
 }

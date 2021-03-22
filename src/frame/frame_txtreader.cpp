@@ -33,16 +33,16 @@ Frame_txtReader::Frame_txtReader(String path)
     _key_next = new EPDGUI_Button("", 270, 72, 270, 888, EPDGUI_Button::STYLE_INVISABLE);
     _key_prev = new EPDGUI_Button("", 0, 72, 270, 888, EPDGUI_Button::STYLE_INVISABLE);
     // _key_next->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, &_key_operation);
-    _key_next->Bind(EPDGUI_Button::EVENT_RELEASED, key_nextpage_released_cb);
+    _key_next->BindEvent(EPDGUI_Button::EVENT_RELEASED, key_nextpage_released_cb);
     // _key_prev->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, &_key_operation);
-    _key_prev->Bind(EPDGUI_Button::EVENT_RELEASED, key_prevpage_released_cb);
+    _key_prev->BindEvent(EPDGUI_Button::EVENT_RELEASED, key_prevpage_released_cb);
 
     exitbtn("Back");
 
     _canvas_title->drawString(path.substring(path.lastIndexOf("/") + 1, path.lastIndexOf(".")), 270, 34);
 
     _key_exit->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void *)(&_is_run));
-    _key_exit->Bind(EPDGUI_Button::EVENT_RELEASED, &key_txtreader_exit_cb);
+    _key_exit->BindEvent(EPDGUI_Button::EVENT_RELEASED, &key_txtreader_exit_cb);
 }
 
 Frame_txtReader::~Frame_txtReader(void)

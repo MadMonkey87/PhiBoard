@@ -33,7 +33,7 @@ void PHI_Widget_Multi_Button::Render(JsonVariant data)
     }
 }
 
-void PHI_Widget_Multi_Button::Bind(int16_t event, void (*func_cb)(epdgui_args_vector_t &))
+void PHI_Widget_Multi_Button::BindEvent(int16_t event, void (*func_cb)(epdgui_args_vector_t &))
 {
 }
 

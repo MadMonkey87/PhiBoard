@@ -92,7 +92,7 @@ Frame_Compare::Frame_Compare(void)
     _canvas_title->drawString("Compare", 270, 34);
     _key_updatemode[UPDATE_MODE_INIT] = new EPDGUI_Button("Reset all", 4, 88, 532, 60);
 
-    _key_updatemode[UPDATE_MODE_INIT]->Bind(EPDGUI_Button::EVENT_RELEASED, key_update_reset_cb);
+    _key_updatemode[UPDATE_MODE_INIT]->BindEvent(EPDGUI_Button::EVENT_RELEASED, key_update_reset_cb);
 
     for (int i = 1; i < 8; i++)
     {
@@ -103,7 +103,7 @@ Frame_Compare::Frame_Compare(void)
         _key_updatemode[i]->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, _key_updatemode[i]);
         _key_updatemode[i]->AddArgs(EPDGUI_Button::EVENT_RELEASED, 1, _canvas);
         _key_updatemode[i]->AddArgs(EPDGUI_Button::EVENT_RELEASED, 2, _canvas_time);
-        _key_updatemode[i]->Bind(EPDGUI_Button::EVENT_RELEASED, key_update_mode_cb);
+        _key_updatemode[i]->BindEvent(EPDGUI_Button::EVENT_RELEASED, key_update_mode_cb);
     }
 
     _key_updatemode[UPDATE_MODE_DU]->setLabel("DU");
@@ -115,7 +115,7 @@ Frame_Compare::Frame_Compare(void)
     _key_updatemode[UPDATE_MODE_A2]->setLabel("A2");
 
     _key_exit->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void *)(&_is_run));
-    _key_exit->Bind(EPDGUI_Button::EVENT_RELEASED, &Frame_Base::exit_cb);
+    _key_exit->BindEvent(EPDGUI_Button::EVENT_RELEASED, &Frame_Base::exit_cb);
 }
 
 Frame_Compare::~Frame_Compare(void)

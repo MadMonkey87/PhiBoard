@@ -18,7 +18,7 @@ public:
     ~PHI_Widget_Multi_Button();
     void Draw(m5epd_update_mode_t mode = UPDATE_MODE_GC16); //UPDATE_MODE_DU4
     void Draw(M5EPD_Canvas *canvas);
-    void Bind(int16_t event, void (*func_cb)(epdgui_args_vector_t &));
+    void BindEvent(int16_t event, void (*func_cb)(epdgui_args_vector_t &));
     void UpdateTouchState(int16_t x, int16_t y);
     void Render(JsonVariant data);
 

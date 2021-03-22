@@ -27,13 +27,13 @@ Frame_WifiPassword::Frame_WifiPassword(bool isHorizontal) : Frame_Base()
     keyboard = new EPDGUI_Keyboard(isHorizontal, EPDGUI_Keyboard::STYLE_INPUTMODE_NEEDCONFIRM);
 
     key_textclear->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void *)inputbox);
-    key_textclear->Bind(EPDGUI_Button::EVENT_RELEASED, key_passwordclear_cb);
+    key_textclear->BindEvent(EPDGUI_Button::EVENT_RELEASED, key_passwordclear_cb);
 
     exitbtn("WLAN");
     _canvas_title->drawString("Password", 270, 34);
 
     _key_exit->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void *)(&_is_run));
-    _key_exit->Bind(EPDGUI_Button::EVENT_RELEASED, &Frame_Base::exit_cb);
+    _key_exit->BindEvent(EPDGUI_Button::EVENT_RELEASED, &Frame_Base::exit_cb);
 }
 
 Frame_WifiPassword::~Frame_WifiPassword()

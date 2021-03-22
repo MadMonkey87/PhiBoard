@@ -35,7 +35,7 @@ void PHI_Widget_Graphic_Base::Draw(m5epd_update_mode_t mode)
         return;
     }
 
-    if (this->_Canvas != NULL && _state == EVENT_NONE || _state == EVENT_RELEASED)
+    if (this->_Canvas != NULL && (_state == EVENT_NONE || _state == EVENT_RELEASED))
     {
         this->_Canvas->pushCanvas(_x, _y, mode);
     }
@@ -52,7 +52,7 @@ void PHI_Widget_Graphic_Base::Draw(M5EPD_Canvas *canvas)
         return;
     }
 
-    if (_Canvas != NULL && _state == EVENT_NONE || _state == EVENT_RELEASED)
+    if (_Canvas != NULL && (_state == EVENT_NONE || _state == EVENT_RELEASED))
     {
         _Canvas->pushToCanvas(_x, _y, canvas);
     }
@@ -62,7 +62,7 @@ void PHI_Widget_Graphic_Base::Draw(M5EPD_Canvas *canvas)
     }
 }
 
-void PHI_Widget_Graphic_Base::Bind(int16_t event, void (*func_cb)(epdgui_args_vector_t &))
+void PHI_Widget_Graphic_Base::BindEvent(int16_t event, void (*func_cb)(epdgui_args_vector_t &))
 {
     if (event == EVENT_PRESSED)
     {

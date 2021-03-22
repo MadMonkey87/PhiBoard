@@ -16,7 +16,7 @@ public:
     virtual ~EPDGUI_Base(){};
     virtual void Draw(m5epd_update_mode_t mode) = 0;
     virtual void Draw(M5EPD_Canvas *canvas) = 0;
-    virtual void Bind(int16_t event, void (*func_cb)(epdgui_args_vector_t &)) = 0;
+    virtual void BindEvent(int16_t event, void (*func_cb)(epdgui_args_vector_t &)) = 0;
     virtual void UpdateTouchState(int16_t x, int16_t y) = 0;
 
     bool isInBox(int16_t x, int16_t y);

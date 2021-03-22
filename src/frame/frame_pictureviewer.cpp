@@ -23,7 +23,7 @@ Frame_PictureViewer::Frame_PictureViewer(String path)
     _canvas_title->drawString(path.substring(path.lastIndexOf("/") + 1, path.lastIndexOf(".")), 270, 34);
 
     _key_exit->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void *)(&_is_run));
-    _key_exit->Bind(EPDGUI_Button::EVENT_RELEASED, &key_pictureviewer_exit_cb);
+    _key_exit->BindEvent(EPDGUI_Button::EVENT_RELEASED, &key_pictureviewer_exit_cb);
 
     _is_first = true;
 }

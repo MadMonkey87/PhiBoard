@@ -11,7 +11,7 @@ Frame_Playground::Frame_Playground() : Frame_Base()
     _canvas_title->drawString("Playground", 270, 34);
 
     _key_exit->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void *)(&_is_run));
-    _key_exit->Bind(EPDGUI_Button::EVENT_RELEASED, &Frame_Base::exit_cb);
+    _key_exit->BindEvent(EPDGUI_Button::EVENT_RELEASED, &Frame_Base::exit_cb);
 
     File file = SD.open("/index.json");
     if (!file)

@@ -46,14 +46,14 @@ Frame_WifiScan::Frame_WifiScan(void)
         _key_wifi[i]->CanvasNormal()->setTextColor(15);
         _key_wifi[i]->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, _key_wifi[i]);
         _key_wifi[i]->AddArgs(EPDGUI_Button::EVENT_RELEASED, 1, (void *)(&_is_run));
-        _key_wifi[i]->Bind(EPDGUI_Button::EVENT_RELEASED, key_wifi_cb);
+        _key_wifi[i]->BindEvent(EPDGUI_Button::EVENT_RELEASED, key_wifi_cb);
     }
 
     exitbtn("Home");
     _canvas_title->drawString("WLAN", 270, 34);
 
     _key_exit->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void *)(&_is_run));
-    _key_exit->Bind(EPDGUI_Button::EVENT_RELEASED, &Frame_Base::exit_cb);
+    _key_exit->BindEvent(EPDGUI_Button::EVENT_RELEASED, &Frame_Base::exit_cb);
 
     _update_flag = true;
     _connected = 0;
