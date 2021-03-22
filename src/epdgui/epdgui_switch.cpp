@@ -59,7 +59,7 @@ void EPDGUI_Switch::SetLabel(int16_t state, String label)
 
 void EPDGUI_Switch::Draw(m5epd_update_mode_t mode)
 {
-    if(_ishide)
+    if(_hidden)
     {
         return;
     }
@@ -75,7 +75,7 @@ void EPDGUI_Switch::Draw(m5epd_update_mode_t mode)
 
 void EPDGUI_Switch::Draw(M5EPD_Canvas* canvas)
 {
-    if(_ishide)
+    if(_hidden)
     {
         return;
     }
@@ -99,9 +99,9 @@ void EPDGUI_Switch::Bind(int16_t state, void (* func_cb)(epdgui_args_vector_t&))
     this->_func_cb_array[state] = func_cb;
 }
 
-void EPDGUI_Switch::UpdateState(int16_t x, int16_t y)
+void EPDGUI_Switch::UpdateTouchState(int16_t x, int16_t y)
 {
-    if(!_isenable || _ishide)
+    if(!_enabled || _hidden)
     {
         return;
     }

@@ -23,7 +23,7 @@ M5EPD_Canvas *EPDGUI_Page_Indicator::Canvas()
 
 void EPDGUI_Page_Indicator::Draw(m5epd_update_mode_t mode)
 {
-    if (_ishide)
+    if (_hidden)
     {
         return;
     }
@@ -33,7 +33,7 @@ void EPDGUI_Page_Indicator::Draw(m5epd_update_mode_t mode)
 
 void EPDGUI_Page_Indicator::Draw(M5EPD_Canvas *canvas)
 {
-    if (_ishide)
+    if (_hidden)
     {
         return;
     }
@@ -45,9 +45,9 @@ void EPDGUI_Page_Indicator::Bind(int16_t state, void (*func_cb)(epdgui_args_vect
 {
 }
 
-void EPDGUI_Page_Indicator::UpdateState(int16_t x, int16_t y)
+void EPDGUI_Page_Indicator::UpdateTouchState(int16_t x, int16_t y)
 {
-    if (!_isenable)
+    if (!_enabled)
     {
         return;
     }

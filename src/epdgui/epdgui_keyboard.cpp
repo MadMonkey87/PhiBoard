@@ -175,7 +175,7 @@ EPDGUI_Keyboard::~EPDGUI_Keyboard()
 
 void EPDGUI_Keyboard::Draw(m5epd_update_mode_t mode)
 {
-    if (_ishide)
+    if (_hidden)
     {
         return;
     }
@@ -188,7 +188,7 @@ void EPDGUI_Keyboard::Draw(m5epd_update_mode_t mode)
 
 void EPDGUI_Keyboard::Draw(M5EPD_Canvas *canvas)
 {
-    if (_ishide)
+    if (_hidden)
     {
         return;
     }
@@ -203,17 +203,17 @@ void EPDGUI_Keyboard::Bind(int16_t state, void (*func_cb)(epdgui_args_vector_t &
 {
 }
 
-void EPDGUI_Keyboard::UpdateState(int16_t x, int16_t y)
+void EPDGUI_Keyboard::UpdateTouchState(int16_t x, int16_t y)
 {
-    if (!_isenable)
+    if (!_enabled)
     {
         return;
     }
-    // log_d("UpdateState %d, %d", x, y);
+    // log_d("UpdateTouchState %d, %d", x, y);
     for (int i = 0; i < 32; i++)
     {
         bool keypressed = _key[i]->isInBox(x, y);
-        _key[i]->UpdateState(x, y);
+        _key[i]->UpdateTouchState(x, y);
         if (keypressed)
         {
             if (i < 26)
@@ -265,7 +265,7 @@ void EPDGUI_Keyboard::UpdateState(int16_t x, int16_t y)
                             _layout = kLayoutSymbol;
                         }
                     }
-                    _sw[kSWCase]->UpdateState(-1, -1);
+                    _sw[kSWCase]->UpdateTouchState(-1, -1);
                     Draw(UPDATE_MODE_NONE);
                     M5.EPD.UpdateFull(UPDATE_MODE_GL16);
                 }
@@ -287,7 +287,7 @@ void EPDGUI_Keyboard::UpdateState(int16_t x, int16_t y)
                             _layout = kLayoutUpperAlpha;
                         }
                     }
-                    _sw[kSWCase]->UpdateState(-1, -1);
+                    _sw[kSWCase]->UpdateTouchState(-1, -1);
                     Draw(UPDATE_MODE_NONE);
                     M5.EPD.UpdateFull(UPDATE_MODE_GL16);
                 }
@@ -324,7 +324,7 @@ void EPDGUI_Keyboard::UpdateState(int16_t x, int16_t y)
                         _layout = kLayoutNumber;
                     }
                 }
-                _sw[kSWNumber]->UpdateState(-1, -1);
+                _sw[kSWNumber]->UpdateTouchState(-1, -1);
                 Draw(UPDATE_MODE_NONE);
                 M5.EPD.UpdateFull(UPDATE_MODE_GL16);
                 break;

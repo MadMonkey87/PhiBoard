@@ -37,22 +37,22 @@ void PHI_Widget_Multi_Button::Bind(int16_t event, void (*func_cb)(epdgui_args_ve
 {
 }
 
-void PHI_Widget_Multi_Button::UpdateState(int16_t x, int16_t y)
+void PHI_Widget_Multi_Button::UpdateTouchState(int16_t x, int16_t y)
 {
-    if (!_isenable || _ishide)
+    if (!_enabled || _hidden)
     {
         return;
     }
 
     for (std::list<EPDGUI_Button *>::iterator p = _buttons.begin(); p != _buttons.end(); p++)
     {
-        (*p)->UpdateState(x, y);
+        (*p)->UpdateTouchState(x, y);
     }
 }
 
 void PHI_Widget_Multi_Button::Draw(m5epd_update_mode_t mode)
 {
-    if (_ishide)
+    if (_hidden)
     {
         return;
     }
@@ -65,7 +65,7 @@ void PHI_Widget_Multi_Button::Draw(m5epd_update_mode_t mode)
 
 void PHI_Widget_Multi_Button::Draw(M5EPD_Canvas *canvas)
 {
-    if (_ishide)
+    if (_hidden)
     {
         return;
     }

@@ -65,20 +65,20 @@ void PHI_Widget_Double_Switch::Bind(int16_t event, void (*func_cb)(epdgui_args_v
 {
 }
 
-void PHI_Widget_Double_Switch::UpdateState(int16_t x, int16_t y)
+void PHI_Widget_Double_Switch::UpdateTouchState(int16_t x, int16_t y)
 {
-    if (!_isenable || _ishide)
+    if (!_enabled || _hidden)
     {
         return;
     }
 
-    this->_upperButton->UpdateState(x, y);
-    this->_lowerButton->UpdateState(x, y);
+    this->_upperButton->UpdateTouchState(x, y);
+    this->_lowerButton->UpdateTouchState(x, y);
 }
 
 void PHI_Widget_Double_Switch::Draw(m5epd_update_mode_t mode)
 {
-    if (_ishide)
+    if (_hidden)
     {
         return;
     }
@@ -91,7 +91,7 @@ void PHI_Widget_Double_Switch::Draw(m5epd_update_mode_t mode)
 
 void PHI_Widget_Double_Switch::Draw(M5EPD_Canvas *canvas)
 {
-    if (_ishide)
+    if (_hidden)
     {
         return;
     }

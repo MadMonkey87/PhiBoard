@@ -30,7 +30,7 @@ PHI_Widget_Graphic_Base::~PHI_Widget_Graphic_Base()
 
 void PHI_Widget_Graphic_Base::Draw(m5epd_update_mode_t mode)
 {
-    if (_ishide)
+    if (_hidden)
     {
         return;
     }
@@ -47,7 +47,7 @@ void PHI_Widget_Graphic_Base::Draw(m5epd_update_mode_t mode)
 
 void PHI_Widget_Graphic_Base::Draw(M5EPD_Canvas *canvas)
 {
-    if (_ishide)
+    if (_hidden)
     {
         return;
     }
@@ -74,9 +74,9 @@ void PHI_Widget_Graphic_Base::Bind(int16_t event, void (*func_cb)(epdgui_args_ve
     }
 }
 
-void PHI_Widget_Graphic_Base::UpdateState(int16_t x, int16_t y)
+void PHI_Widget_Graphic_Base::UpdateTouchState(int16_t x, int16_t y)
 {
-    if (!_isenable || _ishide)
+    if (!_enabled || _hidden)
     {
         return;
     }

@@ -7,7 +7,7 @@ EPDGUI_MutexSwitch::EPDGUI_MutexSwitch()
 
 void EPDGUI_MutexSwitch::Draw(m5epd_update_mode_t mode)
 {
-    if(_ishide)
+    if(_hidden)
     {
         return;
     }
@@ -19,7 +19,7 @@ void EPDGUI_MutexSwitch::Draw(m5epd_update_mode_t mode)
 
 void EPDGUI_MutexSwitch::Draw(M5EPD_Canvas* canvas)
 {
-    if(_ishide)
+    if(_hidden)
     {
         return;
     }
@@ -34,9 +34,9 @@ void EPDGUI_MutexSwitch::Bind(int16_t event, void (* func_cb)(epdgui_args_vector
 
 }
 
-void EPDGUI_MutexSwitch::UpdateState(int16_t x, int16_t y)
+void EPDGUI_MutexSwitch::UpdateTouchState(int16_t x, int16_t y)
 {
-    if(!_isenable)
+    if(!_enabled)
     {
         return;
     }
@@ -46,7 +46,7 @@ void EPDGUI_MutexSwitch::UpdateState(int16_t x, int16_t y)
     {
         if(_last_pressed == p)
         {
-            (*p)->UpdateState(-1, -1);
+            (*p)->UpdateTouchState(-1, -1);
             continue;
         }
 
@@ -56,7 +56,7 @@ void EPDGUI_MutexSwitch::UpdateState(int16_t x, int16_t y)
             pressed_sw = p;
         }
         
-        (*p)->UpdateState(x, y);
+        (*p)->UpdateTouchState(x, y);
     }
 
     if(!_is_exclusive)

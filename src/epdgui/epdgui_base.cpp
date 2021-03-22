@@ -16,11 +16,6 @@ EPDGUI_Base::EPDGUI_Base()
 {
 }
 
-bool EPDGUI_Base::isSelected(void)
-{
-    return _issel;
-}
-
 bool EPDGUI_Base::isInBox(int16_t x, int16_t y)
 {
     if (x == -1 || y == -1)
@@ -30,21 +25,19 @@ bool EPDGUI_Base::isInBox(int16_t x, int16_t y)
 
     if ((x > _x) && (x < _rx) && (y > _y) && (y < _by))
     {
-        _issel = true;
-        return 1;
+        return true;
     }
-    _issel = false;
-    return 0;
+    return false;
 }
 
 void EPDGUI_Base::SetHide(bool ishide)
 {
-    this->_ishide = ishide;
+    this->_hidden = ishide;
 }
 
 void EPDGUI_Base::SetEnable(bool isenable)
 {
-    this->_isenable = isenable;
+    this->_enabled = isenable;
 }
 
 void EPDGUI_Base::SetGeometry(int16_t x, int16_t y, int16_t w, int16_t h)
@@ -64,7 +57,7 @@ void EPDGUI_Base::SetPos(int16_t x, int16_t y)
     this->_y = y;
 }
 
-void EPDGUI_Base::UpdateGram(m5epd_update_mode_t mode)
+void EPDGUI_Base::UpdateGraphicsMode(m5epd_update_mode_t mode)
 {
     M5.EPD.UpdateArea(_x, _y, _w, _h, mode);
 }

@@ -22,7 +22,7 @@ public:
 public:
     PHI_Widget_Toggle(int16_t x, int16_t y, int16_t w, int16_t h);
     void Bind(int16_t event, void (* func_cb)(epdgui_args_vector_t&));
-    void UpdateState(int16_t x, int16_t y);
+    void UpdateTouchState(int16_t x, int16_t y);
     void Init(JsonVariant data);
     void Render(JsonVariant data);
 

@@ -13,7 +13,6 @@ void test_cb(epdgui_args_vector_t &args)
         EPDGUI_AddFrame("Frame_Playground", frame);
     }
     EPDGUI_PushFrame(frame);
-    *((int *)(args[0])) = 0;
 }
 
 Frame_Home::Frame_Home() : Frame_Base()

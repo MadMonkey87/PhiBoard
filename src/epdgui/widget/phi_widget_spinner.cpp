@@ -28,21 +28,21 @@ void PHI_Widget_Spinner::Bind(int16_t event, void (*func_cb)(epdgui_args_vector_
 {
 }
 
-void PHI_Widget_Spinner::UpdateState(int16_t x, int16_t y)
+void PHI_Widget_Spinner::UpdateTouchState(int16_t x, int16_t y)
 {
-    if (!_isenable || _ishide)
+    if (!_enabled || _hidden)
     {
         return;
     }
 
-    this->_centralButton->UpdateState(x, y);
-    this->_leftButton->UpdateState(x, y);
-    this->_rightButton->UpdateState(x, y);
+    this->_centralButton->UpdateTouchState(x, y);
+    this->_leftButton->UpdateTouchState(x, y);
+    this->_rightButton->UpdateTouchState(x, y);
 }
 
 void PHI_Widget_Spinner::Draw(m5epd_update_mode_t mode)
 {
-    if (_ishide)
+    if (_hidden)
     {
         return;
     }
@@ -54,7 +54,7 @@ void PHI_Widget_Spinner::Draw(m5epd_update_mode_t mode)
 
 void PHI_Widget_Spinner::Draw(M5EPD_Canvas *canvas)
 {
-    if (_ishide)
+    if (_hidden)
     {
         return;
     }

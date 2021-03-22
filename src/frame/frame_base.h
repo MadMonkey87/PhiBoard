@@ -15,10 +15,15 @@ public:
     virtual int run();
     virtual void exit();
     virtual int init(epdgui_args_vector_t &args) = 0;
-    String GetFrameName() {return _frame_name;}
-    int isRun() {return _is_run;}
-    void SetFrameID(uint32_t id) {_frame_id = id;}
-    uint32_t GetFrameID() {return _frame_id;}
+    String GetFrameName() { return _frame_name; }
+    int isRun() { return _is_run; }
+    void SetIsRun(int value)
+    {
+        _is_run = value;
+    }
+    void SetFrameID(uint32_t id) { _frame_id = id; }
+    uint32_t GetFrameID() { return _frame_id; }
+
 protected:
     static void exit_cb(epdgui_args_vector_t &args);
     String _frame_name;
@@ -27,7 +32,5 @@ protected:
     EPDGUI_Button *_key_exit = NULL;
     uint32_t _frame_id;
 };
-
-
 
 #endif

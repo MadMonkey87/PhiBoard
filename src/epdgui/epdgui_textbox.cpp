@@ -78,7 +78,7 @@ void EPDGUI_Textbox::SetTextSize(uint16_t size)
 
 void EPDGUI_Textbox::Draw(m5epd_update_mode_t mode)
 {
-    if (_ishide)
+    if (_hidden)
     {
         return;
     }
@@ -107,7 +107,7 @@ void EPDGUI_Textbox::Draw(m5epd_update_mode_t mode)
 
 void EPDGUI_Textbox::Draw(M5EPD_Canvas* canvas)
 {
-    if (_ishide)
+    if (_hidden)
     {
         return;
     }
@@ -138,9 +138,9 @@ void EPDGUI_Textbox::Bind(int16_t event, void (*func_cb)(epdgui_args_vector_t &)
 {
 }
 
-void EPDGUI_Textbox::UpdateState(int16_t x, int16_t y)
+void EPDGUI_Textbox::UpdateTouchState(int16_t x, int16_t y)
 {
-    if (!_isenable)
+    if (!_enabled)
     {
         return;
     }

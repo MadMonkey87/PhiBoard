@@ -81,7 +81,7 @@ M5EPD_Canvas* EPDGUI_Button::CanvasPressed()
 
 void EPDGUI_Button::Draw(m5epd_update_mode_t mode)
 {
-    if(_ishide || _is_invisable)
+    if(_hidden || _is_invisable)
     {
         return;
     }
@@ -98,7 +98,7 @@ void EPDGUI_Button::Draw(m5epd_update_mode_t mode)
 
 void EPDGUI_Button::Draw(M5EPD_Canvas* canvas)
 {
-    if(_ishide)
+    if(_hidden)
     {
         return;
     }
@@ -125,9 +125,9 @@ void EPDGUI_Button::Bind(int16_t event, void (* func_cb)(epdgui_args_vector_t&))
     }
 }
 
-void EPDGUI_Button::UpdateState(int16_t x, int16_t y)
+void EPDGUI_Button::UpdateTouchState(int16_t x, int16_t y)
 {
-    if(!_isenable || _ishide)
+    if(!_enabled || _hidden)
     {
         return;
     }

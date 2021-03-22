@@ -14,7 +14,7 @@ public:
     void Draw(M5EPD_Canvas *canvas);
     void AddComponent(EPDGUI_Base *component);
     void Bind(int16_t event, void (*func_cb)(epdgui_args_vector_t &));
-    void UpdateState(int16_t x, int16_t y);
+    void UpdateTouchState(int16_t x, int16_t y);
 
 private:
     std::list<EPDGUI_Base *> _child_components;

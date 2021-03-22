@@ -40,14 +40,14 @@ void EPDGUI_Page_Container::SetPageIndex(int16_t pageIndex)
     _page_indicator->SetPageIndex(pageIndex);
 
     M5.EPD.Clear(0);
-    UpdateState(-1, -1);
+    UpdateTouchState(-1, -1);
     Draw();
     M5.EPD.UpdateArea(_x, _y, _w, _h, UPDATE_MODE_GC16);
 }
 
 void EPDGUI_Page_Container::Draw(m5epd_update_mode_t mode)
 {
-    if (_ishide)
+    if (_hidden)
     {
         return;
     }
@@ -62,7 +62,7 @@ void EPDGUI_Page_Container::Draw(m5epd_update_mode_t mode)
 
 void EPDGUI_Page_Container::Draw(M5EPD_Canvas *canvas)
 {
-    if (_ishide)
+    if (_hidden)
     {
         return;
     }
@@ -79,19 +79,19 @@ void EPDGUI_Page_Container::Bind(int16_t state, void (*func_cb)(epdgui_args_vect
 {
 }
 
-void EPDGUI_Page_Container::UpdateState(int16_t x, int16_t y)
+void EPDGUI_Page_Container::UpdateTouchState(int16_t x, int16_t y)
 {
-    if (!_isenable)
+    if (!_enabled)
     {
         return;
     }
 
     if (_size > 0)
     {
-        GetPageByIndex(_pageIndex)->UpdateState(x, y);
+        GetPageByIndex(_pageIndex)->UpdateTouchState(x, y);
     }
 
-    _page_indicator->UpdateState(x, y);
+    _page_indicator->UpdateTouchState(x, y);
 }
 
 void EPDGUI_Page_Container::AddComponent(EPDGUI_Base *component, int16_t pageIndex)

@@ -26,9 +26,9 @@ void PHI_Widget_Toggle::Bind(int16_t event, void (*func_cb)(epdgui_args_vector_t
 {
 }
 
-void PHI_Widget_Toggle::UpdateState(int16_t x, int16_t y)
+void PHI_Widget_Toggle::UpdateTouchState(int16_t x, int16_t y)
 {
-    if (!_isenable || _ishide)
+    if (!_enabled || _hidden)
     {
         return;
     }
