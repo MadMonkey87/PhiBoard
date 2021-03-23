@@ -14,7 +14,8 @@ EPDGUI_Page_Container::~EPDGUI_Page_Container()
 
 void EPDGUI_Page_Container::Init()
 {
-    if(_pages.size() == 0){
+    if (_pages.size() == 0)
+    {
         // todo: add an indicator that the page has no elements
     }
     _page_indicator = new EPDGUI_Page_Indicator(_x, _h - INDICATOR_HEIGHT + _y, _w, INDICATOR_HEIGHT, _pages.size());
@@ -106,12 +107,86 @@ void EPDGUI_Page_Container::AddComponent(EPDGUI_Base *component, int16_t pageInd
     GetPageByIndex(pageIndex)->AddComponent(component);
 }
 
+EPDGUI_Container *EPDGUI_Page_Container::GetPageByIndex(int16_t pageIndex)
+{
+    auto iterator = _pages.begin();
+    std::advance(iterator, pageIndex);
+    //_pages.end();
+    return *iterator;
+}
+
+bool EPDGUI_Page_Container::IsOccupied(bool occupancyMatrix[GRID_WIDTH][GRID_HEIGHT], int16_t x, int16_t y, int16_t w, int16_t h)
+{
+    //bool result = false;
+
+    for (int n = x; n < x + w; n++)
+    {
+        for (int m = y; m < y + h; m++)
+        {
+            if (occupancyMatrix[n][m])
+            {
+                return true;
+            }
+        }
+    }
+
+    return false;
+
+    /*Serial.println("occupancy check");
+
+    for (int n = 0; n < GRID_HEIGHT; n++)
+    {
+        for (int m = 0; m < GRID_WIDTH; m++)
+        {
+            if (occupancyMatrix[m][n])
+            {
+                Serial.print("x");
+            }
+            else
+            {
+                Serial.print("o");
+            }
+        }
+        Serial.println();
+    }
+
+    Serial.print(x);
+    Serial.print(" ");
+    Serial.print(y);
+    Serial.print(" ");
+    Serial.print(w);
+    Serial.print(" ");
+    Serial.print(h);
+    Serial.print(" ");
+    if (result)
+    {
+        Serial.print("true");
+    }
+    else
+    {
+        Serial.print("false");
+    }
+
+    Serial.println();
+    Serial.println();
+    Serial.println();
+
+    return result;*/
+}
+
 void EPDGUI_Page_Container::PropagateWidgets(JsonArray widgets, int16_t width, int16_t offsetY)
 {
+    for (std::list<EPDGUI_Container *>::iterator p = _pages.begin(); p != _pages.end(); p++)
+    {
+        delete (*p);
+    }
+    _pages.clear();
+
     int16_t x = 0;
     int16_t y = 0;
     int16_t p = 0;
-    int16_t last_grid_height = 0;
+
+    bool occupancyMatrix[GRID_WIDTH][GRID_HEIGHT] = {{false}};
 
     for (JsonVariant jsonWidgetItem : widgets)
     {
@@ -134,19 +209,37 @@ void EPDGUI_Page_Container::PropagateWidgets(JsonArray widgets, int16_t width, i
             grid_height = GRID_HEIGHT;
         }
 
-        // go to next row/column/page if not enough space is available
-        if (GRID_WIDTH - x < grid_width)
+        // todo GRID_WIDTH < x + grid_width is only necessary because we should check before this loop that x/y are in bounds
+        while (GRID_WIDTH < x + grid_width || IsOccupied(occupancyMatrix, x, y, grid_width, grid_height))
         {
-            x = 0;
-            y += last_grid_height;
+            x++;
+            if (GRID_WIDTH < x + grid_width) // go to next column
+            {
+                x = 0;
+                y++;
+            }
+            if (GRID_HEIGHT < y + grid_height) // go to next page
+            {
+                x = 0;
+                y = 0;
+                p++;
+                for (int n = 0; n < GRID_WIDTH; n++)
+                {
+                    for (int m = 0; m < GRID_HEIGHT; m++)
+                    {
+                        occupancyMatrix[n][m] = false;
+                    }
+                }
+            }
         }
 
-        if (GRID_HEIGHT - y < grid_height)
+        // occupy
+        for (int n = x; n < x + grid_width; n++)
         {
-            x = 0;
-            y = 0;
-            p++;
-            last_grid_height = 0;
+            for (int m = y; m < y + grid_height; m++)
+            {
+                occupancyMatrix[n][m] = true;
+            }
         }
 
         int16_t element_width = ((width - 2 * GRID_MARGIN) - (GRID_WIDTH - 1) * GRID_MARGIN) / GRID_WIDTH;
@@ -154,11 +247,8 @@ void EPDGUI_Page_Container::PropagateWidgets(JsonArray widgets, int16_t width, i
 
         int16_t pos_x = GRID_MARGIN + (x * (element_width + GRID_MARGIN));
         int16_t pos_y = offsetY + GRID_MARGIN + (y * (element_height + GRID_MARGIN));
-        int16_t width = element_width * grid_width + (grid_width - 1) * (x + 1) * GRID_MARGIN;
-        int16_t height = element_height * grid_height + (grid_height - 1) * (y + 1) * GRID_MARGIN;
-
-        x += grid_width;
-        last_grid_height = last_grid_height > grid_height ? last_grid_height : grid_height;
+        int16_t width = element_width * grid_width + (grid_width - 1) * GRID_MARGIN;
+        int16_t height = element_height * grid_height + (grid_height - 1) * GRID_MARGIN;
 
         if (jsonWidgetItem["widgettype"] == "icon")
         {
@@ -208,13 +298,21 @@ void EPDGUI_Page_Container::PropagateWidgets(JsonArray widgets, int16_t width, i
             _widget_spinner->Init(jsonWidgetItem);
             AddComponent(_widget_spinner, p);
         }
-    }
-}
 
-EPDGUI_Container *EPDGUI_Page_Container::GetPageByIndex(int16_t pageIndex)
-{
-    auto iterator = _pages.begin();
-    std::advance(iterator, pageIndex);
-    //_pages.end();
-    return *iterator;
+        /*EPDGUI_Button *button = new EPDGUI_Button(pos_x, pos_y, width, height);
+        button->CanvasNormal()->fillCanvas(15);
+
+        button->CanvasNormal()->setTextSize(26);
+        button->CanvasNormal()->setTextColor(0);
+        button->CanvasNormal()->setTextDatum(ML_DATUM);
+
+        button->CanvasNormal()->drawString("pos " + String(pos_x) + " / " + String(pos_y), 10, 20);
+        button->CanvasNormal()->drawString("size " + String(width) + " / " + String(height), 10, 60);
+        button->CanvasNormal()->drawString("xy: " + String(x) + " / " + String(y), 10, 100);
+        button->CanvasNormal()->drawString("grd" + String(grid_width) + " / " + String(grid_height), 10, 140);
+
+        AddComponent(button, p);*/
+
+        x += grid_width;
+    }
 }

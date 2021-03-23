@@ -36,6 +36,8 @@ private:
     EPDGUI_Page_Indicator *_page_indicator;
     int16_t _pageIndex = 0;
     int16_t _size = 0;
+
+    bool IsOccupied(bool occupancyMatrix[][GRID_HEIGHT], int16_t x, int16_t y, int16_t w, int16_t h);
 };
 
 #endif //__EPDGUI_PAGE_CONTAINER_H
