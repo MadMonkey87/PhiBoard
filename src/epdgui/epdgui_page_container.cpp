@@ -117,8 +117,6 @@ EPDGUI_Container *EPDGUI_Page_Container::GetPageByIndex(int16_t pageIndex)
 
 bool EPDGUI_Page_Container::IsOccupied(bool occupancyMatrix[GRID_WIDTH][GRID_HEIGHT], int16_t x, int16_t y, int16_t w, int16_t h)
 {
-    //bool result = false;
-
     for (int n = x; n < x + w; n++)
     {
         for (int m = y; m < y + h; m++)
@@ -131,56 +129,41 @@ bool EPDGUI_Page_Container::IsOccupied(bool occupancyMatrix[GRID_WIDTH][GRID_HEI
     }
 
     return false;
-
-    /*Serial.println("occupancy check");
-
-    for (int n = 0; n < GRID_HEIGHT; n++)
-    {
-        for (int m = 0; m < GRID_WIDTH; m++)
-        {
-            if (occupancyMatrix[m][n])
-            {
-                Serial.print("x");
-            }
-            else
-            {
-                Serial.print("o");
-            }
-        }
-        Serial.println();
-    }
-
-    Serial.print(x);
-    Serial.print(" ");
-    Serial.print(y);
-    Serial.print(" ");
-    Serial.print(w);
-    Serial.print(" ");
-    Serial.print(h);
-    Serial.print(" ");
-    if (result)
-    {
-        Serial.print("true");
-    }
-    else
-    {
-        Serial.print("false");
-    }
-
-    Serial.println();
-    Serial.println();
-    Serial.println();
-
-    return result;*/
 }
 
-void EPDGUI_Page_Container::PropagateWidgets(JsonArray widgets, int16_t width, int16_t offsetY)
+void EPDGUI_Page_Container::Occupy(bool occupancyMatrix[GRID_WIDTH][GRID_HEIGHT], int16_t x, int16_t y, int16_t w, int16_t h)
+{
+    for (int n = x; n < x + w; n++)
+    {
+        for (int m = y; m < y + h; m++)
+        {
+            occupancyMatrix[n][m] = true;
+        }
+    }
+}
+
+void EPDGUI_Page_Container::ClearOccupancies(bool occupancyMatrix[GRID_WIDTH][GRID_HEIGHT])
+{
+    for (int n = 0; n < GRID_WIDTH; n++)
+    {
+        for (int m = 0; m < GRID_HEIGHT; m++)
+        {
+            occupancyMatrix[n][m] = false;
+        }
+    }
+}
+
+void EPDGUI_Page_Container::ClearWidgets()
 {
     for (std::list<EPDGUI_Container *>::iterator p = _pages.begin(); p != _pages.end(); p++)
     {
         delete (*p);
     }
     _pages.clear();
+}
+
+void EPDGUI_Page_Container::PropagateWidgets(JsonArray widgets, int16_t width, int16_t offsetY)
+{
 
     int16_t x = 0;
     int16_t y = 0;
@@ -223,24 +206,11 @@ void EPDGUI_Page_Container::PropagateWidgets(JsonArray widgets, int16_t width, i
                 x = 0;
                 y = 0;
                 p++;
-                for (int n = 0; n < GRID_WIDTH; n++)
-                {
-                    for (int m = 0; m < GRID_HEIGHT; m++)
-                    {
-                        occupancyMatrix[n][m] = false;
-                    }
-                }
+                ClearOccupancies(occupancyMatrix);
             }
         }
 
-        // occupy
-        for (int n = x; n < x + grid_width; n++)
-        {
-            for (int m = y; m < y + grid_height; m++)
-            {
-                occupancyMatrix[n][m] = true;
-            }
-        }
+        Occupy(occupancyMatrix, x, y, grid_width, grid_height);
 
         int16_t element_width = ((width - 2 * GRID_MARGIN) - (GRID_WIDTH - 1) * GRID_MARGIN) / GRID_WIDTH;
         int16_t element_height = element_width; //((HEIGHT - offsetY - 2 * GRID_MARGIN) - (GRID_HEIGHT - 1) * GRID_MARGIN) / GRID_HEIGHT;
@@ -297,6 +267,12 @@ void EPDGUI_Page_Container::PropagateWidgets(JsonArray widgets, int16_t width, i
             PHI_Widget_Spinner *_widget_spinner = new PHI_Widget_Spinner(pos_x, pos_y, width, height);
             _widget_spinner->Init(jsonWidgetItem);
             AddComponent(_widget_spinner, p);
+        }
+        else if (jsonWidgetItem["widgettype"] == "slider")
+        {
+            PHI_Widget_Slider *_widget_slider = new PHI_Widget_Slider(pos_x, pos_y, width, height);
+            _widget_slider->Init(jsonWidgetItem);
+            AddComponent(_widget_slider, p);
         }
 
         /*EPDGUI_Button *button = new EPDGUI_Button(pos_x, pos_y, width, height);

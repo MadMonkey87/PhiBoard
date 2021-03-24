@@ -27,6 +27,7 @@ public:
     void AddComponent(EPDGUI_Base *component, int16_t pageIndex);
     void SetPageIndex(int16_t pageIndex);
     void PropagateWidgets(JsonArray widgets, int16_t width, int16_t offsetY);
+    void ClearWidgets();
     void Init();
     uint32_t GetPageIndex() { return _pageIndex; }
 
@@ -38,6 +39,8 @@ private:
     int16_t _size = 0;
 
     bool IsOccupied(bool occupancyMatrix[][GRID_HEIGHT], int16_t x, int16_t y, int16_t w, int16_t h);
+    void Occupy(bool occupancyMatrix[GRID_WIDTH][GRID_HEIGHT], int16_t x, int16_t y, int16_t w, int16_t h);
+    void ClearOccupancies(bool occupancyMatrix[GRID_WIDTH][GRID_HEIGHT]);
 };
 
 #endif //__EPDGUI_PAGE_CONTAINER_H
