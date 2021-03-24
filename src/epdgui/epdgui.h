@@ -21,6 +21,7 @@
 #include "widget/phi_widget_icon_toggle.h"
 #include "widget/phi_widget_progress.h"
 #include "widget/phi_widget_multi_button.h"
+#include "widget/phi_widget_slider.h"
 
 void EPDGUI_AddObject(EPDGUI_Base* object);
 void EPDGUI_Draw(m5epd_update_mode_t mode = UPDATE_MODE_GC16);
