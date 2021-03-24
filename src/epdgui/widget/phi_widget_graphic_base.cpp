@@ -33,8 +33,10 @@ void PHI_Widget_Graphic_Base::Init(JsonVariant data)
 {
     if (data != NULL)
     {
-        String appId = data["appid"];
-        this->AppId = appId;
+        String phiActionId = data["phiActionId"];
+        String phiActionParam = data["phiActionParam"];
+        _phiActionId = phiActionId;
+        _phiActionParam = phiActionParam;
     }
 
     PHI_Widget_Base::Init(data);
@@ -121,9 +123,9 @@ void PHI_Widget_Graphic_Base::UpdateTouchState(int16_t x, int16_t y)
             {
                 _released_cb(_released_cb_args);
             }
-            if (AppId != NULL)
+            if (this->_phiActionId != NULL)
             {
-                LaunchByAppId(AppId);
+                PerformPhiAction(this->_phiActionId, this->_phiActionParam);
             }
             Draw();
         }

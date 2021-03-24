@@ -3,8 +3,10 @@
 PHI_Widget_Spinner::PHI_Widget_Spinner(int16_t x, int16_t y, int16_t w, int16_t h) : PHI_Widget_Base(x, y, w, h)
 {
     this->_centralButton = new EPDGUI_Button(_x, _y, _w, (_h - BUTTON_HEIGHT));
-    this->_leftButton = new EPDGUI_Button(_x, _y + _h - BUTTON_HEIGHT, _w / 2 - BORDER_WIDTH / 2, BUTTON_HEIGHT);
-    this->_rightButton = new EPDGUI_Button(_x + _w / 2 - BORDER_WIDTH / 2, _y + _h - BUTTON_HEIGHT, _w / 2 - BORDER_WIDTH / 2, BUTTON_HEIGHT);
+
+    int16_t button_width = _w / 2;
+    this->_leftButton = new EPDGUI_Button(_x, _y + _h - BUTTON_HEIGHT, button_width, BUTTON_HEIGHT);
+    this->_rightButton = new EPDGUI_Button(_x + button_width -2, _y + _h - BUTTON_HEIGHT, button_width, BUTTON_HEIGHT);
 }
 
 void PHI_Widget_Spinner::Render(JsonVariant data)
@@ -88,15 +90,17 @@ void PHI_Widget_Spinner::RenderLeftButton(M5EPD_Canvas *canvas, bool pressed, St
 {
     PHI_Widget_Base::RenderBackground(RENDER_BACKGROUND_MODE_BOTTOM_LEFT, canvas, pressed);
 
+    int16_t halfBoarderWith = BORDER_WIDTH % 2 == 0 ? BORDER_WIDTH/2 : (BORDER_WIDTH/2-1);
+
     if (!pressed)
     {
         for (int i = 0; i < BORDER_WIDTH; i++)
         {
             canvas->drawFastHLine(BORDER_WIDTH, i, canvas->width() - BORDER_WIDTH, BORDER_COLOR);
         }
-        for (int i = 0; i < BORDER_WIDTH / 2; i++)
+        for (int i = 0; i < halfBoarderWith; i++)
         {
-            canvas->drawFastVLine(canvas->width() - 1 - i, BORDER_WIDTH, canvas->height() - BORDER_WIDTH, BORDER_COLOR);
+            canvas->drawFastVLine(canvas->width() -i-1, BORDER_WIDTH, canvas->height() - BORDER_WIDTH, BORDER_COLOR);
         }
     }
 
@@ -112,13 +116,16 @@ void PHI_Widget_Spinner::RenderRightButton(M5EPD_Canvas *canvas, bool pressed, S
 {
     PHI_Widget_Base::RenderBackground(RENDER_BACKGROUND_MODE_BOTTOM_RIGHT, canvas, pressed);
 
+    int16_t halfBoarderWith = BORDER_WIDTH % 2 == 0 ? BORDER_WIDTH/2 : (BORDER_WIDTH/2+1);
+
+
     if (!pressed)
     {
         for (int i = 0; i < BORDER_WIDTH; i++)
         {
             canvas->drawFastHLine(0, i, canvas->width() - BORDER_WIDTH, BORDER_COLOR);
         }
-        for (int i = 0; i < BORDER_WIDTH / 2; i++)
+        for (int i = 0; i < halfBoarderWith; i++)
         {
             canvas->drawFastVLine(i, BORDER_WIDTH, canvas->height() - BORDER_WIDTH, BORDER_COLOR);
         }

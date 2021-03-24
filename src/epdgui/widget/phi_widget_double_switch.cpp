@@ -5,8 +5,9 @@ PHI_Widget_Double_Switch::PHI_Widget_Double_Switch(int16_t x, int16_t y, int16_t
     this->_Canvas = new M5EPD_Canvas(&M5.EPD);
     this->_Canvas->createCanvas(_w, MIDDLE_HEIGHT);
 
-    this->_upperButton = new EPDGUI_Button(x, y, _w, (_h - MIDDLE_HEIGHT) / 2);
-    this->_lowerButton = new EPDGUI_Button(x, y + _h / 2 + MIDDLE_HEIGHT / 2, _w, (_h - MIDDLE_HEIGHT) / 2);
+    int16_t buttonHeight = (_h - MIDDLE_HEIGHT) / 2;
+    this->_upperButton = new EPDGUI_Button(_x, _y, _w, buttonHeight);
+    this->_lowerButton = new EPDGUI_Button(_x, _y + buttonHeight + MIDDLE_HEIGHT, _w, buttonHeight);
 }
 
 PHI_Widget_Double_Switch::~PHI_Widget_Double_Switch()

@@ -22,7 +22,6 @@ public:
 
 protected:
     virtual void RenderDescriptionLabel(const char *string);
-    String AppId;
 
 private:
     void (*_pressed_cb)(epdgui_args_vector_t &args) = NULL;
@@ -30,6 +29,8 @@ private:
     epdgui_args_vector_t _pressed_cb_args;
     epdgui_args_vector_t _released_cb_args;
     int16_t _state = EVENT_NONE;
+    String _phiActionId;
+    String _phiActionParam;
 
 public:
     M5EPD_Canvas *_Canvas = NULL;

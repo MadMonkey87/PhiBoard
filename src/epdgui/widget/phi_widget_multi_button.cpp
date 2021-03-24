@@ -21,8 +21,6 @@ PHI_Widget_Multi_Button::~PHI_Widget_Multi_Button()
 
 void PHI_Widget_Multi_Button::Render(JsonVariant data)
 {
-    //PHI_Widget_Graphic_Base::Render(data);
-
     int index = 0;
     int last = _buttons.size() - 1;
     for (std::list<EPDGUI_Button *>::iterator p = _buttons.begin(); p != _buttons.end(); p++)
@@ -100,12 +98,13 @@ void PHI_Widget_Multi_Button::RenderButtonContent(M5EPD_Canvas *canvas, bool pre
         canvas->fillRect(SEPARATOR_HORIZONTAL_MARGIN, canvas->height() - SEPARATOR_HEIGHT / 2, canvas->width() - (SEPARATOR_HORIZONTAL_MARGIN * 2), SEPARATOR_HEIGHT / 2, SEPARATOR_COLOR);
     }
 
-    canvas->drawJpgFile(SD, icon.c_str(), canvas->width() - 60 - 10, 10, 60, 60);
+    int16_t margin = 10 + BORDER_WIDTH += CORNER_ROUNDING / 4;
+    canvas->drawJpgFile(SD, icon.c_str(), canvas->width() - 60 - margin, (canvas->height() - 60) / 2, 60, 60);
 
     canvas->setTextSize(TEXT_SIZE);
     canvas->setTextColor(FONT_COLOR);
-    canvas->setTextDatum(MC_DATUM);
-    canvas->drawString(description.c_str(), _x + 30, canvas->height() / 2);
+    canvas->setTextDatum(ML_DATUM);
+    canvas->drawString(description.c_str(), _x + margin, canvas->height() / 2);
 
     if (pressed)
     {
