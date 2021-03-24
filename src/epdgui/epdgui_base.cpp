@@ -2,8 +2,11 @@
 
 EPDGUI_Base::EPDGUI_Base(int16_t x, int16_t y, int16_t w, int16_t h)
 {
-    x = (x + 3) & 0xFFFC;
+    //x = (x + 3) & 0xFFFC;
+
+    // rounded up to be multiple of 4
     w = (w + 3) & 0xFFFC;
+    
     this->_x = x;
     this->_y = y;
     this->_w = w;
@@ -42,7 +45,7 @@ void EPDGUI_Base::SetEnable(bool isenable)
 
 void EPDGUI_Base::SetGeometry(int16_t x, int16_t y, int16_t w, int16_t h)
 {
-    x = (x + 3) & 0xFFFC;
+    //x = (x + 3) & 0xFFFC;
     w = (w + 3) & 0xFFFC;
     this->_x = x;
     this->_y = y;
@@ -52,7 +55,7 @@ void EPDGUI_Base::SetGeometry(int16_t x, int16_t y, int16_t w, int16_t h)
 
 void EPDGUI_Base::SetPos(int16_t x, int16_t y)
 {
-    x = (x + 3) & 0xFFFC;
+    //x = (x + 3) & 0xFFFC;
     this->_x = x;
     this->_y = y;
 }

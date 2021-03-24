@@ -6,7 +6,7 @@
 class EPDGUI_Page_Indicator : public EPDGUI_Base
 {
 public:
-    static const int16_t GROUND_COLOR = 0;
+    static const int16_t GROUND_COLOR = 1;
 
     static const int16_t INDICATOR_SPACING = 10;
 

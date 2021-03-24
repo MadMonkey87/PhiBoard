@@ -98,7 +98,7 @@ void PHI_Widget_Multi_Button::RenderButtonContent(M5EPD_Canvas *canvas, bool pre
         canvas->fillRect(SEPARATOR_HORIZONTAL_MARGIN, canvas->height() - SEPARATOR_HEIGHT / 2, canvas->width() - (SEPARATOR_HORIZONTAL_MARGIN * 2), SEPARATOR_HEIGHT / 2, SEPARATOR_COLOR);
     }
 
-    int16_t margin = 10 + BORDER_WIDTH += CORNER_ROUNDING / 4;
+    int16_t margin = 10 + BORDER_WIDTH + CORNER_ROUNDING / 4;
     canvas->drawJpgFile(SD, icon.c_str(), canvas->width() - 60 - margin, (canvas->height() - 60) / 2, 60, 60);
 
     canvas->setTextSize(TEXT_SIZE);

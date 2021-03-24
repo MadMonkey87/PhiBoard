@@ -14,7 +14,7 @@ public:
     static const int16_t GROUND_COLOR = 0;
 
     static const bool RENDER_BORDER = true;
-    static const int16_t CORNER_ROUNDING = 16
+    static const int16_t CORNER_ROUNDING = 16;
     static const int16_t BORDER_WIDTH = 4;
     static const int16_t TEXT_SIZE = 26;
 
