@@ -92,17 +92,20 @@ void SysInit_Start(void)
 
     _initcanvas.createRender(26, 128);
 
+    SysInit_UpdateInfo("Loading home screen...");
     Frame_Home *frame_home = new Frame_Home();
+    //Frame_Playground *frame_home = new Frame_Playground();
     EPDGUI_PushFrame(frame_home);
 
     if (isWiFiConfiged())
     {
-        SysInit_UpdateInfo("Connect to " + GetWifiSSID() + "...");
+        SysInit_UpdateInfo("Init connect to " + GetWifiSSID() + "...");
         WiFi.begin(GetWifiSSID().c_str(), GetWifiPassword().c_str());
+        SysInit_UpdateInfo("Connect to " + GetWifiSSID() + "...");
         uint32_t t = millis();
         while (1)
         {
-            if (millis() - t > 8000)
+            if (millis() - t > 3000)
             {
                 break;
             }

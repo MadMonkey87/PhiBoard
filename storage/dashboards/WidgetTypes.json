@@ -11,6 +11,46 @@
       "apiid": "c8bab74a-d6b0-43f8-8789-92794750bbc7"
     },
     {
+      "widgettype": "icon",
+      "description": "PlayStation",
+      "icon": "/Icons/play-station.jpg",
+      "grid_width": 1,
+      "grid_height": 1,
+      "apiid": "c8bab74a-d6b0-43f8-8789-92794750bbc7"
+    },
+    {
+      "widgettype": "icon",
+      "description": "Netflix",
+      "icon": "/Icons/Netflix.jpg",
+      "grid_width": 1,
+      "grid_height": 1,
+      "apiid": "c8bab74a-d6b0-43f8-8789-92794750bbc7"
+    },
+    {
+      "widgettype": "icon",
+      "description": "Sonos",
+      "icon": "/Icons/music-2.jpg",
+      "grid_width": 1,
+      "grid_height": 1,
+      "apiid": "c8bab74a-d6b0-43f8-8789-92794750bbc7"
+    },
+    {
+      "widgettype": "icon",
+      "description": "Internet",
+      "icon": "/Icons/world-1.jpg",
+      "grid_width": 1,
+      "grid_height": 1,
+      "apiid": "c8bab74a-d6b0-43f8-8789-92794750bbc7"
+    },
+    {
+      "widgettype": "icon",
+      "description": "Internet",
+      "icon": "/Icons/world-2.jpg",
+      "grid_width": 1,
+      "grid_height": 1,
+      "apiid": "c8bab74a-d6b0-43f8-8789-92794750bbc7"
+    },
+    {
       "widgettype": "doubleswitch",
       "upicon": "/Icons/up-1.jpg",
       "downicon": "/Icons/down-1.jpg",
@@ -76,6 +116,14 @@
       "description": "Automatic Lighting",
       "apiid": "e5d9b4cf-42b4-470e-a294-c0bb7b830be3",
       "value": true
+    },
+    {
+      "widgettype": "toggle",
+      "grid_width": 1,
+      "grid_height": 1,
+      "description": "A/C",
+      "apiid": "e5d9b4cf-42b4-470e-a294-c0bb7b830be3",
+      "value": false
     },
     {
       "widgettype": "spinner",

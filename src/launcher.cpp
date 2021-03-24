@@ -1,43 +1,41 @@
 #include "launcher.h"
 
-void LaunchByAppId(String appId)
+void PerformPhiAction(String phiActionId, String phiActionParam)
 {
-    Serial.println("launch an app by its id");
-    Serial.println(appId);
-
-    if (appId == NULL)
+    if (phiActionId == NULL)
     {
         return;
     }
 
-    Frame_Base *frame = EPDGUI_GetFrame(appId);
+    Frame_Base *frame = EPDGUI_GetFrame(phiActionId);
+
     if (frame == NULL)
     {
-        if (appId == Frame_Home::APPID)
+        if (phiActionId == Frame_Home::APPID)
         {
             frame = new Frame_Home();
         }
-        else if (appId == Frame_Playground::APPID)
+        else if (phiActionId == Frame_Playground::APPID)
         {
             frame = new Frame_Playground();
         }
-        else if (appId == Frame_FactoryTest::APPID)
+        else if (phiActionId == Frame_FactoryTest::APPID)
         {
             frame = new Frame_FactoryTest();
         }
-        else if (appId == Frame_Keyboard::APPID)
+        else if (phiActionId == Frame_Keyboard::APPID)
         {
             frame = new Frame_Keyboard();
         }
-        else if (appId == Frame_Setting::APPID)
+        else if (phiActionId == Frame_Setting::APPID)
         {
             frame = new Frame_Setting();
         }
-        else if (appId == Frame_FileIndex::APPID)
+        else if (phiActionId == Frame_FileIndex::APPID)
         {
             frame = new Frame_FileIndex("/");
         }
-        else if (appId == Frame_Compare::APPID)
+        else if (phiActionId == Frame_Compare::APPID)
         {
             frame = new Frame_Compare();
         }
@@ -49,13 +47,19 @@ void LaunchByAppId(String appId)
 
         if (frame != NULL)
         {
-            EPDGUI_AddFrame(appId, frame);
+            EPDGUI_AddFrame(phiActionId, frame);
         }
     }
 
     if (frame != NULL)
     {
         Serial.println("launch app");
+        if (phiActionParam != NULL)
+        {
+            String *param = new String(phiActionParam);
+            EPDGUI_AddFrameArg(phiActionId, 0, param);
+        }
+
         EPDGUI_PushFrame(frame);
     }
 }

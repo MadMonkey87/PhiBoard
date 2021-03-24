@@ -4,6 +4,6 @@
 #include "epdgui/epdgui.h"
 #include "frame/frame.h"
 
-void LaunchByAppId(String appId);
+void PerformPhiAction(String phiActionId, String phiActionParam);
 
 #endif //__LAUNCHER_H

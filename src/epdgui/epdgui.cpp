@@ -164,8 +164,6 @@ void EPDGUI_AddFrame(String name, Frame_Base *frame)
     frame_struct_t f;
     f.frame = frame;
     frame_map.insert(std::pair<String, frame_struct_t>(name, f));
-    // todo: this is the wrong place!
-    frame->init(frame_map[frame->GetFrameName()].args);
 }
 
 void EPDGUI_AddFrameArg(String name, int n, void *arg)
@@ -210,6 +208,8 @@ void EPDGUI_PushFrame(Frame_Base *frame)
             currentFrame->SetIsRun(0);
         }
     }
+
+    //frame->init(frame_map[frame->GetFrameName()].args);
 
     frame_stack.push(frame);
     frame->SetIsRun(1);

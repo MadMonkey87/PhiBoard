@@ -3,51 +3,21 @@
   "widgets": [
     {
       "widgettype": "icon",
-      "description": "Storage Explorer",
-      "icon": "/Icons/lab.jpg",
+      "description": "Widgets",
+      "icon": "/Icons/dashboard.jpg",
       "grid_width": 1,
       "grid_height": 1,
-      "appid": "8b408095-8cab-4f2a-af86-38f708cc2a0a"
+      "phiActionId": "24184b57-c0d8-4d2a-aa52-9ffd7ad0dc46",
+      "phiActionParam": "/dashboards/WidgetTypes.json"
     },
     {
       "widgettype": "icon",
-      "description": "Text Editor",
-      "icon": "/Icons/lab.jpg",
+      "description": "Empty",
+      "icon": "/Icons/dashboard.jpg",
       "grid_width": 1,
       "grid_height": 1,
-      "appid": "ac5b84cd-2d28-4669-9983-5a352c04cd2f"
-    },
-    {
-      "widgettype": "icon",
-      "description": "Graphic Modes Lab",
-      "icon": "/Icons/lab.jpg",
-      "grid_width": 1,
-      "grid_height": 1,
-      "appid": "9e1d635a-6836-4444-a22f-8336f631bf96"
-    },
-    {
-      "widgettype": "icon",
-      "description": "Factory Test",
-      "icon": "/Icons/lab.jpg",
-      "grid_width": 1,
-      "grid_height": 1,
-      "appid": "dfe9b0fd-aa3d-4ae4-b130-0140b5771023"
-    },
-    {
-      "widgettype": "icon",
-      "description": "Shutdown",
-      "icon": "/Icons/turn-off.jpg",
-      "grid_width": 1,
-      "grid_height": 1,
-      "appid": "de17602b-23ea-4d95-ab7d-957193b4559b"
-    },
-    {
-      "widgettype": "icon",
-      "description": "Settings",
-      "icon": "/Icons/Settings.jpg",
-      "grid_width": 1,
-      "grid_height": 1,
-      "appid": "ebb592ec-f2ed-456a-b6e4-12b201153e21"
+      "phiActionId": "24184b57-c0d8-4d2a-aa52-9ffd7ad0dc46",
+      "phiActionParam": "/dashboards/Empty.json"
     }
   ]
 }
