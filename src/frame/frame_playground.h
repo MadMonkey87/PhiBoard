@@ -21,6 +21,7 @@ public:
 private:
     EPDGUI_Page_Container *_page_container;
     int16_t lastButtonIndex = 0;
+    void LoadWidgetsFromJsonFile(String jsonFilePath);
 };
 
 #endif //_FRAME_PLAYGROUND_H_

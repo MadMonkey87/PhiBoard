@@ -3,7 +3,7 @@
 
 Frame_Base::Frame_Base(bool _has_title)
 {
-    if(_has_title)
+    if (_has_title)
     {
         _canvas_title = new M5EPD_Canvas(&M5.EPD);
         _canvas_title->createCanvas(540, 64);
@@ -17,11 +17,11 @@ Frame_Base::Frame_Base(bool _has_title)
     _frame_name = "Frame_Base";
 }
 
-Frame_Base::~Frame_Base() 
+Frame_Base::~Frame_Base()
 {
-    if(_key_exit != NULL)
+    if (_key_exit != NULL)
         delete _key_exit;
-    if(_canvas_title != NULL)
+    if (_canvas_title != NULL)
         delete _canvas_title;
 }
 
@@ -40,7 +40,6 @@ void Frame_Base::exitbtn(String title, uint16_t width)
 
 void Frame_Base::run(void)
 {
-
 }
 
 void Frame_Base::exit(void)
@@ -50,5 +49,5 @@ void Frame_Base::exit(void)
 void Frame_Base::exit_cb(epdgui_args_vector_t &args)
 {
     EPDGUI_PopFrame();
-    *((int*)(args[0])) = 0;
+    *((int *)(args[0])) = 0;
 }

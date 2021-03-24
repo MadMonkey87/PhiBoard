@@ -13,31 +13,7 @@ Frame_Playground::Frame_Playground() : Frame_Base()
     _key_exit->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void *)(&_is_run));
     _key_exit->BindEvent(EPDGUI_Button::EVENT_RELEASED, &Frame_Base::exit_cb);
 
-    File file = SD.open("/dashboards/WidgetTypes.json");
-    if (!file)
-    {
-        Serial.println("Failed to open file for reading");
-        return;
-    }
-
-    String content = "";
-    while (file.available())
-    {
-        content += (char)file.read();
-    }
-
-    DynamicJsonDocument jsonDocument(1024 * 16);
-    DeserializationError error = deserializeJson(jsonDocument, content);
-    if (error)
-    {
-        Serial.print(F("deserializeJson() failed: "));
-        Serial.println(error.f_str());
-        return;
-    }
-    JsonArray widgets = jsonDocument["widgets"].as<JsonArray>();
-
     _page_container = new EPDGUI_Page_Container(0, HEADER_HEIGHT, WIDTH, HEIGHT - HEADER_HEIGHT);
-    _page_container->PropagateWidgets(widgets, WIDTH, HEADER_HEIGHT);
 }
 
 Frame_Playground::~Frame_Playground()
@@ -47,11 +23,22 @@ Frame_Playground::~Frame_Playground()
 
 void Frame_Playground::init(epdgui_args_vector_t &args)
 {
+    Serial.println("Initialize playground");
+
     _is_run = 1;
     M5.EPD.Clear();
 
     _canvas_title->pushCanvas(0, 8, UPDATE_MODE_NONE);
     EPDGUI_AddObject(_key_exit);
+
+    _page_container->ClearWidgets();
+    if (args.size() > 0)
+    {
+        String *param = (String *)(args[0]);
+        String jsonFilePath = *param;
+
+        LoadWidgetsFromJsonFile(jsonFilePath);
+    }
 
     _page_container->Init();
     EPDGUI_AddObject(_page_container);
@@ -78,4 +65,33 @@ void Frame_Playground::run(void)
     {
         lastButtonIndex = 0;
     }
+}
+
+void Frame_Playground::LoadWidgetsFromJsonFile(String jsonFilePath)
+{
+    JsonArray widgets;
+    File file = SD.open(jsonFilePath);
+    if (!file)
+    {
+        Serial.println("Failed to open file for reading");
+        return;
+    }
+
+    String content = "";
+    while (file.available())
+    {
+        content += (char)file.read();
+    }
+
+    DynamicJsonDocument jsonDocument(1024 * 16);
+    DeserializationError error = deserializeJson(jsonDocument, content);
+    if (error)
+    {
+        Serial.print(F("deserializeJson() failed: "));
+        Serial.println(error.f_str());
+        return;
+    }
+    widgets = jsonDocument["widgets"].as<JsonArray>();
+
+    _page_container->PropagateWidgets(widgets, WIDTH, HEADER_HEIGHT);
 }
