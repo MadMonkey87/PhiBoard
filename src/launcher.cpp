@@ -15,9 +15,9 @@ void PerformPhiAction(String phiActionId, String phiActionParam)
         {
             frame = new Frame_Home();
         }
-        else if (phiActionId == Frame_Playground::APPID)
+        else if (phiActionId == Frame_Dashboard::APPID)
         {
-            frame = new Frame_Playground();
+            frame = new Frame_Dashboard();
         }
         else if (phiActionId == Frame_FactoryTest::APPID)
         {

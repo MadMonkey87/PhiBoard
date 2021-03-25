@@ -10,7 +10,7 @@
 #include "frame_txtreader.h"
 #include "frame_compare.h"
 #include "frame_pictureviewer.h"
-#include "frame_playground.h"
+#include "frame_dashboard.h"
 #include "frame_home.h"
 
 #endif

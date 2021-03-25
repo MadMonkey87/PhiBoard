@@ -1,11 +1,11 @@
-#include "frame_playground.h"
+#include "frame_dashboard.h"
 #include "SD.h"
 #include "ArduinoJson.h"
 #include "FS.h"
 
-Frame_Playground::Frame_Playground() : Frame_Base()
+Frame_Dashboard::Frame_Dashboard() : Frame_Base()
 {
-    _frame_name = Frame_Playground::APPID;
+    _frame_name = Frame_Dashboard::APPID;
 
     exitbtn("Back");
     _canvas_title->drawString("Playground", 270, 34);
@@ -16,12 +16,12 @@ Frame_Playground::Frame_Playground() : Frame_Base()
     _page_container = new EPDGUI_Page_Container(0, HEADER_HEIGHT, WIDTH, HEIGHT - HEADER_HEIGHT);
 }
 
-Frame_Playground::~Frame_Playground()
+Frame_Dashboard::~Frame_Dashboard()
 {
     delete _page_container;
 }
 
-void Frame_Playground::init(epdgui_args_vector_t &args)
+void Frame_Dashboard::init(epdgui_args_vector_t &args)
 {
     Serial.println("Initialize playground");
 
@@ -44,7 +44,7 @@ void Frame_Playground::init(epdgui_args_vector_t &args)
     EPDGUI_AddObject(_page_container);
 }
 
-void Frame_Playground::run(void)
+void Frame_Dashboard::run(void)
 {
     M5.update();
     if (M5.BtnL.isPressed() && lastButtonIndex != -1)
@@ -67,7 +67,7 @@ void Frame_Playground::run(void)
     }
 }
 
-void Frame_Playground::LoadWidgetsFromJsonFile(String jsonFilePath)
+void Frame_Dashboard::LoadWidgetsFromJsonFile(String jsonFilePath)
 {
     JsonArray widgets;
     File file = SD.open(jsonFilePath);

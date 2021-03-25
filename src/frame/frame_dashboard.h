@@ -1,10 +1,10 @@
-#ifndef _FRAME_PLAYGROUND_H_
-#define _FRAME_PLAYGROUND_H_
+#ifndef _FRAME_DASHBOARD_H_
+#define _FRAME_DASHBOARD_H_
 
 #include "frame_base.h"
 #include "../epdgui/epdgui.h"
 
-class Frame_Playground : public Frame_Base
+class Frame_Dashboard : public Frame_Base
 {
 public:
     static constexpr const char* APPID = "24184b57-c0d8-4d2a-aa52-9ffd7ad0dc46";
@@ -13,8 +13,8 @@ public:
     static const int16_t HEADER_HEIGHT = 120;
 
 public:
-    Frame_Playground();
-    ~Frame_Playground();
+    Frame_Dashboard();
+    ~Frame_Dashboard();
     void run();
     void init(epdgui_args_vector_t &args);
 
@@ -24,4 +24,4 @@ private:
     void LoadWidgetsFromJsonFile(String jsonFilePath);
 };
 
-#endif //_FRAME_PLAYGROUND_H_
+#endif //_FRAME_DASHBOARD_H_
