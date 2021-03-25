@@ -21,9 +21,6 @@ public:
 
 protected:
     EPDGUI_Toggle *_toggle = NULL;
-
-private:
-    bool _value = false;
 };
 
 #endif //__PHI_WIDGET_Toggle_H

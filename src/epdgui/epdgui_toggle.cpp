@@ -2,18 +2,15 @@
 
 EPDGUI_Toggle::EPDGUI_Toggle(int16_t x, int16_t y, int16_t w, int16_t h) : EPDGUI_Base(x, y, w, h)
 {
-    this->_CanvasNormal = new M5EPD_Canvas(&M5.EPD);
-    this->_CanvasPressed = new M5EPD_Canvas(&M5.EPD);
-    this->_CanvasNormal->createCanvas(_w, _h);
-    this->_CanvasPressed->createCanvas(_w, _h);
+    this->_Canvas = new M5EPD_Canvas(&M5.EPD);
+    this->_Canvas->createCanvas(_w, _h);
 
     Render();
 }
 
 EPDGUI_Toggle::~EPDGUI_Toggle()
 {
-    delete this->_CanvasNormal;
-    delete this->_CanvasPressed;
+    delete this->_Canvas;
 }
 
 void EPDGUI_Toggle::Render()
@@ -24,16 +21,10 @@ void EPDGUI_Toggle::Render()
     int16_t KNOB_CORNER_RADIUS = KNOB_HEIGHT / 2;
     int16_t offset = GetValue() ? _w - KNOB_WIDTH - 2 * BORDER_WIDTH : 0;
 
-    this->_CanvasNormal->fillCanvas(GROUND_COLOR);
-    this->_CanvasNormal->fillRoundRect(0, 0, _w, _h, CORNER_RADIUS, BORDER_COLOR);
-    this->_CanvasNormal->fillRoundRect(BORDER_WIDTH, BORDER_WIDTH, _w - 2 * BORDER_WIDTH, _h - 2 * BORDER_WIDTH, CORNER_RADIUS - BORDER_WIDTH, BACKGROUND_COLOR);
-    this->_CanvasNormal->fillRoundRect(BORDER_WIDTH + offset, BORDER_WIDTH, KNOB_WIDTH, KNOB_HEIGHT, KNOB_CORNER_RADIUS, KNOB_COLOR);
-
-    this->_CanvasPressed->fillCanvas(15 - GROUND_COLOR);
-    this->_CanvasPressed->fillRoundRect(0, 0, _w, _h, CORNER_RADIUS, 15 - BORDER_COLOR);
-    this->_CanvasPressed->fillRoundRect(BORDER_WIDTH, BORDER_WIDTH, _w - 2 * BORDER_WIDTH, _h - 2 * BORDER_WIDTH, CORNER_RADIUS - BORDER_WIDTH, BACKGROUND_COLOR);
-    this->_CanvasPressed->fillRoundRect(BORDER_WIDTH + offset, BORDER_WIDTH, KNOB_WIDTH, KNOB_HEIGHT, KNOB_CORNER_RADIUS, KNOB_COLOR);
-    this->_CanvasPressed->ReverseColor();
+    this->_Canvas->fillCanvas(GROUND_COLOR);
+    this->_Canvas->fillRoundRect(0, 0, _w, _h, CORNER_RADIUS, BORDER_COLOR);
+    this->_Canvas->fillRoundRect(BORDER_WIDTH, BORDER_WIDTH, _w - 2 * BORDER_WIDTH, _h - 2 * BORDER_WIDTH, CORNER_RADIUS - BORDER_WIDTH, BACKGROUND_COLOR);
+    this->_Canvas->fillRoundRect(BORDER_WIDTH + offset, BORDER_WIDTH, KNOB_WIDTH, KNOB_HEIGHT, KNOB_CORNER_RADIUS, KNOB_COLOR);
 }
 
 void EPDGUI_Toggle::SetValue(int8_t value)
@@ -46,14 +37,9 @@ void EPDGUI_Toggle::SetValue(int8_t value)
     }
 }
 
-M5EPD_Canvas *EPDGUI_Toggle::CanvasNormal()
+M5EPD_Canvas *EPDGUI_Toggle::Canvas()
 {
-    return this->_CanvasNormal;
-}
-
-M5EPD_Canvas *EPDGUI_Toggle::CanvasPressed()
-{
-    return this->_CanvasPressed;
+    return this->_Canvas;
 }
 
 void EPDGUI_Toggle::Draw(m5epd_update_mode_t mode)
@@ -63,14 +49,7 @@ void EPDGUI_Toggle::Draw(m5epd_update_mode_t mode)
         return;
     }
 
-    if (_state == EVENT_NONE || _state == EVENT_RELEASED)
-    {
-        this->_CanvasNormal->pushCanvas(_x, _y, mode);
-    }
-    else if (_state == EVENT_PRESSED)
-    {
-        this->_CanvasPressed->pushCanvas(_x, _y, mode);
-    }
+    this->_Canvas->pushCanvas(_x, _y, mode);
 }
 
 void EPDGUI_Toggle::Draw(M5EPD_Canvas *canvas)
@@ -80,14 +59,7 @@ void EPDGUI_Toggle::Draw(M5EPD_Canvas *canvas)
         return;
     }
 
-    if (_state == EVENT_NONE || _state == EVENT_RELEASED)
-    {
-        _CanvasNormal->pushToCanvas(_x, _y, canvas);
-    }
-    else if (_state == EVENT_PRESSED)
-    {
-        _CanvasPressed->pushToCanvas(_x, _y, canvas);
-    }
+    _Canvas->pushToCanvas(_x, _y, canvas);
 }
 
 void EPDGUI_Toggle::BindValueChangedEvent(void (*func_cb)(epdgui_args_vector_t &))

@@ -3,7 +3,6 @@
 PHI_Widget_Toggle::PHI_Widget_Toggle(int16_t x, int16_t y, int16_t w, int16_t h) : PHI_Widget_Graphic_Base(x, y, w, h, true, false)
 {
     this->_toggle = new EPDGUI_Toggle(_x + (_w - TOGGLE_WIDTH) / 2, _y + (_h - TOGGLE_HEIGHT) / 2, TOGGLE_WIDTH, TOGGLE_HEIGHT);
-    
 }
 
 void PHI_Widget_Toggle::Render(JsonVariant data)
@@ -36,7 +35,6 @@ void PHI_Widget_Toggle::Draw(M5EPD_Canvas *canvas)
     }
 
     this->_toggle->Draw(canvas);
-
 }
 
 void PHI_Widget_Toggle::BindEvent(int16_t event, void (*func_cb)(epdgui_args_vector_t &))
