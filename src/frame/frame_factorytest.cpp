@@ -12,7 +12,7 @@ void frame_factorytest_exit_cb(epdgui_args_vector_t &args)
     *((int *)(args[0])) = 0;
 }
 
-Frame_FactoryTest::Frame_FactoryTest(void)
+Frame_FactoryTest::Frame_FactoryTest(void) : Frame_Base("Factory Test")
 {
     _frame_name = Frame_FactoryTest::APPID;
 
@@ -41,7 +41,6 @@ Frame_FactoryTest::Frame_FactoryTest(void)
     _canvas_pass->setTextDatum(CR_DATUM);
 
     exitbtn("Home");
-    _canvas_title->drawString("Factory Test", 270, 34);
 
     _key_exit->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void *)(&_is_run));
     _key_exit->BindEvent(EPDGUI_Button::EVENT_RELEASED, &Frame_Base::exit_cb);

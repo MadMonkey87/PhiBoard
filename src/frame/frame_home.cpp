@@ -9,6 +9,7 @@ Frame_Home::Frame_Home() : Frame_Base()
     _frame_name = Frame_Home::APPID;
     _frame_id = 1;
 
+    _header = new EPDGUI_Header(0, 0, WIDTH, HEADER_HEIGHT, "", false);
     _page_container = new EPDGUI_Page_Container(0, HEADER_HEIGHT, WIDTH, HEIGHT - HEADER_HEIGHT);
 }
 
@@ -23,6 +24,8 @@ void Frame_Home::init(epdgui_args_vector_t &args)
 
     _is_run = 1;
     M5.EPD.Clear();
+
+    EPDGUI_AddObject(_header);
 
     String content = "";
     File file = SD.open("/Index.json");
@@ -91,8 +94,9 @@ void Frame_Home::init(epdgui_args_vector_t &args)
     {
         virtualJsonDocument["name"];
     }
-    _canvas_title->drawString(name, 270, 34);
-    _canvas_title->pushCanvas(0, 8, UPDATE_MODE_NONE);
+    _header->SetTitle(name);
+    //_canvas_title->drawString(name, 270, 34);
+    //_canvas_title->pushCanvas(0, 8, UPDATE_MODE_NONE);
 
     _page_container->PropagateWidgets(widgets, WIDTH, HEADER_HEIGHT);
 

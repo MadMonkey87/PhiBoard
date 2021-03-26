@@ -34,7 +34,7 @@ void key_fileindex_exit_cb(epdgui_args_vector_t &args)
     *((int *)(args[0])) = 0;
 }
 
-Frame_FileIndex::Frame_FileIndex(String path)
+Frame_FileIndex::Frame_FileIndex(String path) : Frame_Base("Storage")
 {
     _frame_name = Frame_FileIndex::APPID;
     _path = path;

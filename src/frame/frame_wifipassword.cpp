@@ -5,7 +5,7 @@ void key_passwordclear_cb(epdgui_args_vector_t &args)
     ((EPDGUI_Textbox *)(args[0]))->SetText("");
 }
 
-Frame_WifiPassword::Frame_WifiPassword(bool isHorizontal) : Frame_Base()
+Frame_WifiPassword::Frame_WifiPassword(bool isHorizontal) : Frame_Base("Password")
 {
     _frame_name = "Frame_WifiPassword";
 
@@ -30,7 +30,6 @@ Frame_WifiPassword::Frame_WifiPassword(bool isHorizontal) : Frame_Base()
     key_textclear->BindEvent(EPDGUI_Button::EVENT_RELEASED, key_passwordclear_cb);
 
     exitbtn("WLAN");
-    _canvas_title->drawString("Password", 270, 34);
 
     _key_exit->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void *)(&_is_run));
     _key_exit->BindEvent(EPDGUI_Button::EVENT_RELEASED, &Frame_Base::exit_cb);

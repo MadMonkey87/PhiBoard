@@ -33,7 +33,7 @@ void key_wifi_cb(epdgui_args_vector_t &args)
     }
 }
 
-Frame_WifiScan::Frame_WifiScan(void)
+Frame_WifiScan::Frame_WifiScan(void) : Frame_Base("Wlan")
 {
     _frame_name = "Frame_WifiScan";
 
@@ -50,7 +50,6 @@ Frame_WifiScan::Frame_WifiScan(void)
     }
 
     exitbtn("Home");
-    _canvas_title->drawString("WLAN", 270, 34);
 
     _key_exit->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void *)(&_is_run));
     _key_exit->BindEvent(EPDGUI_Button::EVENT_RELEASED, &Frame_Base::exit_cb);

@@ -7,7 +7,7 @@ void key_pictureviewer_exit_cb(epdgui_args_vector_t &args)
     *((int *)(args[0])) = 0;
 }
 
-Frame_PictureViewer::Frame_PictureViewer(String path)
+Frame_PictureViewer::Frame_PictureViewer(String path) : Frame_Base("Picture Viewer")
 {
     _frame_name = "Frame_PictureViewer";
     _pic_path = path;

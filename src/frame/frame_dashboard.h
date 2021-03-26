@@ -19,6 +19,7 @@ public:
     void init(epdgui_args_vector_t &args);
 
 private:
+    EPDGUI_Header *_header;
     EPDGUI_Page_Container *_page_container;
     int16_t lastButtonIndex = 0;
     void LoadWidgetsFromJsonFile(String jsonFilePath);

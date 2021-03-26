@@ -116,7 +116,7 @@ void key_timezone_reset_cb(epdgui_args_vector_t &args)
     SetTimeZone(*tz);
 }
 
-Frame_Setting::Frame_Setting(void)
+Frame_Setting::Frame_Setting(void) : Frame_Base("Settings")
 {
     _frame_name = Frame_Setting::APPID;
 
@@ -157,7 +157,6 @@ Frame_Setting::Frame_Setting(void)
     _key_shutdown->setBMPButton("  Shutdown", "", ImageResource_item_icon_shutdown_32x32);
     _timezone_canvas->drawString("Time zone (UTC)", 15, 35);
     exitbtn("Home");
-    _canvas_title->drawString("Setting", 270, 34);
 
     _key_exit->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void *)(&_is_run));
     _key_exit->BindEvent(EPDGUI_Button::EVENT_RELEASED, &Frame_Base::exit_cb);

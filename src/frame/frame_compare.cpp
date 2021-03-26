@@ -76,7 +76,7 @@ void key_update_reset_cb(epdgui_args_vector_t &args)
     M5.EPD.UpdateArea(104, 168, 432, 748, UPDATE_MODE_INIT);
 }
 
-Frame_Compare::Frame_Compare(void)
+Frame_Compare::Frame_Compare(void) : Frame_Base("Compare Graphic Modes")
 {
     _frame_name = Frame_Compare::APPID;
 
@@ -89,7 +89,6 @@ Frame_Compare::Frame_Compare(void)
     _canvas_time->setTextDatum(CR_DATUM);
 
     exitbtn("Home");
-    _canvas_title->drawString("Compare", 270, 34);
     _key_updatemode[UPDATE_MODE_INIT] = new EPDGUI_Button("Reset all", 4, 88, 532, 60);
 
     _key_updatemode[UPDATE_MODE_INIT]->BindEvent(EPDGUI_Button::EVENT_RELEASED, key_update_reset_cb);

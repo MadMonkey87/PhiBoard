@@ -3,16 +3,16 @@
 #include "ArduinoJson.h"
 #include "FS.h"
 
-Frame_Dashboard::Frame_Dashboard() : Frame_Base()
+Frame_Dashboard::Frame_Dashboard() : Frame_Base("TEST")
 {
     _frame_name = Frame_Dashboard::APPID;
 
     exitbtn("Back");
-    _canvas_title->drawString("Playground", 270, 34);
 
     _key_exit->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void *)(&_is_run));
     _key_exit->BindEvent(EPDGUI_Button::EVENT_RELEASED, &Frame_Base::exit_cb);
 
+    _header = new EPDGUI_Header(0, 0, WIDTH, HEADER_HEIGHT);
     _page_container = new EPDGUI_Page_Container(0, HEADER_HEIGHT, WIDTH, HEIGHT - HEADER_HEIGHT);
 }
 
@@ -92,6 +92,7 @@ void Frame_Dashboard::LoadWidgetsFromJsonFile(String jsonFilePath)
         return;
     }
     widgets = jsonDocument["widgets"].as<JsonArray>();
-
+    
+    _header->SetTitle("TODO");
     _page_container->PropagateWidgets(widgets, WIDTH, HEADER_HEIGHT);
 }

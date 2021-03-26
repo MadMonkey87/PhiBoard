@@ -19,7 +19,7 @@ void key_prevpage_released_cb(epdgui_args_vector_t &args)
     // *((int8_t*)(args[0])) = -1;
 }
 
-Frame_txtReader::Frame_txtReader(String path)
+Frame_txtReader::Frame_txtReader(String path) : Frame_Base("Text Reader")
 {
     _frame_name = "Frame_txtReader";
     _txt_path = path;
