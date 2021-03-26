@@ -5,6 +5,8 @@ EPDGUI_Header::EPDGUI_Header(int16_t x, int16_t y, int16_t w, int16_t h, String 
     this->_Canvas = new M5EPD_Canvas(&M5.EPD);
     this->_Canvas->createCanvas(_w, _h);
 
+    this->_hasBackButton = backButton;
+
     Render();
 }
 
@@ -120,25 +122,31 @@ void EPDGUI_Header::SetTitle(String title)
 
 void EPDGUI_Header::Render()
 {
-    this->_Canvas->fillCanvas(GROUND_COLOR);
-
+    this->_Canvas->fillRect(0, STATUSBAR_HEIGHT, _w, _h - STATUSBAR_HEIGHT, GROUND_COLOR);
     this->_Canvas->fillRect(0, 0, _w, STATUSBAR_HEIGHT, STATUSBAR_BACKGROUND_COLOR);
-
-    //this->_Canvas->fillRect(0, 40, 80, 80, 15);
-    String icon = "/Icons/70x70/back-2.jpg";
-    this->_Canvas->drawJpgFile(SD, icon.c_str(), 5, 45, 70, 70);
 
     for (int i = 0; i < SEPARATOR_HEIGHT; i++)
     {
         this->_Canvas->drawFastHLine(SEPARATOR_HORIZONTAL_MARGIN, _h - i - 1, _w - 2 * SEPARATOR_HORIZONTAL_MARGIN, SEPARATOR_COLOR);
     }
 
-    for (int i = 0; i < SEPARATOR_HEIGHT; i++)
+    if (_hasBackButton)
     {
-        this->_Canvas->drawFastVLine(85 + i, 40 + SEPARATOR_HORIZONTAL_MARGIN, 80 - SEPARATOR_HORIZONTAL_MARGIN * 2, SEPARATOR_COLOR);
-    }
+        String icon = "/Icons/70x70/back-2.jpg";
+        //this->_Canvas->drawJpgFile(SD, icon.c_str(), 5, 45, 70, 70);
+        this->_Canvas->fillRect(0, 40, 70, 70, 15 - GROUND_COLOR);
+        this->_Canvas->fillRoundRect(0, 40, 70, 70, 5, 0);
+        this->_Canvas->drawJpgFile(SD, icon.c_str(), 5, 45, 70, 70);
+        this->_Canvas->ReversePartColor(0, 40, 80, 80);
 
-    this->_Canvas->setTextSize(26);
-    this->_Canvas->setTextDatum(ML_DATUM);
-    this->_Canvas->drawString(_title, 85 + SEPARATOR_HEIGHT + 5, (_h - STATUSBAR_HEIGHT) / 2 + STATUSBAR_HEIGHT);
+        this->_Canvas->setTextSize(26);
+        this->_Canvas->setTextDatum(ML_DATUM);
+        this->_Canvas->drawString(_title, 100, (_h - STATUSBAR_HEIGHT) / 2 + STATUSBAR_HEIGHT);
+    }
+    else
+    {
+        this->_Canvas->setTextSize(26);
+        this->_Canvas->setTextDatum(MC_DATUM);
+        this->_Canvas->drawString(_title, _w / 2, (_h - STATUSBAR_HEIGHT) / 2 + STATUSBAR_HEIGHT);
+    }
 }

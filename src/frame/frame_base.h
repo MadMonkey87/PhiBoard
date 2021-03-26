@@ -28,7 +28,6 @@ protected:
     static void exit_cb(epdgui_args_vector_t &args);
     String _frame_name;
     int _is_run = 1;
-    M5EPD_Canvas *_canvas_title = NULL;
     EPDGUI_Button *_key_exit = NULL;
     uint32_t _frame_id;
 };

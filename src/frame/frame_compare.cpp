@@ -148,7 +148,7 @@ void Frame_Compare::init(epdgui_args_vector_t &args)
     _is_run = 1;
     _update_flag = 1;
     M5.EPD.Clear();
-    _canvas_title->pushCanvas(0, 8, UPDATE_MODE_NONE);
+
     EPDGUI_AddObject(_key_exit);
     for (int i = 0; i < 8; i++)
     {

@@ -3,17 +3,6 @@
 
 Frame_Base::Frame_Base(String title)
 {
-    if (title != NULL && title != "")
-    {
-        _canvas_title = new M5EPD_Canvas(&M5.EPD);
-        _canvas_title->createCanvas(540, 64);
-        _canvas_title->drawFastHLine(0, 64, 540, 15);
-        _canvas_title->drawFastHLine(0, 63, 540, 15);
-        _canvas_title->drawFastHLine(0, 62, 540, 15);
-        _canvas_title->setTextSize(26);
-        _canvas_title->setTextDatum(CC_DATUM);
-        _canvas_title->drawString(title, 270, 34);
-    }
     _frame_id = 0;
     _frame_name = "Frame_Base";
 }
@@ -22,8 +11,6 @@ Frame_Base::~Frame_Base()
 {
     if (_key_exit != NULL)
         delete _key_exit;
-    if (_canvas_title != NULL)
-        delete _canvas_title;
 }
 
 void Frame_Base::exitbtn(String title, uint16_t width)

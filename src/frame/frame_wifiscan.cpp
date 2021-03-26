@@ -117,7 +117,6 @@ int Frame_WifiScan::scan()
 
     if (_scan_count > 0)
     {
-        _canvas_title->pushCanvas(0, 8, UPDATE_MODE_NONE);
         _key_exit->Draw(UPDATE_MODE_NONE);
         M5.EPD.UpdateFull(UPDATE_MODE_GC16);
     }
@@ -296,7 +295,6 @@ void Frame_WifiScan::init(epdgui_args_vector_t &args)
     _is_run = 1;
     M5.EPD.Clear();
     _connect = false;
-    _canvas_title->pushCanvas(0, 8, UPDATE_MODE_NONE);
     if (args.size() > 0)
     {
         String *password = (String *)(args[0]);

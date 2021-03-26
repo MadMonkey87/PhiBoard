@@ -163,7 +163,7 @@ Frame_Setting::Frame_Setting(void) : Frame_Base("Settings")
 
     _key_shutdown->BindEvent(EPDGUI_Button::EVENT_RELEASED, &key_shutdown_cb);
     _key_restart->BindEvent(EPDGUI_Button::EVENT_RELEASED, &key_restart_cb);
-    _key_syncntp->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, _canvas_title);
+    //_key_syncntp->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, "_canvas_title");
     _key_syncntp->AddArgs(EPDGUI_Button::EVENT_RELEASED, 1, _timezone_canvas);
     _key_syncntp->BindEvent(EPDGUI_Button::EVENT_RELEASED, &key_synctime_cb);
 
@@ -181,7 +181,6 @@ void Frame_Setting::init(epdgui_args_vector_t &args)
 {
     _is_run = 1;
     M5.EPD.Clear();
-    _canvas_title->pushCanvas(0, 8, UPDATE_MODE_NONE);
     _timezone_canvas->pushCanvas(0, kTimeZoneY, UPDATE_MODE_NONE);
     EPDGUI_AddObject(_key_shutdown);
     EPDGUI_AddObject(_key_restart);

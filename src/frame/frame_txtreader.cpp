@@ -39,7 +39,7 @@ Frame_txtReader::Frame_txtReader(String path) : Frame_Base("Text Reader")
 
     exitbtn("Back");
 
-    _canvas_title->drawString(path.substring(path.lastIndexOf("/") + 1, path.lastIndexOf(".")), 270, 34);
+    //_canvas_title->drawString(path.substring(path.lastIndexOf("/") + 1, path.lastIndexOf(".")), 270, 34);
 
     _key_exit->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void *)(&_is_run));
     _key_exit->BindEvent(EPDGUI_Button::EVENT_RELEASED, &key_txtreader_exit_cb);
@@ -174,7 +174,6 @@ void Frame_txtReader::init(epdgui_args_vector_t &args)
 {
     _is_run = 1;
     M5.EPD.Clear();
-    _canvas_title->pushCanvas(0, 8, UPDATE_MODE_NONE);
     _canvas_prev->createCanvas(540, 888);
     _canvas_current->createCanvas(540, 888);
     _canvas_next->createCanvas(540, 888);

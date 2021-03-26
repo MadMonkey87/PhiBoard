@@ -20,7 +20,7 @@ Frame_PictureViewer::Frame_PictureViewer(String path) : Frame_Base("Picture View
 
     exitbtn("Back");
 
-    _canvas_title->drawString(path.substring(path.lastIndexOf("/") + 1, path.lastIndexOf(".")), 270, 34);
+    //_canvas_title->drawString(path.substring(path.lastIndexOf("/") + 1, path.lastIndexOf(".")), 270, 34);
 
     _key_exit->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void *)(&_is_run));
     _key_exit->BindEvent(EPDGUI_Button::EVENT_RELEASED, &key_pictureviewer_exit_cb);
@@ -80,6 +80,5 @@ void Frame_PictureViewer::init(epdgui_args_vector_t &args)
 {
     _is_run = 1;
     M5.EPD.Clear();
-    _canvas_title->pushCanvas(0, 8, UPDATE_MODE_NONE);
     EPDGUI_AddObject(_key_exit);
 }

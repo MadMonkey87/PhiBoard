@@ -39,11 +39,11 @@ Frame_FileIndex::Frame_FileIndex(String path) : Frame_Base("Storage")
     _frame_name = Frame_FileIndex::APPID;
     _path = path;
 
-    _canvas_title->setTextDatum(CR_DATUM);
+    //_canvas_title->setTextDatum(CR_DATUM);
     if (path == "/")
     {
         exitbtn("Home");
-        _canvas_title->drawString("SD/", 540 - 15, 34);
+        //_canvas_title->drawString("SD/", 540 - 15, 34);
     }
     else
     {
@@ -55,7 +55,7 @@ Frame_FileIndex::Frame_FileIndex(String path) : Frame_Base("Storage")
         {
             subpath = path.substring(0, 20) + "...";
         }
-        _canvas_title->drawString("SD" + subpath, 540 - 15, 34);
+        //_canvas_title->drawString("SD" + subpath, 540 - 15, 34);
     }
 
     _key_exit->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void *)(&_is_run));
@@ -199,7 +199,6 @@ void Frame_FileIndex::init(epdgui_args_vector_t &args)
         listDir(SD, _path.c_str());
     }
 
-    _canvas_title->pushCanvas(0, 8, UPDATE_MODE_NONE);
     EPDGUI_AddObject(_key_exit);
 
     for (int i = 0; i < _key_files.size(); i++)

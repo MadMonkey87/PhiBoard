@@ -11,11 +11,11 @@ public:
     static const int16_t TEXT_SIZE = 26;
     static const int16_t FONT_COLOR = 15;
     static const int16_t SEPARATOR_COLOR = 4;
-    static const int16_t SEPARATOR_HEIGHT = 2;
+    static const int16_t SEPARATOR_HEIGHT = 1;
     static const int16_t SEPARATOR_HORIZONTAL_MARGIN = 10;
 
     static const int16_t STATUSBAR_HEIGHT = 40;
-    static const int16_t STATUSBAR_BACKGROUND_COLOR = 4;
+    static const int16_t STATUSBAR_BACKGROUND_COLOR = 1;
 
 public:
     static const int16_t EVENT_NONE = 0;
@@ -23,9 +23,9 @@ public:
     static const int16_t EVENT_RELEASED = 2;
 
 public:
-    EPDGUI_Header(int16_t x, int16_t y, int16_t w, int16_t h, String title = "", boolean backButton = true);
+    EPDGUI_Header(int16_t x, int16_t y, int16_t w, int16_t h, String title = "", boolean _hasBackButton = true);
     ~EPDGUI_Header();
-    void Draw(m5epd_update_mode_t mode = UPDATE_MODE_DU4);
+    void Draw(m5epd_update_mode_t mode = UPDATE_MODE_GLD16);
     void Draw(M5EPD_Canvas *canvas);
     void BindEvent(int16_t event, void (*func_cb)(epdgui_args_vector_t &));
     void UpdateTouchState(int16_t x, int16_t y);
@@ -44,6 +44,7 @@ private:
     epdgui_args_vector_t _released_cb_args;
     int16_t _state = EVENT_NONE;
     String _title;
+    int8_t _hasBackButton;
 
 public:
     M5EPD_Canvas *_Canvas = NULL;

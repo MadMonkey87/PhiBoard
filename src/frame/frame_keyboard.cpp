@@ -104,7 +104,6 @@ void Frame_Keyboard::init(epdgui_args_vector_t &args)
 {
     _is_run = 1;
     M5.EPD.Clear();
-    _canvas_title->pushCanvas(0, 8, UPDATE_MODE_NONE);
     EPDGUI_AddObject(inputbox);
     EPDGUI_AddObject(keyboard);
     EPDGUI_AddObject(_key_exit);
