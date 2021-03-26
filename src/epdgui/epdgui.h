@@ -13,6 +13,7 @@
 #include "epdgui_page_indicator.h"
 #include "epdgui_toggle.h"
 #include "epdgui_slider.h"
+#include "epdgui_header.h"
 #include "widget/phi_widget_base.h"
 #include "widget/phi_widget_graphic_base.h"
 #include "widget/phi_widget_icon.h"
