@@ -220,6 +220,7 @@ void EPDGUI_PopFrame(bool isDelete)
     if (isDelete)
     {
         wait_for_delete = frame_stack.top();
+        frame_map.erase(wait_for_delete->GetFrameName());
     }
     frame_stack.pop();
 }

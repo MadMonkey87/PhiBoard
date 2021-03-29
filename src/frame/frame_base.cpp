@@ -36,6 +36,6 @@ void Frame_Base::exit(void)
 
 void Frame_Base::exit_cb(epdgui_args_vector_t &args)
 {
-    EPDGUI_PopFrame();
+    EPDGUI_PopFrame(true);
     *((int *)(args[0])) = 0;
 }
