@@ -35,6 +35,7 @@ void EPDGUI_Run(Frame_Base* frame);
 void EPDGUI_MainLoop(void);
 void EPDGUI_PushFrame(Frame_Base* frame);
 void EPDGUI_PopFrame(bool isDelete = false);
+int16_t EPDGUI_GetFrameStackSize();
 void EPDGUI_OverwriteFrame(Frame_Base* frame);
 void EPDGUI_AddFrame(String name, Frame_Base* frame);
 void EPDGUI_AddFrameArg(String name, int n, void* arg);

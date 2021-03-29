@@ -6,13 +6,13 @@
 class EPDGUI_Page_Indicator : public EPDGUI_Base
 {
 public:
-    static const int16_t GROUND_COLOR = 1;
+    static const int16_t GROUND_COLOR = 0;
 
     static const int16_t INDICATOR_SPACING = 10;
 
     static const int16_t INDICATOR_RADIUS = 10;
     static const int16_t INDICATOR_BORDER_COLOR = 15;
-    static const int16_t INDICATOR_BACKGROUND_COLOR = 2;
+    static const int16_t INDICATOR_BACKGROUND_COLOR = 0;
     static const int16_t INDICATOR_BORDER_WIDTH = 2;
 
     static const int16_t INDICATOR_SELECTED_RADIUS = 12;

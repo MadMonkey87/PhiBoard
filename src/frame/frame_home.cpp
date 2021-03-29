@@ -111,11 +111,13 @@ void Frame_Home::run(void)
     {
         lastButtonIndex = -1;
         _page_container->SetPageIndex(_page_container->GetPageIndex() - 1);
+        _header->Draw();
     }
     else if (M5.BtnR.isPressed() && lastButtonIndex != 1)
     {
         lastButtonIndex = 1;
         _page_container->SetPageIndex(_page_container->GetPageIndex() + 1);
+        _header->Draw();
     }
     else if (!M5.BtnL.isPressed() && lastButtonIndex == -1)
     {

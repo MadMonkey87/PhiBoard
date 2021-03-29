@@ -224,6 +224,10 @@ void EPDGUI_PopFrame(bool isDelete)
     frame_stack.pop();
 }
 
+int16_t EPDGUI_GetFrameStackSize(){
+    return frame_stack.size();
+}
+
 void EPDGUI_OverwriteFrame(Frame_Base *frame)
 {
     while (!frame_stack.empty())

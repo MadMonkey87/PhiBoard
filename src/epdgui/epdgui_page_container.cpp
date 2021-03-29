@@ -40,7 +40,9 @@ void EPDGUI_Page_Container::SetPageIndex(int16_t pageIndex)
     _pageIndex = pageIndex;
     _page_indicator->SetPageIndex(pageIndex);
 
-    M5.EPD.Clear(0);
+    //M5.EPD.Clear(0);
+    M5.EPD.Clear();
+
     UpdateTouchState(-1, -1);
     Draw();
     M5.EPD.UpdateArea(_x, _y, _w, _h, UPDATE_MODE_GC16);

@@ -3,16 +3,14 @@
 #include "ArduinoJson.h"
 #include "FS.h"
 
-Frame_Dashboard::Frame_Dashboard() : Frame_Base("TEST")
+Frame_Dashboard::Frame_Dashboard() : Frame_Base("")
 {
     _frame_name = Frame_Dashboard::APPID;
 
-    exitbtn("Back");
-
-    _key_exit->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void *)(&_is_run));
-    _key_exit->BindEvent(EPDGUI_Button::EVENT_RELEASED, &Frame_Base::exit_cb);
-
     _header = new EPDGUI_Header(0, 0, WIDTH, HEADER_HEIGHT);
+    _header->BackButton()->AddArgs(EPDGUI_Button::EVENT_RELEASED, 0, (void *)(&_is_run));
+    _header->BackButton()->BindEvent(EPDGUI_Button::EVENT_RELEASED, &Frame_Base::exit_cb);
+
     _page_container = new EPDGUI_Page_Container(0, HEADER_HEIGHT, WIDTH, HEIGHT - HEADER_HEIGHT);
 }
 
@@ -28,6 +26,7 @@ void Frame_Dashboard::init(epdgui_args_vector_t &args)
     _is_run = 1;
     M5.EPD.Clear();
 
+    EPDGUI_AddObject(_header);
     //EPDGUI_AddObject(_key_exit);
 
     _page_container->ClearWidgets();
@@ -50,11 +49,13 @@ void Frame_Dashboard::run(void)
     {
         lastButtonIndex = -1;
         _page_container->SetPageIndex(_page_container->GetPageIndex() - 1);
+        _header->Draw();
     }
     else if (M5.BtnR.isPressed() && lastButtonIndex != 1)
     {
         lastButtonIndex = 1;
         _page_container->SetPageIndex(_page_container->GetPageIndex() + 1);
+        _header->Draw();
     }
     else if (!M5.BtnL.isPressed() && lastButtonIndex == -1)
     {
@@ -91,7 +92,13 @@ void Frame_Dashboard::LoadWidgetsFromJsonFile(String jsonFilePath)
         return;
     }
     widgets = jsonDocument["widgets"].as<JsonArray>();
-    
-    _header->SetTitle("TODO");
+
+    String name = "Dashboard";
+    if (jsonDocument.containsKey("name"))
+    {
+        jsonDocument["name"];
+    }
+    _header->SetTitle(name);
+
     _page_container->PropagateWidgets(widgets, WIDTH, HEADER_HEIGHT);
 }

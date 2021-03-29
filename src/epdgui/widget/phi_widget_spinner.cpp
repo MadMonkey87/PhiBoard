@@ -1,4 +1,5 @@
 #include "phi_widget_spinner.h"
+#include "Free_Fonts.h"
 
 PHI_Widget_Spinner::PHI_Widget_Spinner(int16_t x, int16_t y, int16_t w, int16_t h) : PHI_Widget_Base(x, y, w, h)
 {
@@ -75,10 +76,11 @@ void PHI_Widget_Spinner::RenderCenterButton(M5EPD_Canvas *canvas, bool pressed, 
     canvas->setTextDatum(MC_DATUM);
     canvas->drawString(description, canvas->width() / 2, 35);
 
-    canvas->setTextSize(TEXT_SIZE);
+    canvas->setFreeFont(FF24);
     canvas->setTextColor(FONT_COLOR);
     canvas->setTextDatum(MC_DATUM);
-    canvas->drawString(value, canvas->width() / 2, canvas->height() / 2);
+    canvas->drawString(value, canvas->width() / 2, canvas->height() / 2 + 20);
+    canvas->setFreeFont(NULL);
 
     if (pressed)
     {

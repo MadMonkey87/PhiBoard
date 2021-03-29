@@ -2,6 +2,8 @@
 #define __EPDGUI_HEADER_H
 
 #include "epdgui_base.h"
+#include "epdgui_button.h"
+#include "epdgui.h"
 
 class EPDGUI_Header : public EPDGUI_Base
 {
@@ -35,6 +37,7 @@ public:
     String GetTitle() { return _title; }
 
     M5EPD_Canvas *Canvas();
+    EPDGUI_Button *BackButton();
 
 private:
     virtual void Render();
@@ -44,7 +47,7 @@ private:
     epdgui_args_vector_t _released_cb_args;
     int16_t _state = EVENT_NONE;
     String _title;
-    int8_t _hasBackButton;
+    EPDGUI_Button *_backButton;
 
 public:
     M5EPD_Canvas *_Canvas = NULL;

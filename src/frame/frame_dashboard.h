@@ -7,7 +7,7 @@
 class Frame_Dashboard : public Frame_Base
 {
 public:
-    static constexpr const char* APPID = "24184b57-c0d8-4d2a-aa52-9ffd7ad0dc46";
+    static constexpr const char *APPID = "24184b57-c0d8-4d2a-aa52-9ffd7ad0dc46";
     static const int16_t WIDTH = 540;
     static const int16_t HEIGHT = 960;
     static const int16_t HEADER_HEIGHT = 120;
