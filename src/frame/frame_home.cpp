@@ -96,8 +96,6 @@ void Frame_Home::init(epdgui_args_vector_t &args)
         virtualJsonDocument["name"];
     }
     _header->SetTitle(name);
-    //_canvas_title->drawString(name, 270, 34);
-    //_canvas_title->pushCanvas(0, 8, UPDATE_MODE_NONE);
 
     _page_container->PropagateWidgets(widgets, WIDTH, HEADER_HEIGHT);
 

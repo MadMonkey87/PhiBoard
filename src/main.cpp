@@ -11,7 +11,6 @@ void setup()
     SysInit_Start();
 }
 
-
 void loop()
 {
     EPDGUI_MainLoop();

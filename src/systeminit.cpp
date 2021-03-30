@@ -128,6 +128,8 @@ void SysInit_Start(void)
     Serial.println("OK");
 
     delay(500);
+
+    EPDGUI_SetInitialized();
 }
 
 void SysInit_Loading(void *pvParameters)

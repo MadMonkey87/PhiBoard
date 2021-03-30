@@ -18,6 +18,7 @@ uint8_t frame_switch_count = 0;
 bool _is_auto_update = true;
 uint16_t _last_pos_x = 0xFFFF, _last_pos_y = 0xFFFF;
 bool _last_is_finger_up = false;
+bool _isInitialized = false;
 
 void EPDGUI_AddObject(EPDGUI_Base *object)
 {
@@ -148,6 +149,11 @@ void EPDGUI_Run(Frame_Base *frame)
 
 void EPDGUI_MainLoop(void)
 {
+    if(!_isInitialized){
+        log_d("Not yet initialized");
+        return;
+    }
+
     if ((!frame_stack.empty()) && (frame_stack.top() != NULL))
     {
         Frame_Base *frame = frame_stack.top();
@@ -209,8 +215,6 @@ void EPDGUI_PushFrame(Frame_Base *frame)
         }
     }
 
-    //frame->init(frame_map[frame->GetFrameName()].args);
-
     //EPDGUI_OverwriteFrame(frame);
     frame_stack.push(frame);
     frame->SetIsRun(1);
@@ -252,4 +256,8 @@ void EPDGUI_OverwriteFrame(Frame_Base *frame)
 void EPDGUI_SetAutoUpdate(bool isAuto)
 {
     _is_auto_update = isAuto;
+}
+
+void EPDGUI_SetInitialized(){
+    _isInitialized = true;
 }

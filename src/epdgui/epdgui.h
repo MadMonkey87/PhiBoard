@@ -42,5 +42,6 @@ void EPDGUI_AddFrameArg(String name, int n, void* arg);
 Frame_Base* EPDGUI_GetFrame(String name);
 Frame_Base* EPDGUI_GetCurrent();
 void EPDGUI_SetAutoUpdate(bool isAuto);
+void EPDGUI_SetInitialized();
 
 #endif //__EPDGUI_H
