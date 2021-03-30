@@ -211,6 +211,7 @@ void EPDGUI_PushFrame(Frame_Base *frame)
 
     //frame->init(frame_map[frame->GetFrameName()].args);
 
+    //EPDGUI_OverwriteFrame(frame);
     frame_stack.push(frame);
     frame->SetIsRun(1);
 }
@@ -223,9 +224,19 @@ void EPDGUI_PopFrame(bool isDelete)
         frame_map.erase(wait_for_delete->GetFrameName());
     }
     frame_stack.pop();
+
+    if (!frame_stack.empty())
+    {
+        Frame_Base *currentFrame = frame_stack.top();
+        if (currentFrame != NULL)
+        {
+            currentFrame->SetIsRun(0);
+        }
+    }
 }
 
-int16_t EPDGUI_GetFrameStackSize(){
+int16_t EPDGUI_GetFrameStackSize()
+{
     return frame_stack.size();
 }
 
