@@ -16,6 +16,7 @@ Frame_Dashboard::Frame_Dashboard() : Frame_Base("")
 
 Frame_Dashboard::~Frame_Dashboard()
 {
+    delete _header;
     delete _page_container;
 }
 

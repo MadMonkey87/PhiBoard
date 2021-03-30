@@ -7,7 +7,7 @@
       "icon": "/Icons/dashboard.jpg",
       "grid_width": 1,
       "grid_height": 1,
-      "phiActionId": "24184b57-c0d8-4d2a-aa52-9ffd7ad0dc46",
+      "phiActionId": "dashboard-24184b57-c0d8-4d2a-aa52-9ffd7ad0dc46",
       "phiActionParam": "/dashboards/WidgetTypes.json"
     },
     {
@@ -16,7 +16,7 @@
       "icon": "/Icons/dashboard.jpg",
       "grid_width": 1,
       "grid_height": 1,
-      "phiActionId": "24184b57-c0d8-4d2a-aa52-9ffd7ad0dc46",
+      "phiActionId": "dashboard-24184b57-c0d8-4d2a-aa52-9ffd7ad0dc46",
       "phiActionParam": "/dashboards/Empty.json"
     }
   ]

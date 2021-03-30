@@ -59,9 +59,9 @@ void SysInit_Start(void)
     if (ret == false)
     {
         SetInitStatus(0, 0);
-        // log_e("Failed to initialize SD card.");
-        // SysInit_UpdateInfo("[ERROR] Failed to initialize SD card.");
-        // WaitForUser();
+        log_e("Failed to initialize SD card.");
+        SysInit_UpdateInfo("[ERROR] Failed to initialize SD card.");
+        WaitForUser();
     }
 
     SysInit_UpdateInfo("Initializing Touch pad...");
@@ -92,12 +92,7 @@ void SysInit_Start(void)
 
     _initcanvas.createRender(26, 128);
 
-    SysInit_UpdateInfo("Loading home screen...");
-    Frame_Home *frame_home = new Frame_Home();
-    //Frame_Playground *frame_home = new Frame_Playground();
-    EPDGUI_PushFrame(frame_home);
-
-    if (isWiFiConfiged())
+    /*if (isWiFiConfiged())
     {
         SysInit_UpdateInfo("Init connect to " + GetWifiSSID() + "...");
         WiFi.begin(GetWifiSSID().c_str(), GetWifiPassword().c_str());
@@ -116,7 +111,12 @@ void SysInit_Start(void)
                 break;
             }
         }
-    }
+    }*/
+
+    SysInit_UpdateInfo("Loading home screen...");
+    Frame_Home *frame_home = new Frame_Home();
+    //Frame_Empty *frame_home = new Frame_Empty();
+    EPDGUI_PushFrame(frame_home);
 
     log_d("done");
 

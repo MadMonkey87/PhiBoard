@@ -15,6 +15,7 @@ Frame_Home::Frame_Home() : Frame_Base()
 
 Frame_Home::~Frame_Home()
 {
+    delete _header;
     delete _page_container;
 }
 

@@ -7,7 +7,7 @@
 class Frame_Home : public Frame_Base
 {
 public:
-    static constexpr const char *APPID = "6356d87c-6114-4a29-aa9f-62b0340c406f";
+    static constexpr const char *APPID = "home-6356d87c-6114-4a29-aa9f-62b0340c406f";
 
 public:
     static const int16_t WIDTH = 540;
