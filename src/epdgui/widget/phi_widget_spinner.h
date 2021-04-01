@@ -5,23 +5,33 @@
 #include "../epdgui_button.h"
 #include "ArduinoJson.h"
 
+struct Widget_Spinner_Definition : Widget_Base_Definition
+{
+    public:
+    String Description;
+    String Value;
+    Icon_Definition *UpIcon;
+    Icon_Definition *DownIcon;
+};
+
 class PHI_Widget_Spinner : public PHI_Widget_Base
 {
 public:
     static const int16_t BUTTON_HEIGHT = 80;
 
 public:
-    PHI_Widget_Spinner(int16_t x, int16_t y, int16_t w, int16_t h);
+    PHI_Widget_Spinner(int16_t x, int16_t y, int16_t w, int16_t h, Widget_Spinner_Definition *definition);
     void BindEvent(int16_t event, void (*func_cb)(epdgui_args_vector_t &));
     void Draw(m5epd_update_mode_t mode = UPDATE_MODE_GC16); //UPDATE_MODE_DU4
     void Draw(M5EPD_Canvas *canvas);
     void UpdateTouchState(int16_t x, int16_t y);
-    void Render(JsonVariant data);
+    void Render();
 
 protected:
     EPDGUI_Button *_centralButton = NULL;
     EPDGUI_Button *_leftButton = NULL;
     EPDGUI_Button *_rightButton = NULL;
+    Widget_Spinner_Definition *_definition;
 
 private:
     void RenderCenterButton(M5EPD_Canvas *canvas, bool pressed, String description, String value);

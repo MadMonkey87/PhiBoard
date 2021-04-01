@@ -1,7 +1,9 @@
 #include "phi_widget_double_switch.h"
 
-PHI_Widget_Double_Switch::PHI_Widget_Double_Switch(int16_t x, int16_t y, int16_t w, int16_t h) : PHI_Widget_Graphic_Base(x, y, w, h, false, false)
+PHI_Widget_Double_Switch::PHI_Widget_Double_Switch(int16_t x, int16_t y, int16_t w, int16_t h, Widget_Double_Switch_Definition *definition) : PHI_Widget_Graphic_Base(x, y, w, h, false, false)
 {
+    this->_definition = definition;
+
     this->_Canvas = new M5EPD_Canvas(&M5.EPD);
     this->_Canvas->createCanvas(_w, MIDDLE_HEIGHT);
 
@@ -16,20 +18,17 @@ PHI_Widget_Double_Switch::~PHI_Widget_Double_Switch()
     delete this->_lowerButton;
 }
 
-void PHI_Widget_Double_Switch::Render(JsonVariant data)
+void PHI_Widget_Double_Switch::Render()
 {
     this->_Canvas->fillCanvas(BORDER_COLOR);
     this->_Canvas->fillRect(BORDER_WIDTH, 0, _w - BORDER_WIDTH * 2, MIDDLE_HEIGHT, BACKGROUND_COLOR);
     this->_Canvas->fillRect(BAR_HORIZONTAL_MARGIN, MIDDLE_HEIGHT / 2 - BAR_HEIGHT / 2, _w - (BAR_HORIZONTAL_MARGIN * 2), BAR_HEIGHT, BAR_COLOR);
 
-    String upperIcon = data["upicon"];
-    String lowerIcon = data["downicon"];
+    RenderUpperButton(this->_upperButton->CanvasNormal(), false, this->_definition->UpIcon->Path);
+    RenderUpperButton(this->_upperButton->CanvasPressed(), true, this->_definition->UpIcon->Path);
 
-    RenderUpperButton(this->_upperButton->CanvasNormal(), false, upperIcon);
-    RenderUpperButton(this->_upperButton->CanvasPressed(), true, upperIcon);
-
-    RenderLowerButton(this->_lowerButton->CanvasNormal(), false, lowerIcon);
-    RenderLowerButton(this->_lowerButton->CanvasPressed(), true, lowerIcon);
+    RenderLowerButton(this->_lowerButton->CanvasNormal(), false, this->_definition->DownIcon->Path);
+    RenderLowerButton(this->_lowerButton->CanvasPressed(), true, this->_definition->DownIcon->Path);
 }
 
 void PHI_Widget_Double_Switch::RenderUpperButton(M5EPD_Canvas *canvas, bool pressed, String icon)
@@ -101,4 +100,9 @@ void PHI_Widget_Double_Switch::Draw(M5EPD_Canvas *canvas)
 
     this->_upperButton->Draw(canvas);
     this->_lowerButton->Draw(canvas);
+}
+
+PhiAction_Definition *PHI_Widget_Double_Switch::GetPhiAction()
+{
+    return NULL;
 }

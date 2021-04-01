@@ -1,16 +1,17 @@
 #include "phi_widget_toggle.h"
 
-PHI_Widget_Toggle::PHI_Widget_Toggle(int16_t x, int16_t y, int16_t w, int16_t h) : PHI_Widget_Graphic_Base(x, y, w, h, true, false)
+PHI_Widget_Toggle::PHI_Widget_Toggle(int16_t x, int16_t y, int16_t w, int16_t h, Widget_Toggle_Definition *definition) : PHI_Widget_Graphic_Base(x, y, w, h, true, false)
 {
+    this->_definition = definition;
+
     this->_toggle = new EPDGUI_Toggle(_x + (_w - TOGGLE_WIDTH) / 2, _y + (_h - TOGGLE_HEIGHT) / 2, TOGGLE_WIDTH, TOGGLE_HEIGHT);
 }
 
-void PHI_Widget_Toggle::Render(JsonVariant data)
+void PHI_Widget_Toggle::Render()
 {
-    PHI_Widget_Graphic_Base::Render(data);
+    PHI_Widget_Graphic_Base::Render();
 
-    String description = data["description"];
-    RenderDescriptionLabel(description.c_str());
+    RenderDescriptionLabel(this->_definition->Description.c_str());
 }
 
 void PHI_Widget_Toggle::Draw(m5epd_update_mode_t mode)
@@ -49,4 +50,9 @@ void PHI_Widget_Toggle::UpdateTouchState(int16_t x, int16_t y)
     }
 
     this->_toggle->UpdateTouchState(x, y);
+}
+
+PhiAction_Definition *PHI_Widget_Toggle::GetPhiAction()
+{
+    return this->_definition->PhiAction;
 }

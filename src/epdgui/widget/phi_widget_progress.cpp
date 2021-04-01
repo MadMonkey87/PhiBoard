@@ -1,17 +1,18 @@
 #include "phi_widget_progress.h"
 
-PHI_Widget_Progress::PHI_Widget_Progress(int16_t x, int16_t y, int16_t w, int16_t h) : PHI_Widget_Graphic_Base(x, y, w, h, true, true)
+PHI_Widget_Progress::PHI_Widget_Progress(int16_t x, int16_t y, int16_t w, int16_t h, Widget_Progress_Definition *definition) : PHI_Widget_Graphic_Base(x, y, w, h, true, true)
 {
-}
-
-void PHI_Widget_Progress::Render(JsonVariant data)
-{
-    PHI_Widget_Graphic_Base::Render(data);
-
-    this->Render();
+    this->_definition = definition;
 }
 
 void PHI_Widget_Progress::Render()
+{
+    PHI_Widget_Graphic_Base::Render();
+
+    this->RenderInternal();
+}
+
+void PHI_Widget_Progress::RenderInternal()
 {
     bool portrait = _h > _w || _h > 240;
     int16_t OFFSET_Y = portrait ? 0 : -20;
@@ -41,7 +42,7 @@ void PHI_Widget_Progress::Render()
     _CanvasPressed->setTextDatum(MC_DATUM);
     _CanvasPressed->drawString(value.c_str(), _w / 2, _h / 2 + OFFSET_Y);
 
-    String description = "FooBar"; //data["description"];
+    String description = this->_definition->Description;
     if (portrait)
     {
         _CanvasPressed->setTextSize(TEXT_SIZE);
@@ -87,4 +88,9 @@ void PHI_Widget_Progress::RenderGauge(M5EPD_Canvas *canvas, int16_t x, int16_t y
             canvas->fillCircle(xp3, yp3, (outerRadius - innerRadius) / 2, color);
         }
     }
+}
+
+PhiAction_Definition *PHI_Widget_Progress::GetPhiAction()
+{
+    return this->_definition->PhiAction;
 }

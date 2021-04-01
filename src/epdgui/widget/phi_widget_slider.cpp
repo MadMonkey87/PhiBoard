@@ -1,16 +1,17 @@
 #include "phi_widget_slider.h"
 
-PHI_Widget_Slider::PHI_Widget_Slider(int16_t x, int16_t y, int16_t w, int16_t h) : PHI_Widget_Graphic_Base(x, y, w, h, true, false)
+PHI_Widget_Slider::PHI_Widget_Slider(int16_t x, int16_t y, int16_t w, int16_t h, Widget_Slider_Definition *definition) : PHI_Widget_Graphic_Base(x, y, w, h, true, false)
 {
+    this->_definition = definition;
+
     this->_slider = new EPDGUI_Slider(_x + BORDER_WIDTH, _y + (_h - 60) / 2, _w - 2 * BORDER_WIDTH, SLIDER_HEIGHT);
 }
 
-void PHI_Widget_Slider::Render(JsonVariant data)
+void PHI_Widget_Slider::Render()
 {
-    PHI_Widget_Graphic_Base::Render(data);
+    PHI_Widget_Graphic_Base::Render();
 
-    String description = data["description"];
-    RenderDescriptionLabel(description.c_str());
+    RenderDescriptionLabel(this->_definition->Description.c_str());
 }
 
 void PHI_Widget_Slider::Draw(m5epd_update_mode_t mode)
@@ -49,4 +50,9 @@ void PHI_Widget_Slider::UpdateTouchState(int16_t x, int16_t y)
     }
 
     this->_slider->UpdateTouchState(x, y);
+}
+
+PhiAction_Definition *PHI_Widget_Slider::GetPhiAction()
+{
+    return NULL;
 }

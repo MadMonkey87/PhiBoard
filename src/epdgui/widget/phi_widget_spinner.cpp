@@ -1,30 +1,27 @@
 #include "phi_widget_spinner.h"
 #include "Free_Fonts.h"
 
-PHI_Widget_Spinner::PHI_Widget_Spinner(int16_t x, int16_t y, int16_t w, int16_t h) : PHI_Widget_Base(x, y, w, h)
+PHI_Widget_Spinner::PHI_Widget_Spinner(int16_t x, int16_t y, int16_t w, int16_t h, Widget_Spinner_Definition *definition) : PHI_Widget_Base(x, y, w, h)
 {
+    this->_definition = definition;
+
     this->_centralButton = new EPDGUI_Button(_x, _y, _w, (_h - BUTTON_HEIGHT));
 
     int16_t button_width = _w / 2;
     this->_leftButton = new EPDGUI_Button(_x, _y + _h - BUTTON_HEIGHT, button_width, BUTTON_HEIGHT);
-    this->_rightButton = new EPDGUI_Button(_x + button_width -2, _y + _h - BUTTON_HEIGHT, button_width, BUTTON_HEIGHT);
+    this->_rightButton = new EPDGUI_Button(_x + button_width - 2, _y + _h - BUTTON_HEIGHT, button_width, BUTTON_HEIGHT);
 }
 
-void PHI_Widget_Spinner::Render(JsonVariant data)
+void PHI_Widget_Spinner::Render()
 {
-    String upIcon = data["upicon"];
-    String downIcon = data["downicon"];
-    String description = data["description"];
-    String value = data["value"];
+    RenderCenterButton(this->_centralButton->CanvasNormal(), false, this->_definition->Description, this->_definition->Value);
+    RenderCenterButton(this->_centralButton->CanvasPressed(), true, this->_definition->Description, this->_definition->Value);
 
-    RenderCenterButton(this->_centralButton->CanvasNormal(), false, description, value);
-    RenderCenterButton(this->_centralButton->CanvasPressed(), true, description, value);
+    RenderLeftButton(this->_leftButton->CanvasNormal(), false, this->_definition->DownIcon->Path);
+    RenderLeftButton(this->_leftButton->CanvasPressed(), true, this->_definition->DownIcon->Path);
 
-    RenderLeftButton(this->_leftButton->CanvasNormal(), false, downIcon);
-    RenderLeftButton(this->_leftButton->CanvasPressed(), true, downIcon);
-
-    RenderRightButton(this->_rightButton->CanvasNormal(), false, upIcon);
-    RenderRightButton(this->_rightButton->CanvasPressed(), true, upIcon);
+    RenderRightButton(this->_rightButton->CanvasNormal(), false, this->_definition->UpIcon->Path);
+    RenderRightButton(this->_rightButton->CanvasPressed(), true, this->_definition->UpIcon->Path);
 }
 
 void PHI_Widget_Spinner::BindEvent(int16_t event, void (*func_cb)(epdgui_args_vector_t &))
@@ -92,7 +89,7 @@ void PHI_Widget_Spinner::RenderLeftButton(M5EPD_Canvas *canvas, bool pressed, St
 {
     PHI_Widget_Base::RenderBackground(RENDER_BACKGROUND_MODE_BOTTOM_LEFT, canvas, pressed);
 
-    int16_t halfBoarderWith = BORDER_WIDTH % 2 == 0 ? BORDER_WIDTH/2 : (BORDER_WIDTH/2-1);
+    int16_t halfBoarderWith = BORDER_WIDTH % 2 == 0 ? BORDER_WIDTH / 2 : (BORDER_WIDTH / 2 - 1);
 
     if (!pressed)
     {
@@ -102,7 +99,7 @@ void PHI_Widget_Spinner::RenderLeftButton(M5EPD_Canvas *canvas, bool pressed, St
         }
         for (int i = 0; i < halfBoarderWith; i++)
         {
-            canvas->drawFastVLine(canvas->width() -i-1, BORDER_WIDTH, canvas->height() - BORDER_WIDTH, BORDER_COLOR);
+            canvas->drawFastVLine(canvas->width() - i - 1, BORDER_WIDTH, canvas->height() - BORDER_WIDTH, BORDER_COLOR);
         }
     }
 
@@ -118,8 +115,7 @@ void PHI_Widget_Spinner::RenderRightButton(M5EPD_Canvas *canvas, bool pressed, S
 {
     PHI_Widget_Base::RenderBackground(RENDER_BACKGROUND_MODE_BOTTOM_RIGHT, canvas, pressed);
 
-    int16_t halfBoarderWith = BORDER_WIDTH % 2 == 0 ? BORDER_WIDTH/2 : (BORDER_WIDTH/2+1);
-
+    int16_t halfBoarderWith = BORDER_WIDTH % 2 == 0 ? BORDER_WIDTH / 2 : (BORDER_WIDTH / 2 + 1);
 
     if (!pressed)
     {

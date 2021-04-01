@@ -4,6 +4,23 @@
 #include "../epdgui_base.h"
 #include "ArduinoJson.h"
 
+struct Widget_Base_Definition
+{
+};
+
+struct Icon_Definition
+{
+public:
+    String Path;
+};
+
+struct PhiAction_Definition
+{
+public:
+    String Id;
+    String Parameter;
+};
+
 class PHI_Widget_Base : public EPDGUI_Base
 {
 public:
@@ -42,15 +59,12 @@ public:
 public:
     PHI_Widget_Base(int16_t x, int16_t y, int16_t w, int16_t h);
     ~PHI_Widget_Base();
-    //void Draw(m5epd_update_mode_t mode = UPDATE_MODE_GLD16); //UPDATE_MODE_GL16 //UPDATE_MODE_DU4
-    //void Draw(M5EPD_Canvas* canvas);
-    virtual void Render(JsonVariant data);
-    void Init(JsonVariant data);
+    virtual void Render();
+    virtual void Init();
 
 protected:
     virtual void RenderDescriptionLabel(M5EPD_Canvas *canvas, const char *string);
     void RenderBackground(int16_t mode, M5EPD_Canvas *canvas, bool revertable);
-    String ApiId;
 };
 
 #endif //__PHI_WIDGET_BASE_H

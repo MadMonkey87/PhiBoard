@@ -1,7 +1,9 @@
 #include "phi_widget_multi_button.h"
 
-PHI_Widget_Multi_Button::PHI_Widget_Multi_Button(int16_t x, int16_t y, int16_t w, int16_t h, int16_t items) : PHI_Widget_Base(x, y, w, h)
+PHI_Widget_Multi_Button::PHI_Widget_Multi_Button(int16_t x, int16_t y, int16_t w, int16_t h, int16_t items, Widget_MultiButton_Definition *definition) : PHI_Widget_Base(x, y, w, h)
 {
+    this->_definition = definition;
+
     int16_t element_height = h / items;
 
     for (int i = 0; i < items; i++)
@@ -19,7 +21,7 @@ PHI_Widget_Multi_Button::~PHI_Widget_Multi_Button()
     }
 }
 
-void PHI_Widget_Multi_Button::Render(JsonVariant data)
+void PHI_Widget_Multi_Button::Render()
 {
     int index = 0;
     int last = _buttons.size() - 1;

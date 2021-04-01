@@ -8,18 +8,12 @@ PHI_Widget_Base::~PHI_Widget_Base()
 {
 }
 
-void PHI_Widget_Base::Init(JsonVariant data)
+void PHI_Widget_Base::Init()
 {
-    if (data != NULL)
-    {
-        String apiId = data["apiid"];
-        this->ApiId = apiId;
-    }
-
-    Render(data);
+    Render();
 }
 
-void PHI_Widget_Base::Render(JsonVariant data)
+void PHI_Widget_Base::Render()
 {
 }
 

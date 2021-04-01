@@ -5,6 +5,13 @@
 #include "../epdgui_button.h"
 #include "ArduinoJson.h"
 
+struct Widget_Double_Switch_Definition : Widget_Base_Definition
+{
+public:
+    Icon_Definition *UpIcon;
+    Icon_Definition *DownIcon;
+};
+
 class PHI_Widget_Double_Switch : public PHI_Widget_Graphic_Base
 {
 public:
@@ -14,17 +21,19 @@ public:
     static const int16_t BAR_COLOR = 6;
 
 public:
-    PHI_Widget_Double_Switch(int16_t x, int16_t y, int16_t w, int16_t h);
+    PHI_Widget_Double_Switch(int16_t x, int16_t y, int16_t w, int16_t h, Widget_Double_Switch_Definition *definition);
     ~PHI_Widget_Double_Switch();
     void Draw(m5epd_update_mode_t mode = UPDATE_MODE_GC16); //UPDATE_MODE_DU4
     void Draw(M5EPD_Canvas *canvas);
     void BindEvent(int16_t event, void (*func_cb)(epdgui_args_vector_t &));
     void UpdateTouchState(int16_t x, int16_t y);
-    void Render(JsonVariant data);
+    void Render();
 
 protected:
     EPDGUI_Button *_upperButton = NULL;
     EPDGUI_Button *_lowerButton = NULL;
+    Widget_Double_Switch_Definition *_definition = NULL;
+    PhiAction_Definition *GetPhiAction();
 
 private:
     void RenderUpperButton(M5EPD_Canvas *canvas, bool pressed, String icon);

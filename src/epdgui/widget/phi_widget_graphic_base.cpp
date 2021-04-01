@@ -29,17 +29,17 @@ PHI_Widget_Graphic_Base::~PHI_Widget_Graphic_Base()
     }
 }
 
-void PHI_Widget_Graphic_Base::Init(JsonVariant data)
+void PHI_Widget_Graphic_Base::Init()
 {
-    if (data != NULL)
+    /*if (data != NULL)
     {
         String phiActionId = data["phiActionId"];
+        _phiActionId = new String(phiActionId);
         String phiActionParam = data["phiActionParam"];
-        _phiActionId = phiActionId;
-        _phiActionParam = phiActionParam;
-    }
+        _phiActionParam = new String(phiActionParam);
+    }*/
 
-    PHI_Widget_Base::Init(data);
+    PHI_Widget_Base::Init();
 
     if (this->_CanvasPressed != NULL)
     {
@@ -123,16 +123,19 @@ void PHI_Widget_Graphic_Base::UpdateTouchState(int16_t x, int16_t y)
             {
                 _released_cb(_released_cb_args);
             }
-            if (this->_phiActionId != NULL)
+
+            PhiAction_Definition *phiAction = GetPhiAction();
+
+            if (phiAction != NULL)
             {
-                PerformPhiAction(this->_phiActionId, this->_phiActionParam);
+                PerformPhiAction(phiAction->Id, phiAction->Parameter);
             }
             Draw();
         }
     }
 }
 
-void PHI_Widget_Graphic_Base::Render(JsonVariant data)
+void PHI_Widget_Graphic_Base::Render()
 {
     if (this->_Canvas != NULL)
     {
@@ -167,3 +170,5 @@ void PHI_Widget_Graphic_Base::RenderDescriptionLabel(const char *string)
         PHI_Widget_Base::RenderDescriptionLabel(this->_CanvasPressed, string);
     }
 }
+
+PhiAction_Definition *PHI_Widget_Graphic_Base::GetPhiAction() { return NULL; }

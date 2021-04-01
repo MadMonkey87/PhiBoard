@@ -14,14 +14,15 @@ public:
     void Draw(M5EPD_Canvas *canvas);
     void BindEvent(int16_t event, void (*func_cb)(epdgui_args_vector_t &));
     void UpdateTouchState(int16_t x, int16_t y);
-    virtual void Render(JsonVariant data);
-    void Init(JsonVariant data);
+    virtual void Render();
+    void Init();
 
     M5EPD_Canvas *Canvas();
     M5EPD_Canvas *CanvasPressed();
 
 protected:
     virtual void RenderDescriptionLabel(const char *string);
+    virtual PhiAction_Definition *GetPhiAction();
 
 private:
     void (*_pressed_cb)(epdgui_args_vector_t &args) = NULL;

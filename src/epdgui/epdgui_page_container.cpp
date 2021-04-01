@@ -224,56 +224,104 @@ void EPDGUI_Page_Container::PropagateWidgets(JsonArray widgets, int16_t width, i
 
         if (jsonWidgetItem["widgettype"] == "icon")
         {
-            PHI_Widget_Icon *_widget_icon = new PHI_Widget_Icon(pos_x, pos_y, width, height);
-            _widget_icon->Init(jsonWidgetItem);
+            Widget_Icon_Definition *_widget_definition = new Widget_Icon_Definition();
+            _widget_definition->Description = jsonWidgetItem["description"].as<String>();
+            _widget_definition->Icon = new Icon_Definition();
+            _widget_definition->Icon->Path = jsonWidgetItem["icon"].as<String>();
+            _widget_definition->PhiAction = new PhiAction_Definition();
+            _widget_definition->PhiAction->Id = jsonWidgetItem["phiActionId"].as<String>();
+            _widget_definition->PhiAction->Parameter = jsonWidgetItem["phiActionParam"].as<String>();
+
+            PHI_Widget_Icon *_widget_icon = new PHI_Widget_Icon(pos_x, pos_y, width, height, _widget_definition);
+            _widget_icon->Init();
             AddComponent(_widget_icon, p);
         }
         else if (jsonWidgetItem["widgettype"] == "text")
         {
-            PHI_Widget_Text *_widget_text = new PHI_Widget_Text(pos_x, pos_y, width, height);
-            _widget_text->Init(jsonWidgetItem);
+            Widget_Text_Definition *_widget_definition = new Widget_Text_Definition();
+            _widget_definition->Description = jsonWidgetItem["description"].as<String>();
+            _widget_definition->Value = jsonWidgetItem["value"].as<String>();
+            _widget_definition->Hint = jsonWidgetItem["hint"].as<String>();
+            _widget_definition->PhiAction = new PhiAction_Definition();
+            _widget_definition->PhiAction->Id = jsonWidgetItem["phiActionId"].as<String>();
+            _widget_definition->PhiAction->Parameter = jsonWidgetItem["phiActionParam"].as<String>();
+
+            PHI_Widget_Text *_widget_text = new PHI_Widget_Text(pos_x, pos_y, width, height, _widget_definition);
+            _widget_text->Init();
             AddComponent(_widget_text, p);
         }
         else if (jsonWidgetItem["widgettype"] == "doubleswitch")
         {
-            PHI_Widget_Double_Switch *_widget_double_switch = new PHI_Widget_Double_Switch(pos_x, pos_y, width, height);
-            _widget_double_switch->Init(jsonWidgetItem);
+            Widget_Double_Switch_Definition *_widgetDefinition = new Widget_Double_Switch_Definition();
+            _widgetDefinition->UpIcon = new Icon_Definition();
+            _widgetDefinition->UpIcon->Path = jsonWidgetItem["upicon"].as<String>();
+            _widgetDefinition->DownIcon = new Icon_Definition();
+            _widgetDefinition->DownIcon->Path = jsonWidgetItem["downicon"].as<String>();
+
+            PHI_Widget_Double_Switch *_widget_double_switch = new PHI_Widget_Double_Switch(pos_x, pos_y, width, height, _widgetDefinition);
+            _widget_double_switch->Init();
             AddComponent(_widget_double_switch, p);
         }
         else if (jsonWidgetItem["widgettype"] == "toggle")
         {
-            PHI_Widget_Toggle *_widget_toggle = new PHI_Widget_Toggle(pos_x, pos_y, width, height);
-            _widget_toggle->Init(jsonWidgetItem);
+            Widget_Toggle_Definition *_widget_definition = new Widget_Toggle_Definition();
+            _widget_definition->Description = jsonWidgetItem["description"].as<String>();
+            _widget_definition->PhiAction = new PhiAction_Definition();
+            _widget_definition->PhiAction->Id = jsonWidgetItem["phiActionId"].as<String>();
+            //_widget_definition->PhiAction->Parameter = jsonWidgetItem["phiActionParam"].as<String>();
+
+            PHI_Widget_Toggle *_widget_toggle = new PHI_Widget_Toggle(pos_x, pos_y, width, height, _widget_definition);
+            _widget_toggle->Init();
             AddComponent(_widget_toggle, p);
         }
         else if (jsonWidgetItem["widgettype"] == "icontoggle")
         {
-            PHI_Widget_Icon_Toggle *_widget_icon_toggle = new PHI_Widget_Icon_Toggle(pos_x, pos_y, width, height);
-            _widget_icon_toggle->Init(jsonWidgetItem);
+            Widget_Icon_Toggle_Definition *_widget_definition = new Widget_Icon_Toggle_Definition();
+
+            PHI_Widget_Icon_Toggle *_widget_icon_toggle = new PHI_Widget_Icon_Toggle(pos_x, pos_y, width, height, _widget_definition);
+            _widget_icon_toggle->Init();
             AddComponent(_widget_icon_toggle, p);
         }
         else if (jsonWidgetItem["widgettype"] == "progress")
         {
-            PHI_Widget_Progress *_widget_progress = new PHI_Widget_Progress(pos_x, pos_y, width, height);
-            _widget_progress->Init(jsonWidgetItem);
+            Widget_Progress_Definition *_widget_definition = new Widget_Progress_Definition();
+            _widget_definition->PhiAction = new PhiAction_Definition();
+            _widget_definition->PhiAction->Id = jsonWidgetItem["phiActionId"].as<String>();
+            _widget_definition->PhiAction->Parameter = jsonWidgetItem["phiActionParam"].as<String>();
+            
+            PHI_Widget_Progress *_widget_progress = new PHI_Widget_Progress(pos_x, pos_y, width, height, _widget_definition);
+            _widget_progress->Init();
             AddComponent(_widget_progress, p);
         }
         else if (jsonWidgetItem["widgettype"] == "multibutton")
         {
-            PHI_Widget_Multi_Button *_widget_multi_button = new PHI_Widget_Multi_Button(pos_x, pos_y, width, height, grid_height * 3);
-            _widget_multi_button->Init(jsonWidgetItem);
+            Widget_MultiButton_Definition *_widget_definition = new Widget_MultiButton_Definition();
+
+            PHI_Widget_Multi_Button *_widget_multi_button = new PHI_Widget_Multi_Button(pos_x, pos_y, width, height, grid_height * 3, _widget_definition);
+            _widget_multi_button->Init();
             AddComponent(_widget_multi_button, p);
         }
         else if (jsonWidgetItem["widgettype"] == "spinner")
         {
-            PHI_Widget_Spinner *_widget_spinner = new PHI_Widget_Spinner(pos_x, pos_y, width, height);
-            _widget_spinner->Init(jsonWidgetItem);
+            Widget_Spinner_Definition *_widget_definition = new Widget_Spinner_Definition();
+            _widget_definition->Description = jsonWidgetItem["description"].as<String>();
+            _widget_definition->Value = jsonWidgetItem["value"].as<String>();
+            _widget_definition->UpIcon = new Icon_Definition();
+            _widget_definition->UpIcon->Path = jsonWidgetItem["upicon"].as<String>();
+            _widget_definition->DownIcon = new Icon_Definition();
+            _widget_definition->DownIcon->Path = jsonWidgetItem["downicon"].as<String>();
+
+            PHI_Widget_Spinner *_widget_spinner = new PHI_Widget_Spinner(pos_x, pos_y, width, height, _widget_definition);
+            _widget_spinner->Init();
             AddComponent(_widget_spinner, p);
         }
         else if (jsonWidgetItem["widgettype"] == "slider")
         {
-            PHI_Widget_Slider *_widget_slider = new PHI_Widget_Slider(pos_x, pos_y, width, height);
-            _widget_slider->Init(jsonWidgetItem);
+            Widget_Slider_Definition *_widget_definition = new Widget_Slider_Definition();
+            _widget_definition->Description = jsonWidgetItem["description"].as<String>();
+
+            PHI_Widget_Slider *_widget_slider = new PHI_Widget_Slider(pos_x, pos_y, width, height, _widget_definition);
+            _widget_slider->Init();
             AddComponent(_widget_slider, p);
         }
 
