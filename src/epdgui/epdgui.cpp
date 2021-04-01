@@ -217,6 +217,7 @@ void EPDGUI_PushFrame(Frame_Base *frame)
 
     //EPDGUI_OverwriteFrame(frame);
     frame_stack.push(frame);
+    
     frame->SetIsRun(1);
 }
 

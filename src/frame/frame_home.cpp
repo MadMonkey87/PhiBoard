@@ -3,6 +3,7 @@
 #include "ArduinoJson.h"
 #include "FS.h"
 #include "frame.h"
+#include "../util/SpiRamJsonDocument.h"
 
 Frame_Home::Frame_Home() : Frame_Base()
 {
@@ -43,7 +44,8 @@ void Frame_Home::init(epdgui_args_vector_t &args)
         Serial.println("Unable to read file");
     }
 
-    DynamicJsonDocument virtualJsonDocument(1024 * 16);
+    DynamicJsonDocument virtualJsonDocument(1024 * 4);
+    //SpiRamJsonDocument virtualJsonDocument(1024 * 4);
     if (content != "")
     {
         DeserializationError error = deserializeJson(virtualJsonDocument, content);
@@ -55,6 +57,14 @@ void Frame_Home::init(epdgui_args_vector_t &args)
     }
 
     JsonArray widgets = virtualJsonDocument.containsKey("widgets") ? virtualJsonDocument["widgets"].as<JsonArray>() : virtualJsonDocument.createNestedArray("widgets");
+
+    JsonObject factoryTestWidget2 = widgets.createNestedObject();
+    factoryTestWidget2["widgettype"] = "icon";
+    factoryTestWidget2["description"] = "Empty Test";
+    factoryTestWidget2["icon"] = "/Icons/Test.jpg";
+    factoryTestWidget2["grid_width"] = 1;
+    factoryTestWidget2["grid_height"] = 1;
+    factoryTestWidget2["phiActionId"] = Frame_Empty::APPID;
 
     JsonObject factoryTestWidget = widgets.createNestedObject();
     factoryTestWidget["widgettype"] = "icon";
@@ -87,8 +97,6 @@ void Frame_Home::init(epdgui_args_vector_t &args)
     settingsWidget["grid_width"] = 1;
     settingsWidget["grid_height"] = 1;
     settingsWidget["phiActionId"] = Frame_Setting::APPID;
-
-    //serializeJsonPretty(virtualJsonDocument, Serial);
 
     String name = "PhiBoard";
     if (virtualJsonDocument.containsKey("name"))
