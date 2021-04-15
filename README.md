@@ -30,6 +30,9 @@ TBD
 TBD
 # Documentation
 TBD
+# Current restrictions
+ - very unstable
+ - no automatic discovery service -> this requires that the PhiBoard and the controller have static ip adresses
 # License
 TBD
 # Contributing
